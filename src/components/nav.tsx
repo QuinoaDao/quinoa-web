@@ -20,16 +20,4 @@ function Nav() {
     </header>
   );
 }
-// export const Nav = () => {
-//   return (
-//     <header id="header_wrap">
-//       <div className="header">
-//         <Quinoalogo className="logo"></Quinoalogo>
-//         <div className="wallet_btn">
-//           <span className="get_start">Get start</span>
-//         </div>
-//       </div>
-//     </header>
-//   );
-// };
 export default Nav;

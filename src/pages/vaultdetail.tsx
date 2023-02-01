@@ -18,11 +18,6 @@ import TitleDetailWrap from "../components/titleDetailwrap";
 function Vaultdetail() {
   return (
     <body id="body_wrap">
-      {/*<div className="back_btn">
-        <Leftarrow className="left_arrow"></Leftarrow>
-        <span className="back_txt">Back to List</span>
-      </div>*/}
-
       <div className="infomain_wrap">
         <TitleDetailWrap
           vaultName="Static Allocation Product"
