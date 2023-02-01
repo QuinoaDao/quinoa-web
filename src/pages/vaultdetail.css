@@ -1,0 +1,2316 @@
+#body_wrap {
+  position: relative;
+  width: 1200px;
+  height: auto;
+  margin: 62px auto 0;
+  box-sizing: border-box;
+  background-color: #fff;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  padding-bottom: 00px;
+}
+.back_btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0px;
+  gap: 7px;
+  position: absolute;
+  width: 92px;
+  height: 14px;
+  box-sizing: border-box;
+  top: 26px;
+  z-index: 100;
+  cursor: pointer;
+  user-select: none;
+}
+/*.back_btn .left_arrow {
+  width: 4.9px;
+  height: 8px;
+  flex-grow: 0;
+  flex: none;
+  order: 0;
+}
+.back_btn .back_txt {
+  width: auto;
+  height: auto;
+  font-family: "Lexend Deca", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  text-align: center;
+  color: #6b7277;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+} */
+#body_wrap .infomain_wrap {
+  width: 792px;
+  height: 100%;
+  position: relative;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  margin-top: 62px;
+  padding-bottom: 340px;
+}
+#body_wrap .infomain_wrap .detail_wrap {
+  position: relative;
+  width: 792px;
+  height: auto;
+  box-sizing: border-box;
+  top: 0;
+}
+.vaultTitle_wrap {
+  position: relative;
+  width: 100%;
+  height: 63px;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  box-sizing: border-box;
+}
+.vaultTitle_wrap .vault_title {
+  width: auto;
+  height: 63px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 14px;
+  padding: 0;
+  box-sizing: border-box;
+}
+.vaultTitle_wrap .vault_title .vault_img {
+  width: 63px;
+  height: 63px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  box-sizing: border-box;
+}
+.vaultTitle_wrap .vault_title .nametxt {
+  width: auto;
+  height: 55px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 0;
+  box-sizing: border-box;
+  flex: none;
+  order: 1;
+}
+.vaultTitle_wrap .vault_title .nametxt .vaultname {
+  width: auto;
+  height: 30px;
+  flex-grow: 0;
+  font-family: "Lexend Deca", sans-serif;
+  font-size: 30px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  text-align: left;
+  color: #000;
+  box-sizing: border-box;
+  flex: none;
+  order: 0;
+}
+.vaultTitle_wrap .vault_title .nametxt .dacname {
+  width: auto;
+  height: 14px;
+  flex-grow: 0;
+  font-family: "Lexend Deca", sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: left;
+  color: #6b7277;
+  box-sizing: border-box;
+  flex: none;
+  order: 1;
+}
+.vaultTitle_wrap .propensity {
+  width: auto;
+  height: 36px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 9px 21px;
+  border-radius: 37px;
+  box-sizing: border-box;
+  flex: none;
+  order: 1;
+  border: solid 1px #ffb038;
+  background-color: #fffae7;
+}
+.vaultTitle_wrap .propensity .prop_agre {
+  width: auto;
+  height: auto;
+  font-family: "Lexend Deca", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 0.25px;
+  color: #ffb038;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  user-select: none;
+}
+.vaultTitle_wrap .propensity .prop_mod {
+  width: auto;
+  height: auto;
+  font-family: "Lexend Deca", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 0.25px;
+  color: #ffb038;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  user-select: none;
+}
+.infomain_wrap .Intro_wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 3px;
+  position: relative;
+  width: 792px;
+  height: 206px;
+  box-sizing: border-box;
+}
+.Intro_wrap .Introduction {
+  width: 100%;
+  height: 38px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 37px;
+  color: #000000;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.Intro_wrap .Intro_txt {
+  width: 100%;
+  height: auto;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 25px;
+  color: #000000;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+  box-sizing: border-box;
+  word-break: keep-all;
+}
+.Intro_wrap .tag_wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 17px 0px 0px;
+  gap: 8px;
+  width: 100%;
+  height: 50px;
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+  box-sizing: border-box;
+}
+.Intro_wrap .tag_wrap .tag {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px 15px;
+  gap: 7px;
+  width: auto;
+  height: 33px;
+  border: 1px solid #e3e9ed;
+  border-radius: 37px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.tag_wrap .tag_name {
+  width: auto;
+  height: 13px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 13px;
+  text-align: center;
+  color: #000000;
+}
+.vault_priceinfo {
+  width: 100%;
+  height: 56px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 45px;
+  padding: 0;
+}
+.vault_priceinfo .currentprice {
+  width: auto;
+  height: 100%;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 7px;
+  padding: 0;
+  flex: none;
+  order: 1;
+}
+.vault_priceinfo .percentchange {
+  width: auto;
+  height: 100%;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 7px;
+  padding: 0;
+  flex: none;
+  order: 2;
+}
+.vault_priceinfo .aum {
+  width: auto;
+  height: 100%;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 7px;
+  padding: 0;
+  flex: none;
+  order: 0;
+}
+.vault_priceinfo .About_txt_short {
+  width: auto;
+  height: 15px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15px;
+  color: #6b7277;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.vault_priceinfo .number_txt {
+  width: auto;
+  height: 34px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 33px;
+  line-height: 34px;
+  color: #000000;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.vault_priceinfo .percent_txt {
+  width: auto;
+  height: 34px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 33px;
+  line-height: 34px;
+  color: #1bc100;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding: 0px;
+  gap: 7px;
+  order: 1;
+  flex-grow: 0;
+}
+.vault_priceinfo .pc_icon {
+  width: 18px;
+  height: 34px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.vault_priceinfo .othercolor {
+  color: #e3e9ed;
+}
+.infomain_wrap .ut_wrap {
+  position: relative;
+  width: 100%;
+  height: 253px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 0 42px;
+  border-radius: 12px;
+  border: solid 1px #e3e9ed;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+.infomain_wrap .ut_wrap header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 16px;
+  width: 100%;
+  height: 54px;
+  align-self: stretch;
+  flex-grow: 0;
+  justify-content: flex-start;
+  align-items: stretch;
+  box-sizing: border-box;
+  flex: none;
+  order: 0;
+}
+.infomain_wrap .ut_wrap .column_first {
+  display: flex;
+  flex-direction: row;
+  padding: 0px;
+  width: 168px;
+  height: 100%;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 0;
+  box-sizing: border-box;
+}
+.infomain_wrap .ut_wrap .column_txt {
+  width: 100%;
+  height: 100%;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 12px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.infomain_wrap .ut_wrap .column_quantity {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  width: 132px;
+  height: 100%;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+.infomain_wrap .ut_wrap .column_Tokenprice {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  width: 128px;
+  height: 100%;
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+.infomain_wrap .ut_wrap .column_Tokenbalance {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  width: 88px;
+  height: 100%;
+  flex: none;
+  order: 3;
+  align-self: stretch;
+  flex-grow: 0;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+.infomain_wrap .ut_wrap .column_PercentChange {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  width: 134px;
+  height: 100%;
+  flex: none;
+  order: 3;
+  align-self: stretch;
+  flex-grow: 0;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+.infomain_wrap .ut_wrap .column_Totalvalue {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  width: 126px;
+  height: 100%;
+  flex: none;
+  order: 3;
+  align-self: stretch;
+  flex-grow: 0;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+.infomain_wrap .ut_wrap .spacing_line {
+  width: 1px;
+  height: 13px;
+  background: #d9d9d9;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.infomain_wrap .ut_wrap .spacing_14px {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0);
+}
+.ut_wrap .headerUnderline {
+  width: 792px;
+  height: 1px;
+  background: #e3e9ed;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.ut_wrap .list_strategy {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 16px;
+  isolation: isolate;
+  width: 100%;
+  height: 78px;
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+  box-sizing: border-box;
+  justify-content: flex-start;
+}
+.ut_wrap .list_strategy .token {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 0px;
+  gap: 8px;
+  width: 168px;
+  height: 100%;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  z-index: 0;
+  box-sizing: border-box;
+  justify-content: flex-start;
+  align-items: center;
+}
+.ut_wrap .list_strategy .token .tokenImg_wrap {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 50%;
+}
+.ut_wrap .list_strategy .token .token_txt {
+  width: auto;
+  height: 14px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  color: #1b1b1b;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  box-sizing: border-box;
+}
+.ut_wrap .list_strategy .Quantity {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 0px 0px 15px;
+  width: 132px;
+  height: 100%;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  justify-content: flex-start;
+}
+.ut_wrap .list_strategy .number {
+  width: auto;
+  height: 14px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.25px;
+  color: #000000;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  font-stretch: normal;
+  text-align: left;
+  box-sizing: border-box;
+}
+.ut_wrap .list_strategy .token_name {
+  width: auto;
+  height: 11px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 9px;
+  line-height: 9px;
+  display: flex;
+  align-items: flex-end;
+  text-indent: 3px;
+  color: #6b7277;
+  font-stretch: normal;
+  letter-spacing: normal;
+  text-align: left;
+  box-sizing: border-box;
+}
+.ut_wrap .list_strategy .TokenPrice {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 0px 0px 15px;
+  width: 128px;
+  height: 100%;
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+  z-index: 2;
+  box-sizing: border-box;
+  justify-content: flex-start;
+}
+.ut_wrap .list_strategy .totalVolume {
+  width: auto;
+  height: 14px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.25px;
+  color: #000000;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  font-stretch: normal;
+  text-align: left;
+}
+.ut_wrap .list_strategy .Balance {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 0px 0px 15px;
+  width: 88px;
+  height: 100%;
+  flex: none;
+  order: 3;
+  align-self: stretch;
+  flex-grow: 0;
+  z-index: 3;
+  box-sizing: border-box;
+  justify-content: flex-start;
+}
+.ut_wrap .list_strategy .balance_percent {
+  width: auto;
+  height: 14px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.25px;
+  color: #000000;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  font-stretch: normal;
+  text-align: left;
+}
+.ut_wrap .list_strategy .PercentChange {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0px 0px 0px 15px;
+  width: 134px;
+  height: 100%;
+  flex: none;
+  order: 4;
+  align-self: stretch;
+  flex-grow: 0;
+  z-index: 4;
+  box-sizing: border-box;
+}
+.ut_wrap .list_strategy .PercentChange .up_icon {
+  width: 11px;
+  height: 14px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  box-sizing: border-box;
+}
+.ut_wrap .list_strategy .PercentChange .totalVolume {
+  width: auto;
+  height: 14px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.25px;
+  color: #1bc100;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  box-sizing: border-box;
+}
+.ut_wrap .list_strategy .Totalvalue {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 0px 0px 15px;
+  width: 126px;
+  height: 100%;
+  flex: none;
+  order: 5;
+  align-self: stretch;
+  justify-content: flex-start;
+  flex-grow: 0;
+  z-index: 5;
+  box-sizing: border-box;
+}
+.ut_wrap .list_strategy .tv_txt {
+  width: auto;
+  height: 14px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.25px;
+  color: #000000;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  font-stretch: normal;
+  text-align: left;
+}
+.ut_wrap .list_strategy .balancegraphline_wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  isolation: isolate;
+  position: absolute;
+  width: 790px;
+  padding: 0px 16px;
+  height: 28px;
+  left: 0px;
+  top: 61.5px;
+  flex: none;
+  order: 6;
+  flex-grow: 0;
+  z-index: 6;
+  box-sizing: border-box;
+}
+.ut_wrap .list_strategy .balancegraphline_wrap .graphline_wrap {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  isolation: isolate;
+  width: 100%;
+  height: 5px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  z-index: 0;
+  border-radius: 2.5px;
+}
+.ut_wrap .list_strategy .balancegraphline_wrap .graphline_wrap .default {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: rgba(47, 48, 48);
+  opacity: 0.1;
+  border-radius: 2.5px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  z-index: 0;
+}
+.ut_wrap .list_strategy .balancegraphline_wrap .graphline_wrap .balance {
+  position: absolute;
+  width: calc(100% - 50%); /* balance 값 입력 */
+  border-radius: 2.5px 0 0 2.5px;
+  height: 100%;
+  background: rgba(47, 48, 48);
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  z-index: 0;
+  top: 0;
+  left: 0;
+}
+.ut_wrap .list_strategy .balancegraphline_wrap .graphline_wrap .defaulteth {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: rgba(47, 48, 48);
+  opacity: 0.1;
+  border-radius: 2.5px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  z-index: 0;
+}
+.ut_wrap .list_strategy .balancegraphline_wrap .graphline_wrap .balanceeth {
+  position: absolute;
+  width: calc(100% - 50%); /* balance 값 입력 */
+  border-radius: 2.5px 0 0 2.5px;
+  height: 100%;
+  background: rgba(47, 48, 48);
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  z-index: 0;
+  top: 0;
+  left: 0;
+}
+.ut_wrap .list_strategy .balancegraphline_wrap .graphline_wrap .defaultpoly {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+  border-radius: 2.5px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  z-index: 0;
+  background: rgba(40, 145, 249);
+}
+.ut_wrap .list_strategy .balancegraphline_wrap .graphline_wrap .balancepoly {
+  position: absolute;
+  width: calc(100% - 50%); /* balance 값 입력 */
+  border-radius: 2.5px 0 0 2.5px;
+  height: 100%;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  background: rgba(40, 145, 249);
+  opacity: 1;
+}
+.ut_wrap
+  .list_strategy
+  .balancegraphline_wrap
+  .graphline_wrap
+  .balanceline_txt {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px 24px 5px 2px;
+  position: absolute;
+  left: calc(100% - 50%); /* balance 값 입력 */
+  top: 50%;
+  transform: translate(0, -50%);
+  background: linear-gradient(
+    90.76deg,
+    #ffffff 67.89%,
+    rgba(255, 255, 255, 0) 94.18%
+  );
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  z-index: 1;
+}
+.ut_wrap
+  .list_strategy
+  .balancegraphline_wrap
+  .graphline_wrap
+  .balancelineeth_txt {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px 24px 5px 2px;
+  position: absolute;
+  left: calc(100% - 50%); /* balance 값 입력 */
+  top: 50%;
+  transform: translate(0, -50%);
+  background: linear-gradient(
+    90.76deg,
+    #ffffff 67.89%,
+    rgba(255, 255, 255, 0) 94.18%
+  );
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  z-index: 1;
+}
+.ut_wrap
+  .list_strategy
+  .balancegraphline_wrap
+  .graphline_wrap
+  .balancelinepoly_txt {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px 24px 5px 2px;
+  position: absolute;
+  left: calc(100% - 50%); /* balance 값 입력 */
+  top: 50%;
+  transform: translate(0, -50%);
+  background: linear-gradient(
+    90.76deg,
+    #ffffff 67.89%,
+    rgba(255, 255, 255, 0) 94.18%
+  );
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  z-index: 1;
+}
+.ut_wrap
+  .list_strategy
+  .balancegraphline_wrap
+  .graphline_wrap
+  .balanceline_txt
+  span {
+  width: 27px;
+  height: 13px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.25px;
+  color: #2f3030;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.ut_wrap
+  .list_strategy
+  .balancegraphline_wrap
+  .graphline_wrap
+  .balancelineeth_txt
+  span {
+  width: 27px;
+  height: 13px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.25px;
+  color: #2f3030;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.ut_wrap
+  .list_strategy
+  .balancegraphline_wrap
+  .graphline_wrap
+  .balancelinepoly_txt
+  span {
+  width: 27px;
+  height: 13px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.25px;
+  color: rgba(40, 145, 249);
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+/* title header */
+.infomain_wrap .maintitle_wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 9px;
+  align-items: stretch;
+  padding: 0;
+  width: 100%;
+  height: 157px;
+  box-sizing: border-box;
+}
+.infomain_wrap .maintitle_wrap .spacing_100px {
+  width: 100%;
+  height: 100px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  box-sizing: border-box;
+  /* background-color: #ffefef; */
+}
+.infomain_wrap .maintitle_wrap .maintitle_txt {
+  width: 100%;
+  height: 38px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 37px;
+  color: #000000;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+  font-stretch: normal;
+  letter-spacing: normal;
+  text-align: left;
+  box-sizing: border-box;
+}
+.infomain_wrap .maintitle_wrap .maintitleUnderline {
+  width: 100%;
+  height: 1px;
+  background: #e3e9ed;
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+  box-sizing: border-box;
+}
+.infomain_wrap .performance_wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 27px;
+  width: 100%;
+  height: 330px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  box-sizing: border-box;
+  justify-content: flex-start;
+}
+.performance_wrap .performance {
+  display: flex;
+  flex-direction: row;
+  padding: 0px;
+  gap: 30px;
+  width: 100%;
+  height: 240px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  box-sizing: border-box;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+.performance_wrap .performance .percentChange_row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 28px;
+  width: 36px;
+  height: 100%;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+.performance_wrap .performance .percentChange_row .spacing_1px {
+  width: 100%;
+  height: 0.5px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.performance_wrap .performance .percentChange_row span {
+  width: auto;
+  height: 13px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  color: #5f6264;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  font-stretch: normal;
+  letter-spacing: normal;
+  text-align: left;
+}
+.performance_wrap .performance .performance_monthly {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding: 0px;
+  gap: 57px;
+  width: 726px;
+  height: 100%;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 1;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+.performance .performance_monthly .before_nm {
+  width: 52px;
+  height: 88%;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+.performance_monthly .before_nm .bm_txt {
+  position: absolute;
+  width: 100%;
+  height: 13px;
+  flex-grow: 0;
+  bottom: 0;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: center;
+  align-items: center;
+  color: #000;
+}
+.performance_monthly .before_nm .vaultCircle {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background: #1bc100;
+  border-radius: 50%;
+  z-index: 10;
+}
+.performance_monthly .before_nm .benchCircle {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background: #dde1e4;
+  border-radius: 50%;
+  z-index: 8;
+}
+.performance_wrap .performancesort_wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  width: 333px;
+  height: 56px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  box-sizing: border-box;
+}
+.performance_wrap .performancesort_wrap .spacing_64px {
+  width: 64px;
+  height: 100%;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  background-color: rgba(255, 255, 255, 0);
+}
+.performance_wrap .performancesort_wrap .performance_sort {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 22px 27px;
+  gap: 23px;
+  width: auto;
+  height: auto;
+  border: 1px solid #e3e9ed;
+  border-radius: 12px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.performancesort_wrap .performance_sort .vault_per_info {
+  display: flex;
+  width: auto;
+  height: 12px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  box-sizing: border-box;
+}
+.performance_sort .vault_per_info .vp_icon {
+  width: 12px;
+  height: 12px;
+  background: #1bc100;
+  border-radius: 50%;
+  flex-grow: 0;
+  margin-right: 6px;
+  margin-top: -0.5px;
+}
+.performance_sort .vault_per_info .vp_txt {
+  height: 12px;
+  width: auto;
+  flex-grow: 0;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+}
+.performancesort_wrap .performance_sort .benchmark_per_info {
+  display: flex;
+  width: auto;
+  height: 12px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  box-sizing: border-box;
+}
+.performance_sort .benchmark_per_info .bm_icon {
+  width: 12px;
+  height: 12px;
+  background: #dde1e4;
+  border-radius: 50%;
+  flex-grow: 0;
+  margin-right: 6px;
+  margin-top: -0.5px;
+}
+.performance_sort .benchmark_per_info .bm_txt {
+  height: 12px;
+  width: auto;
+  flex-grow: 0;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+}
+.infomain_wrap .about_list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  width: 100%;
+  height: 36px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.infomain_wrap .about_list .al_wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 7px;
+  width: calc(100% / 4);
+  height: 100%;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  box-sizing: border-box;
+  justify-content: flex-start;
+}
+.about_list .al_wrap .name,
+.about_list .al_wrap a {
+  width: auto;
+  height: 16px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  color: #000000;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  font-stretch: normal;
+  letter-spacing: normal;
+  text-align: left;
+  box-sizing: border-box;
+}
+.about_list .contract_wrap .name,
+.about_list .contract_wrap a {
+  color: #0f99ff;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+.about_list .al_wrap .txt {
+  width: auto;
+  height: 13px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 13px;
+  color: #8a8181;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  box-sizing: border-box;
+  font-stretch: normal;
+  letter-spacing: normal;
+  text-align: left;
+}
+.infomain_wrap .stat_list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  width: 100%;
+  height: 36px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.infomain_wrap .stat_list .st_wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 7px;
+  width: calc(100% / 4);
+  height: 100%;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  box-sizing: border-box;
+  justify-content: flex-start;
+}
+.stat_list .st_wrap .name {
+  width: auto;
+  height: 16px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  color: #000000;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  font-stretch: normal;
+  letter-spacing: normal;
+  text-align: left;
+  box-sizing: border-box;
+}
+.stat_list .st_wrap .txt {
+  width: auto;
+  height: 13px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 13px;
+  color: #8a8181;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  box-sizing: border-box;
+  font-stretch: normal;
+  letter-spacing: normal;
+  text-align: left;
+}
+#body_wrap .buysellBox_wrap {
+  position: sticky;
+  right: 0;
+  top: 98px;
+  width: 366px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  object-fit: contain;
+  background-color: #fff;
+  box-sizing: border-box;
+  align-items: center;
+  padding: 0px 0px 21px;
+  border: 1px solid #e3e9ed;
+  border-radius: 12px 12px 36px 36px;
+  margin-top: 60px;
+  box-shadow: 0px -12px 24px rgba(0, 0, 0, 0.01),
+    0px 12px 24px rgba(0, 0, 0, 0.04);
+}
+.buysellBox_wrap .buysellbtn_wrap {
+  box-sizing: border-box;
+  display: block;
+  align-items: center;
+  padding: 0px;
+  width: 100%;
+  height: fit-content;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  justify-content: flex-start;
+  user-select: none;
+}
+.buysellBox_wrap .buysellbtn_wrap .btn_wrap {
+  display: flex;
+  float: left;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 1px;
+  width: calc(100% / 2);
+  height: 53px;
+  border-bottom: 1px solid #e3e9ed;
+  flex: none;
+  order: 0;
+  flex-grow: 1;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 17px;
+  text-align: center;
+  letter-spacing: -0.25px;
+  color: #e3e9ed;
+  order: 0;
+  align-self: stretch;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 12px 12px 0 0;
+  cursor: pointer;
+}
+/*-------- 선택된 탭 스타일 --------*/
+.buysellbtn_wrap input:checked + .btn_wrap {
+  background-color: #fff;
+  font-weight: 500;
+  color: #000;
+  border-bottom: 2px solid #000;
+}
+.buysellbtn_wrap input + .buybtn:hover {
+  background-color: #fff;
+  border-radius: 12px 0 0 0;
+  color: #b5bbc0;
+}
+.buysellbtn_wrap input + .sellbtn:hover {
+  background-color: #fff;
+  border-radius: 0 12px 0 0;
+  color: #b5bbc0;
+}
+.buysellbtn_wrap input + .buybtn:active {
+  color: #848484;
+}
+.buysellbtn_wrap input + .sellbtn:active {
+  color: #848484;
+}
+
+.buysellbtn_wrap input:checked + .btn_wrap:hover {
+  color: #000;
+}
+/* .buysellBox_wrap .buysellbtn_wrap .sellbtn_wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 1px;
+  width: 50%;
+  height: 100%;
+  flex: none;
+  order: 1;
+  flex-grow: 1;
+} */
+input[name="btn_wrap"] {
+  display: none;
+}
+.buysellBox_wrap #buytab_content {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  height: fit-content;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 0 0 25px 25px;
+}
+.buysellBox_wrap #selltab_content {
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  height: fit-content;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 0 0 25px 25px;
+  display: none;
+}
+#buytab:checked ~ #buytab_content {
+  display: flex;
+}
+#selltab:checked ~ #selltab_content {
+  display: flex;
+}
+/* .buysellbtn_wrap .txt {
+  width: 100%;
+  height: 50px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 17px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.25px;
+  color: #e3e9ed;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  justify-content: center;
+}
+.buysellbtn_wrap .txt.active {
+  font-weight: 500;
+  color: #000;
+} */
+/* .buysellbtn_wrap .focusline {
+  display: none;
+  width: 191px;
+  height: 2px;
+  background: #d9d9d9;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.buysellbtn_wrap .focusline.active {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #000000;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+} */
+.buysellBox_wrap .investin_wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0px 21px;
+  width: 100%;
+  height: 55px;
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+  box-sizing: border-box;
+}
+.buysellBox_wrap .investin_wrap .investIn {
+  width: auto;
+  height: 47px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 15px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  z-index: 10;
+}
+.buysellBox_wrap .investin_wrap .selectbox_wrap {
+  position: relative;
+  width: 211px;
+  height: max-content;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+  border: 1px solid #e3e9ed;
+  order: 1;
+  flex: none;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  text-align: left;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 15px;
+  color: #000000;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.buysellBox_wrap .investin_wrap .selectbox_wrap:hover {
+  transition: 100ms;
+  /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.06), 0px -4px 6px rgba(0, 0, 0, 0.02); */
+  border: 1px solid #b5bbc0;
+}
+.buysellBox_wrap .investin_wrap .selectbox_wrap:focus {
+  outline: none;
+  border: 1px solid #e3e9ed;
+}
+.buysellBox_wrap .investin_wrap .selectbox_wrap .selectbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 11px 0 14px;
+  width: 100%;
+  height: 47px;
+  background: url(../components/asset/selectbox_icon.svg) no-repeat
+    calc(100% - 11px) center;
+  background-color: #fff;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+.buysellBox_wrap .investin_wrap .selectbox_wrap .selectbox .token {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 6px;
+  width: auto;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.buysellBox_wrap .investin_wrap .selectbox_wrap .selectbox_list {
+  width: calc(100% + 2px);
+  height: auto;
+  position: absolute;
+  background: #fff;
+  border-radius: 0;
+  left: -1px;
+  top: 45px;
+  box-sizing: border-box;
+  z-index: 99;
+  display: none;
+}
+.buysellBox_wrap .investin_wrap .selectbox_wrap .selectbox_list li {
+  width: 100%;
+  height: 47px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-left: solid 1px #e3e9ed;
+  border-right: solid 1px #e3e9ed;
+  padding: 0 11px 0 14px;
+  box-sizing: border-box;
+  order: 1;
+  flex: none;
+  justify-content: space-between;
+  gap: 4px;
+  order: 0;
+  flex-grow: 0;
+}
+.buysellBox_wrap .investin_wrap .selectbox_wrap .selectbox_list li.active {
+  border-left: solid 1px #0937a8;
+  border-right: solid 1px #0937a8;
+  background-color: #205ae7;
+}
+.buysellBox_wrap
+  .investin_wrap
+  .selectbox_wrap
+  .selectbox_list
+  li.active
+  .token {
+  color: #fff;
+}
+.buysellBox_wrap
+  .investin_wrap
+  .selectbox_wrap
+  .selectbox_list
+  li.active
+  .token_subname {
+  color: #bfd3df;
+}
+.buysellBox_wrap .investin_wrap .selectbox_wrap .selectbox_list li .token {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 6px;
+  width: auto;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.buysellBox_wrap
+  .investin_wrap
+  .selectbox_wrap
+  .selectbox_list
+  li
+  .token_subname {
+  width: auto;
+  height: 15px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 13px;
+  letter-spacing: -0.25px;
+  color: #b4bdc2;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.buysellBox_wrap .investin_wrap .selectbox_wrap .selectbox_list li:first-child {
+  border-radius: 0;
+  border-top: solid 1px #e3e9ed;
+}
+.buysellBox_wrap .investin_wrap .selectbox_wrap .selectbox_list li:last-child {
+  border-radius: 0 0 4px 4px;
+  border-bottom: solid 1px #e3e9ed;
+}
+.buysellBox_wrap .investin_wrap .selectbox_wrap .selectbox_list li:hover {
+  background-color: #f6f9fc;
+}
+.buysellBox_wrap
+  .investin_wrap
+  .selectbox_wrap
+  .selectbox_list
+  li:hover
+  .token {
+  color: #000;
+}
+.buysellBox_wrap .amount_wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0px 21px;
+  width: 100%;
+  height: 53px;
+  flex: none;
+  order: 3;
+  align-self: stretch;
+  flex-grow: 0;
+  box-sizing: border-box;
+}
+.buysellBox_wrap .amount_wrap .amount {
+  width: auto;
+  height: 47px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 15px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  z-index: 10;
+}
+.buysellBox_wrap .amount_wrap .amount_inputbox_wrap {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 210px;
+  height: 47px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  box-sizing: border-box;
+}
+.buysellBox_wrap .amount_wrap .amount_inputbox {
+  position: absolute;
+  top: 0;
+  left: -1px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 16px 11px 16px 14px;
+  width: calc(100% + 1px);
+  height: calc(100% + 1px);
+
+  border-radius: 4px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 15px;
+  color: #000000;
+  outline: none;
+}
+.buysellBox_wrap .asbtn_wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 21px;
+  width: 100%;
+  height: 27px;
+  flex: none;
+  order: 4;
+  align-self: stretch;
+  flex-grow: 0;
+  box-sizing: border-box;
+}
+.buysellBox_wrap .asbtn_wrap .amount_select_btn {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  width: 100%;
+  height: 27px;
+  border: 1px solid #e3e9ed;
+  border-radius: 4px;
+  flex: none;
+  order: 0;
+  flex-grow: 1;
+}
+.buysellBox_wrap .asbtn_wrap .amount_select_btn .txt_wrap {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  width: 25%;
+  height: 100%;
+  flex: none;
+  order: 0;
+  flex-grow: 1;
+  cursor: pointer;
+  background-color: #fff;
+  border-radius: 3.4px;
+  user-select: none;
+}
+.buysellBox_wrap .asbtn_wrap .amount_select_btn .txt_wrap::after {
+  position: absolute;
+  height: 11px;
+  right: 0;
+  content: "";
+  border-right: 1px solid #e3e9ed;
+}
+.buysellBox_wrap .asbtn_wrap .amount_select_btn .txt_wrap:first-child:hover {
+  background-color: #f6f9fc;
+  border-radius: 3.4px 0 0 3.4px;
+}
+.buysellBox_wrap .asbtn_wrap .amount_select_btn .txt_wrap:last-child {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  width: 25%;
+  height: 100%;
+  flex: none;
+  order: 3;
+  flex-grow: 1;
+  border: none;
+}
+.buysellBox_wrap .asbtn_wrap .amount_select_btn .txt_wrap:last-child:hover {
+  background-color: #f6f9fc;
+  border-radius: 0 3.4px 3.4px 0;
+}
+.buysellBox_wrap .asbtn_wrap .amount_select_btn .txt_wrap:hover {
+  background-color: #f6f9fc;
+  border-radius: 0;
+}
+.buysellBox_wrap .asbtn_wrap .amount_select_btn .txt_wrap:active {
+  background-color: #f1f4f6;
+}
+.buysellBox_wrap .asbtn_wrap .amount_select_btn .txt_wrap:first-child:active {
+  background-color: #f1f4f6;
+}
+.buysellBox_wrap .asbtn_wrap .amount_select_btn .txt_wrap:last-child:active {
+  background-color: #f1f4f6;
+}
+.buysellBox_wrap .asbtn_wrap .amount_select_btn .txt_wrap:last-child::after {
+  border-right: none;
+}
+.asbtn_wrap .amount_select_btn .txt_wrap span {
+  width: auto;
+  height: 100%;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 11px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #000000;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.buysellBox_wrap .convertedValue_wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 21px;
+  width: 100%;
+  height: 13px;
+  flex: none;
+  order: 6;
+  align-self: stretch;
+  flex-grow: 0;
+  box-sizing: border-box;
+}
+.buysellBox_wrap .convertedValue_wrap .cv_txt {
+  width: auto;
+  height: auto;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 13px;
+  color: #b4bdc2;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.buysellBox_wrap .convertedValue_wrap .cv_price {
+  width: auto;
+  height: auto;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 13px;
+  text-align: right;
+  color: #000000;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.buysellBox_wrap .invested_wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 21px;
+  width: 100%;
+  height: 13px;
+  flex: none;
+  order: 10;
+  align-self: stretch;
+  flex-grow: 0;
+  box-sizing: border-box;
+}
+.buysellBox_wrap .invested_wrap .iv_txt {
+  width: auto;
+  height: auto;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  color: #b4bdc2;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.buysellBox_wrap .invested_wrap .iv_price {
+  width: auto;
+  height: auto;
+  font-family: "Spoqa Han Sans Neo";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  color: #b4bdc2;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.buysellBox_wrap .investableAmount_wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 21px;
+  width: 100%;
+  height: 13px;
+  flex: none;
+  order: 12;
+  align-self: stretch;
+  flex-grow: 0;
+  box-sizing: border-box;
+}
+.buysellBox_wrap .investableAmount_wrap .ia_txt {
+  width: auto;
+  height: auto;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  color: #000000;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.buysellBox_wrap .investableAmount_wrap .ia_price {
+  width: auto;
+  height: auto;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 13px;
+  text-align: right;
+  color: #000000;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.buysellBox_wrap .orderbtn_wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 21px;
+  width: 100%;
+  height: 52px;
+  box-sizing: border-box;
+  flex: none;
+  order: 14;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.buysellBox_wrap .orderbtn_wrap .btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  font-family: "Lexend Deca", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: center;
+  color: #fff;
+  padding: 0px;
+  width: 100%;
+  height: 52px;
+  background: #205ae7;
+  border-radius: 52px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.buysellBox_wrap .orderbtn_wrap .btn:hover {
+  background-color: #164ed4;
+}
+/* ---------------spacing--------------- */
+/* #spacing_400px {
+  width: 100%;
+  height: 360px;
+  position: relative;
+  box-sizing: border-box;
+  background-color: skyblue;
+  display: block;
+} */
+.buysellBox_wrap .spacing_67px {
+  width: 100%;
+  height: 67px;
+  flex: none;
+  order: 13;
+  align-self: stretch;
+  flex-grow: 0;
+  /* background-color: #ffefef; */
+}
+.buysellBox_wrap .spacing_24px {
+  display: block;
+  width: 100%;
+  height: 24px;
+  flex: none;
+  float: left;
+  align-self: stretch;
+  flex-grow: 0;
+  /* background-color: #ffefef; */
+}
+.buysellBox_wrap .spacing_20px {
+  width: 100%;
+  height: 24px;
+  flex: none;
+  order: 7;
+  align-self: stretch;
+  flex-grow: 0;
+  /* background-color: #ffefef; */
+}
+.buysellBox_wrap .spacing_15px {
+  width: 100%;
+  height: 15px;
+  flex: none;
+  order: 9;
+  align-self: stretch;
+  flex-grow: 0;
+  /* background-color: #ffefef; */
+}
+.buysellBox_wrap .spacing_14px {
+  width: 100%;
+  height: 14px;
+  flex: none;
+  order: 5;
+  align-self: stretch;
+  flex-grow: 0;
+  /* background-color: #ffefef; */
+}
+.buysellBox_wrap .spacing_8px {
+  width: 100%;
+  height: 8px;
+  flex: none;
+  order: 11;
+  align-self: stretch;
+  flex-grow: 0;
+  /* background-color: #ffefef; */
+}
+.buysellBox_wrap .spacing_line {
+  display: flex;
+  align-items: center;
+  width: 88.5%;
+  height: 1px;
+  flex: none;
+  order: 8;
+  align-self: stretch;
+  flex-grow: 0;
+  background-color: #e3e9ed;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+.spacing_26px {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 26px;
+  /* background-color: #ffefef; */
+  box-sizing: border-box;
+}
+.spacing_33px_underline {
+  box-sizing: border-box;
+  width: 100%;
+  height: 34px;
+  border-bottom: 1px solid #e3e9ed;
+  flex: none;
+  order: 3;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.spacing_51px {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  height: 51px;
+  /* background-color: #ffefef; */
+  box-sizing: border-box;
+}
+.spacing_33px {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  height: 33px;
+  /* background-color: #ffefef; */
+  box-sizing: border-box;
+}
+.spacing_28px {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  height: 28px;
+  /* background-color: #ffefef; */
+  box-sizing: border-box;
+}
+/*------------------------------------------------*/
+select {
+  -o-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+select::-ms-expand {
+  display: none;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"]::placeholder,
+input[type="number"]::-webkit-placeholder {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 15px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  color: #e3e9ed;
+}
+input[type="number"]:-ms-placeholder,
+input[type="number"]:-mos-placeholder {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 15px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  color: #e3e9ed;
+}
+.amount_inputbox_wrap input[type="number"] {
+  border: 1px solid #e3e9ed;
+}
+.amount_inputbox_wrap input[type="number"]:hover {
+  transition: 100ms;
+  border: solid 1px #b5bbc0;
+}
+
+.amount_inputbox_wrap input[type="number"]:focus {
+  border: 1px solid #205ae7;
+}
