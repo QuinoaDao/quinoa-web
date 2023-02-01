@@ -13,7 +13,7 @@ import { ReactComponent as Daitoken } from "../components/asset/dai_token.svg";
 import { ReactComponent as Matictoken } from "../components/asset/matic_token.svg";
 import { ReactComponent as Ethtoken } from "../components/asset/eth_token.svg";
 import ListStrategy from "../components/listStrategy";
-import Titledetailwrap from "../components/titleDetailwrap";
+import TitleDetailWrap from "../components/titleDetailwrap";
 
 function Vaultdetail() {
   return (
@@ -24,7 +24,7 @@ function Vaultdetail() {
       </div>*/}
 
       <div className="infomain_wrap">
-        <Titledetailwrap
+        <TitleDetailWrap
           vaultName="Static Allocation Product"
           dacName="Quinoa quant"
           propensity="Moderate"
@@ -64,6 +64,7 @@ function Vaultdetail() {
             <span className="number_txt">$2,291.93</span>
           </div>
           <div className="percentchange">
+            {/*percent up/down 에 따라 이미지 바꿔주기*/}
             <span className="About_txt_short">Percent Change</span>
             <span className="percent_txt">
               <span className="pc_icon">
@@ -250,6 +251,7 @@ function Vaultdetail() {
           </div>
         </div>
       </div>
+
       <div className="buysellBox_wrap">
         <div className="buysellbtn_wrap">
           <input id="buytab" type="radio" name="btn_wrap" checked />
@@ -264,6 +266,7 @@ function Vaultdetail() {
           <div id="buytab_content">
             <div className="investin_wrap">
               <span className="investIn">Invest In</span>
+              {/* selectbox click 하면 리스트 보이게 */}
               <button className="selectbox_wrap">
                 <div className="selectbox">
                   <div className="token">
@@ -272,6 +275,8 @@ function Vaultdetail() {
                   </div>
                 </div>
                 <ul className="selectbox_list">
+                  {/* click 하면 option 선택되고 select box 닫기 */}
+                  {/* active 된 애는 hover 시 영향 없도록*/}
                   <li className="option active">
                     <div className="token">
                       <Usdctoken />
@@ -321,6 +326,7 @@ function Vaultdetail() {
                 />
               </div>
             </div>
+            {/* 클릭하면 amount 계산해서 값 넣어주기*/}
             <div className="asbtn_wrap">
               <div className="amount_select_btn">
                 <div className="txt_wrap">
@@ -364,6 +370,7 @@ function Vaultdetail() {
               <span className="investIn">Sell In</span>
               <button className="selectbox_wrap">
                 <div className="selectbox">
+                  {/* 이미지 안나오는 문제 */}
                   <div className="token">
                     <Usdctoken />
                     <span className="token_name">USDC</span>
