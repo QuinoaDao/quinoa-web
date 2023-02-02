@@ -1,12 +1,11 @@
 import React from "react";
-import { ReactComponent as Tokenicon_eth } from "./asset/token_icon_eth.svg";
-import { ReactComponent as Uticon_up } from "./asset/ut_up_icon.svg";
+
 const ListStrategy = (props: any) => {
   return (
     <div className="list_strategy">
       <div className="token">
         <div className="tokenImg_wrap">
-          <Tokenicon_eth />
+          <img src="/asset/token_icon_eth.svg" />
         </div>
         <span className="token_txt">{props.tokenName}</span>
       </div>
@@ -22,7 +21,8 @@ const ListStrategy = (props: any) => {
       </div>
       <div className="PercentChange">
         <div className="up_icon">
-          <Uticon_up></Uticon_up>
+          <img src="/asset/ut_up_icon.svg" />
+          <img src="/asset/ut_up_icon.svg" />
         </div>
         <span className="totalVolume">{props.percentChange}</span>
       </div>
