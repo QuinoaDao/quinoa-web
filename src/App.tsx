@@ -7,13 +7,21 @@ import "./App.css";
 
 import { ethers } from "ethers";
 
+type Network = {
+  name: string,
+  id : string,
+}
+
 function App() {
   const [mmInstalled, setMMInstalled] = useState(false);
   const [currentAccount, setCurrentAccount] = useState<String | undefined>();
-  const [currentNetwork, setCurrentNetwork] = useState("");
   const [correctNetwork, setCorrectNetwork] = useState(true);
   const { ethereum } = window;
-  const mumbai = "0x13881";
+
+  const targetNetwork : Network = {
+    name: "Mumbai",
+    id : "0x13881"
+  }
 
   const listenMMAccount = async () => {
     if (mmInstalled) {
@@ -62,8 +70,8 @@ function App() {
       const address = await ethereum.enable();
       await console.log("address : ", address);
 
-      if (chainId !== mumbai) {
-        console.log("network is not in baobab. Change Network");
+      if (chainId !== targetNetwork.id) {
+        console.log("Network is not in", targetNetwork.name, ". Change Network");
         changeNetwork();
       }
       console.log("Connected to Account: ", address[0]);
@@ -74,11 +82,11 @@ function App() {
   };
 
   const changeNetwork = async () => {
-    if (window.ethereum.networkVersion !== mumbai) {
+    if (window.ethereum.networkVersion !== targetNetwork.id) {
       try {
         await window.ethereum.request({
           method: "wallet_switchEthereumChain",
-          params: [{ chainId: mumbai }],
+          params: [{ chainId: targetNetwork.id }],
         });
       } catch (err: any) {
         // This error code indicates that the chain has not been added to MetaMask
@@ -87,8 +95,8 @@ function App() {
             method: "wallet_addEthereumChain",
             params: [
               {
-                chainName: "Mumbai",
-                chainId: mumbai,
+                chainName: targetNetwork.name,
+                chainId: targetNetwork.id,
                 rpcUrls: ["https://polygon-testnet-rpc.allthatnode.com:8545"],
               },
             ],
@@ -102,7 +110,7 @@ function App() {
     let chainId = await ethereum.request({ method: "eth_chainId" });
     console.log("Conneted to chian" + chainId);
 
-    if (chainId !== mumbai) {
+    if (chainId !== targetNetwork) {
       setCorrectNetwork(false);
     } else {
       setCorrectNetwork(true);
