@@ -18,9 +18,13 @@ export const Tokens: TokenInterface[] = [
 ];
 
 function Vaultdetail() {
+  const [showOption, setShowOption] = useState(false);
   const [buyToken, setBuyToken] = useState(Tokens[0]);
   const [sellToken, setSellToken] = useState(Tokens[0]);
   const [orderStatus, setOrderStatus] = useState("buy");
+
+  console.log("buy:", buyToken);
+  console.log("sell:", sellToken);
   return (
     <body id="body_wrap">
       <div className="infomain_wrap">
@@ -259,6 +263,7 @@ function Vaultdetail() {
             type="radio"
             name="btn_wrap"
             onClick={() => setOrderStatus("buy")}
+            checked={orderStatus === "buy" ? true : false}
           />
           <label className="btn_wrap buybtn" htmlFor="buytab">
             Buy
@@ -268,6 +273,7 @@ function Vaultdetail() {
             type="radio"
             name="btn_wrap"
             onClick={() => setOrderStatus("sell")}
+            checked={orderStatus === "sell" ? true : false}
           />
           <label className="btn_wrap sellbtn" htmlFor="selltab">
             Sell
@@ -277,7 +283,23 @@ function Vaultdetail() {
             <div id="buytab_content">
               <div className="investin_wrap">
                 <span className="investIn">Invest In</span>
-                <SelectToken setSelectedToken={setBuyToken} />
+                <button className="selectbox_wrap">
+                  <div
+                    className="selectbox"
+                    onClick={() => setShowOption(!showOption)}
+                  >
+                    <div className="token">
+                      <img src={"/asset/" + buyToken.symbol + ".svg"} />
+                      <span className="token_name">{buyToken.symbol}</span>
+                    </div>
+                  </div>
+                  {showOption ? (
+                    <SelectToken
+                      setSelectedToken={setBuyToken}
+                      setShowOption={setShowOption}
+                    />
+                  ) : null}
+                </button>
               </div>
               <div className="amount_wrap">
                 <span className="amount">Amount</span>
@@ -333,7 +355,23 @@ function Vaultdetail() {
             <div id="selltab_content">
               <div className="investin_wrap">
                 <span className="investIn">Sell In</span>
-                <SelectToken setSelectedToken={setSellToken} />
+                <button className="selectbox_wrap">
+                  <div
+                    className="selectbox"
+                    onClick={() => setShowOption(!showOption)}
+                  >
+                    <div className="token">
+                      <img src={"/asset/" + sellToken.symbol + ".svg"} />
+                      <span className="token_name">{sellToken.symbol}</span>
+                    </div>
+                  </div>
+                  {showOption ? (
+                    <SelectToken
+                      setSelectedToken={setSellToken}
+                      setShowOption={setShowOption}
+                    />
+                  ) : null}
+                </button>
               </div>
               <div className="amount_wrap">
                 <span className="amount">Amount</span>
