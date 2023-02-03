@@ -370,6 +370,12 @@
   order: 1;
   flex-grow: 0;
 }
+.percent_txt.down {
+  color: #ff3156;
+}
+.percent_txt.up {
+  color: #1bc100;
+}
 .vault_priceinfo .pc_icon {
   width: 18px;
   height: 34px;
@@ -750,6 +756,12 @@
   order: 1;
   flex-grow: 0;
   box-sizing: border-box;
+}
+.ut_wrap .list_strategy .PercentChange .totalVolume.up {
+  color: #1bc100;
+}
+.ut_wrap .list_strategy .PercentChange .totalVolume.down {
+  color: #ff3156;
 }
 .ut_wrap .list_strategy .Totalvalue {
   display: flex;
@@ -1554,7 +1566,7 @@ input[name="btn_wrap"] {
   flex-grow: 0;
   box-sizing: border-box;
   background-color: #fff;
-  border-radius: 0 0 25px 25px;
+  border-radius: 12px 12px 25px 25px;
 }
 .buysellBox_wrap #selltab_content {
   flex-direction: column;
@@ -1568,7 +1580,7 @@ input[name="btn_wrap"] {
   flex-grow: 0;
   box-sizing: border-box;
   background-color: #fff;
-  border-radius: 0 0 25px 25px;
+  border-radius: 12px 12px 25px 25px;
 }
 /* #buytab:checked ~ #buytab_content {
   display: flex;

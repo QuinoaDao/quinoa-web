@@ -9,21 +9,20 @@ const SelectToken = ({ setSelectedToken, setShowOption }: any) => {
       {Tokens.map((t: TokenInterface) => {
         let imgUrl = "/asset/" + t.symbol + ".svg";
         return (
-          <div
+          <li
             onClick={() => {
               setToken(t);
               setSelectedToken(t);
               setShowOption(false);
             }}
+            className={t == token ? "active noHover" : "nonactive"}
           >
-            <li className={t == token ? "active noHover" : "nonactive"}>
-              <div className="token">
-                <img src={imgUrl} />
-                <span className="token_name">{t.symbol}</span>
-              </div>
-              <span className="token_subname">{t.subName}</span>
-            </li>
-          </div>
+            <div className="token">
+              <img src={imgUrl} />
+              <span className="token_name">{t.symbol}</span>
+            </div>
+            <span className="token_subname">{t.subName}</span>
+          </li>
         );
       })}
     </ul>

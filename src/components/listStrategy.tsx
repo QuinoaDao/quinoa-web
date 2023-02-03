@@ -20,10 +20,11 @@ const ListStrategy = (props: any) => {
         <span className="balance_percent">{props.balancePercent}</span>
       </div>
       <div className="PercentChange">
+        {/* up/down에 따라 totalVolume 클래스 바꿔주기 */}
         <div className="up_icon">
           <img src="/asset/ut_up_icon.svg" />
-          <img src="/asset/ut_up_icon.svg" />
         </div>
+        {/* up/down에 따라 totalVolume 클래스 바꿔주기 */}
         <span className="totalVolume">{props.percentChange}</span>
       </div>
       <div className="Totalvalue">

@@ -70,6 +70,7 @@ function Vaultdetail() {
           <div className="percentchange">
             {/*percent up/down 에 따라 이미지 바꿔주기*/}
             <span className="About_txt_short">Percent Change</span>
+            {/*up/down 에 따라 percent_txt 클래스 바꿔주기*/}
             <span className="percent_txt">
               <span className="pc_icon">
                 <img src="/asset/pc_icon_up.svg" />

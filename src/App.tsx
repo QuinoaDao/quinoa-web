@@ -5,12 +5,12 @@ import Nav from "./components/nav";
 import Footer from "./components/footer";
 import "./App.css";
 
-import { ethers } from "ethers";
+// import { ethers } from "ethers";
 
 type Network = {
-  name: string,
-  id : string,
-}
+  name: string;
+  id: string;
+};
 
 function App() {
   const [mmInstalled, setMMInstalled] = useState(false);
@@ -18,10 +18,10 @@ function App() {
   const [correctNetwork, setCorrectNetwork] = useState(true);
   const { ethereum } = window;
 
-  const targetNetwork : Network = {
+  const targetNetwork: Network = {
     name: "Mumbai",
-    id : "0x13881"
-  }
+    id: "0x13881",
+  };
 
   const listenMMAccount = async () => {
     if (mmInstalled) {
@@ -71,7 +71,11 @@ function App() {
       await console.log("address : ", address);
 
       if (chainId !== targetNetwork.id) {
-        console.log("Network is not in", targetNetwork.name, ". Change Network");
+        console.log(
+          "Network is not in",
+          targetNetwork.name,
+          ". Change Network"
+        );
         changeNetwork();
       }
       console.log("Connected to Account: ", address[0]);
