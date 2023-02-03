@@ -316,6 +316,7 @@ const Vaultdetail = ({
                   </div>
                   {showOption ? (
                     <SelectToken
+                      selectedToken={buyToken}
                       setSelectedToken={setBuyToken}
                       setShowOption={setShowOption}
                     />
@@ -404,6 +405,7 @@ const Vaultdetail = ({
                   </div>
                   {showOption ? (
                     <SelectToken
+                      selectedToken={sellToken}
                       setSelectedToken={setSellToken}
                       setShowOption={setShowOption}
                     />
