@@ -14,13 +14,13 @@ type Network = {
 
 function App() {
   const [mmInstalled, setMMInstalled] = useState(false);
-  const [currentAccount, setCurrentAccount] = useState<String | undefined>();
+  const [currentAccount, setCurrentAccount] = useState<any>();
   const [correctNetwork, setCorrectNetwork] = useState(true);
   const { ethereum } = window;
 
   const targetNetwork: Network = {
     name: "Mumbai",
-    id: "0x13881",
+    id: "0x1",
   };
 
   const listenMMAccount = async () => {
@@ -133,7 +133,7 @@ function App() {
         connectWallet={connectWallet}
         changeNetwork={changeNetwork}
       />
-      <Vaultdetail></Vaultdetail>
+      <Vaultdetail currentAccount={currentAccount} mm={ethereum} />
       <Footer></Footer>
     </div>
   );

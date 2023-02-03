@@ -3,28 +3,38 @@ import "./vaultdetail.css";
 import ListStrategy from "../components/listStrategy";
 import TitleDetailWrap from "../components/titleDetailwrap";
 import SelectToken from "../components/SelectToken";
+import { useTokenHoldingInfo } from "../hooks/useTokenHoldingInfo";
 
 export interface TokenInterface {
   symbol: string;
   subName: string;
   address: string;
+  decimal: number;
 }
 export const Tokens: TokenInterface[] = [
-  { symbol: "USDC", subName: "USD Coin", address: "" },
-  { symbol: "USDT", subName: "Tether", address: "" },
-  { symbol: "DAI", subName: "Dai", address: "" },
-  { symbol: "ETH", subName: "Ethereum", address: "" },
-  { symbol: "MATIC", subName: "Polygon", address: "" },
+  {
+    symbol: "USDC",
+    subName: "USD Coin",
+    address: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    decimal: 6,
+  },
+  { symbol: "USDT", subName: "Tether", address: "", decimal: 18 },
+  { symbol: "DAI", subName: "Dai", address: "", decimal: 18 },
+  { symbol: "ETH", subName: "Ethereum", address: "", decimal: 18 },
+  { symbol: "MATIC", subName: "Polygon", address: "", decimal: 18 },
 ];
 
-function Vaultdetail() {
+const Vaultdetail = ({
+  currentAccount,
+  mm, // metamask
+}: any) => {
   const [showOption, setShowOption] = useState(false);
   const [buyToken, setBuyToken] = useState(Tokens[0]);
   const [sellToken, setSellToken] = useState(Tokens[0]);
   const [orderStatus, setOrderStatus] = useState("buy");
 
-  console.log("buy:", buyToken);
-  console.log("sell:", sellToken);
+  const buyTokenHoldings = useTokenHoldingInfo(currentAccount, buyToken, mm);
+  const sellTokenHoldings = useTokenHoldingInfo(currentAccount, sellToken, mm);
   return (
     <body id="body_wrap">
       <div className="infomain_wrap">
@@ -344,7 +354,9 @@ function Vaultdetail() {
               <div className="spacing_8px"></div>
               <div className="investableAmount_wrap">
                 <span className="ia_txt">Investable amount</span>
-                <span className="ia_price">391,707.0271 USDC</span>
+                <span className="ia_price">
+                  {buyTokenHoldings} {buyToken.symbol}
+                </span>
               </div>
               <div className="spacing_67px"></div>
               <div className="orderbtn_wrap">
@@ -422,5 +434,5 @@ function Vaultdetail() {
       </div>
     </body>
   );
-}
+};
 export default Vaultdetail;
