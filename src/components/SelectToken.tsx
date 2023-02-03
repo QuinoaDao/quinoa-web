@@ -14,9 +14,7 @@ const SelectToken = ({
         let imgUrl = "/asset/" + t.symbol + ".svg";
         return (
           <li
-            className={
-              t === selectedToken ? "active options noHover" : "options"
-            }
+            className={t === selectedToken ? "active noHover" : "nonactive"}
             onClick={() => {
               setSelectedToken(t);
               setShowOption(false);

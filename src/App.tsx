@@ -5,7 +5,7 @@ import Nav from "./components/nav";
 import Footer from "./components/footer";
 import "./App.css";
 
-import { ethers } from "ethers";
+// import { ethers } from "ethers";
 
 type Network = {
   name: string;
