@@ -263,7 +263,12 @@ function Vaultdetail() {
             id="buytab"
             type="radio"
             name="btn_wrap"
-            onClick={() => setOrderStatus("buy")}
+            onClick={() => {
+              setOrderStatus("buy");
+              if (showOption) {
+                setShowOption(false);
+              }
+            }}
             checked={orderStatus === "buy" ? true : false}
           />
           <label className="btn_wrap buybtn" htmlFor="buytab">
