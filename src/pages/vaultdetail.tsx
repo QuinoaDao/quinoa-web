@@ -32,9 +32,20 @@ const Vaultdetail = ({
   const [buyToken, setBuyToken] = useState(Tokens[0]);
   const [sellToken, setSellToken] = useState(Tokens[0]);
   const [orderStatus, setOrderStatus] = useState("buy");
+  const [buyAmount, setBuyAmount] = useState(0);
+  const [sellAmount, setSellAmount] = useState(0);
 
   const buyTokenHoldings = useTokenHoldingInfo(currentAccount, buyToken, mm);
-  const sellTokenHoldings = useTokenHoldingInfo(currentAccount, sellToken, mm);
+  // const sellableAmount = useProductHoldingInfo()
+
+  const handleBuyAmountChange = (e: any) => {
+    setBuyAmount(e.target.value);
+  };
+
+  const handleSellAmountChange = (e: any) => {
+    setSellAmount(e.target.value);
+  };
+
   return (
     <body id="body_wrap">
       <div className="infomain_wrap">
@@ -319,22 +330,36 @@ const Vaultdetail = ({
                     name="st_id"
                     placeholder="0.00"
                     className="amount_inputbox"
+                    value={buyAmount.toString()}
+                    onChange={handleBuyAmountChange}
                   />
                 </div>
               </div>
               {/* 클릭하면 amount 계산해서 값 넣어주기*/}
               <div className="asbtn_wrap">
                 <div className="amount_select_btn">
-                  <div className="txt_wrap">
+                  <div
+                    className="txt_wrap"
+                    onClick={() => setBuyAmount(buyTokenHoldings * 0.1)}
+                  >
                     <span>10%</span>
                   </div>
-                  <div className="txt_wrap">
+                  <div
+                    className="txt_wrap"
+                    onClick={() => setBuyAmount(buyTokenHoldings * 0.25)}
+                  >
                     <span>25%</span>
                   </div>
-                  <div className="txt_wrap">
+                  <div
+                    className="txt_wrap"
+                    onClick={() => setBuyAmount(buyTokenHoldings * 0.5)}
+                  >
                     <span>50%</span>
                   </div>
-                  <div className="txt_wrap">
+                  <div
+                    className="txt_wrap"
+                    onClick={() => setBuyAmount(buyTokenHoldings)}
+                  >
                     <span>MAX</span>
                   </div>
                 </div>
@@ -393,6 +418,8 @@ const Vaultdetail = ({
                     name="st_id"
                     placeholder="0.00"
                     className="amount_inputbox"
+                    value={sellAmount.toString()}
+                    onChange={handleSellAmountChange}
                   />
                 </div>
               </div>
