@@ -5,23 +5,23 @@ import Nav from "./components/nav";
 import Footer from "./components/footer";
 import "./App.css";
 
-import { ethers } from "ethers";
+// import { ethers } from "ethers";
 
 type Network = {
-  name: string,
-  id : string,
-}
+  name: string;
+  id: string;
+};
 
 function App() {
   const [mmInstalled, setMMInstalled] = useState(false);
-  const [currentAccount, setCurrentAccount] = useState<String | undefined>();
+  const [currentAccount, setCurrentAccount] = useState<any>();
   const [correctNetwork, setCorrectNetwork] = useState(true);
   const { ethereum } = window;
 
-  const targetNetwork : Network = {
+  const targetNetwork: Network = {
     name: "Mumbai",
-    id : "0x13881"
-  }
+    id: "0x1",
+  };
 
   const listenMMAccount = async () => {
     if (mmInstalled) {
@@ -71,7 +71,11 @@ function App() {
       await console.log("address : ", address);
 
       if (chainId !== targetNetwork.id) {
-        console.log("Network is not in", targetNetwork.name, ". Change Network");
+        console.log(
+          "Network is not in",
+          targetNetwork.name,
+          ". Change Network"
+        );
         changeNetwork();
       }
       console.log("Connected to Account: ", address[0]);
@@ -108,9 +112,7 @@ function App() {
 
   const checkCorrectNetwork = async () => {
     let chainId = await ethereum.request({ method: "eth_chainId" });
-    console.log("Conneted to chian" + chainId);
-
-    if (chainId !== targetNetwork) {
+    if (chainId !== targetNetwork.id) {
       setCorrectNetwork(false);
     } else {
       setCorrectNetwork(true);
@@ -131,7 +133,7 @@ function App() {
         connectWallet={connectWallet}
         changeNetwork={changeNetwork}
       />
-      <Vaultdetail></Vaultdetail>
+      <Vaultdetail currentAccount={currentAccount} mm={ethereum} />
       <Footer></Footer>
     </div>
   );

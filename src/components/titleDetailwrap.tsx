@@ -7,7 +7,7 @@ const Titledetailwrap = (props: any) => {
       <div className="vaultTitle_wrap">
         <div className="vault_title">
           <div className="vault_img">
-            <Vaultimg01 />
+            <img src="/asset/vault_img_01.svg" />
           </div>
           <div className="nametxt">
             <span className="vaultname">{props.vaultName}</span>

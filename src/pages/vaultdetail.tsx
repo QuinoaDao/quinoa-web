@@ -1,21 +1,51 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./vaultdetail.css";
-import { ReactComponent as Leftarrow } from "../components/asset/left_arrow.svg";
-import { ReactComponent as Vaultimg01 } from "../components/asset/vault_img_01.svg";
-import { ReactComponent as Pcicon_up } from "../components/asset/pc_icon_up.svg";
-import { ReactComponent as Tokenicon_eth } from "../components/asset/token_icon_eth.svg";
-import { ReactComponent as Tokenicon_polygon } from "../components/asset/token_icon_polygon.svg";
-import { ReactComponent as Uticon_up } from "../components/asset/ut_up_icon.svg";
-import { ReactComponent as Sb_icon } from "../components/asset/selectbox_icon.svg";
-import { ReactComponent as Usdctoken } from "../components/asset/usdc_token.svg";
-import { ReactComponent as Usdttoken } from "../components/asset/usdt_token.svg";
-import { ReactComponent as Daitoken } from "../components/asset/dai_token.svg";
-import { ReactComponent as Matictoken } from "../components/asset/matic_token.svg";
-import { ReactComponent as Ethtoken } from "../components/asset/eth_token.svg";
 import ListStrategy from "../components/listStrategy";
 import TitleDetailWrap from "../components/titleDetailwrap";
+import SelectToken from "../components/SelectToken";
+import { useTokenHoldingInfo } from "../hooks/useTokenHoldingInfo";
 
-function Vaultdetail() {
+export interface TokenInterface {
+  symbol: string;
+  subName: string;
+  address: string;
+  decimal: number;
+}
+export const Tokens: TokenInterface[] = [
+  {
+    symbol: "USDC",
+    subName: "USD Coin",
+    address: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    decimal: 6,
+  },
+  { symbol: "USDT", subName: "Tether", address: "", decimal: 18 },
+  { symbol: "DAI", subName: "Dai", address: "", decimal: 18 },
+  { symbol: "ETH", subName: "Ethereum", address: "", decimal: 18 },
+  { symbol: "MATIC", subName: "Polygon", address: "", decimal: 18 },
+];
+
+const Vaultdetail = ({
+  currentAccount,
+  mm, // metamask
+}: any) => {
+  const [showOption, setShowOption] = useState(false);
+  const [buyToken, setBuyToken] = useState(Tokens[0]);
+  const [sellToken, setSellToken] = useState(Tokens[0]);
+  const [orderStatus, setOrderStatus] = useState("buy");
+  const [buyAmount, setBuyAmount] = useState(0);
+  const [sellAmount, setSellAmount] = useState(0);
+
+  const buyTokenHoldings = useTokenHoldingInfo(currentAccount, buyToken, mm);
+  // const sellableAmount = useProductHoldingInfo()
+
+  const handleBuyAmountChange = (e: any) => {
+    setBuyAmount(e.target.value);
+  };
+
+  const handleSellAmountChange = (e: any) => {
+    setSellAmount(e.target.value);
+  };
+
   return (
     <body id="body_wrap">
       <div className="infomain_wrap">
@@ -61,9 +91,10 @@ function Vaultdetail() {
           <div className="percentchange">
             {/*percent up/down 에 따라 이미지 바꿔주기*/}
             <span className="About_txt_short">Percent Change</span>
+            {/*up/down 에 따라 percent_txt 클래스 바꿔주기*/}
             <span className="percent_txt">
               <span className="pc_icon">
-                <Pcicon_up />
+                <img src="/asset/pc_icon_up.svg" />
               </span>
               <span>21.39%</span>
             </span>
@@ -249,214 +280,194 @@ function Vaultdetail() {
 
       <div className="buysellBox_wrap">
         <div className="buysellbtn_wrap">
-          <input id="buytab" type="radio" name="btn_wrap" checked />
+          <input
+            id="buytab"
+            type="radio"
+            name="btn_wrap"
+            onClick={() => {
+              setOrderStatus("buy");
+              if (showOption) {
+                setShowOption(false);
+              }
+            }}
+            checked={orderStatus === "buy" ? true : false}
+          />
           <label className="btn_wrap buybtn" htmlFor="buytab">
             Buy
           </label>
-          <input id="selltab" type="radio" name="btn_wrap" />
+          <input
+            id="selltab"
+            type="radio"
+            name="btn_wrap"
+            onClick={() => setOrderStatus("sell")}
+            checked={orderStatus === "sell" ? true : false}
+          />
           <label className="btn_wrap sellbtn" htmlFor="selltab">
             Sell
           </label>
           <div className="spacing_24px"></div>
-          <div id="buytab_content">
-            <div className="investin_wrap">
-              <span className="investIn">Invest In</span>
-              {/* selectbox click 하면 리스트 보이게 */}
-              <button className="selectbox_wrap">
-                <div className="selectbox">
-                  <div className="token">
-                    <Usdctoken />
-                    <span className="token_name">USDC</span>
+          {orderStatus == "buy" ? (
+            <div id="buytab_content">
+              <div className="investin_wrap">
+                <span className="investIn">Invest In</span>
+                <button className="selectbox_wrap">
+                  <div
+                    className="selectbox"
+                    onClick={() => setShowOption(!showOption)}
+                  >
+                    <div className="token">
+                      <img src={"/asset/" + buyToken.symbol + ".svg"} />
+                      <span className="token_name">{buyToken.symbol}</span>
+                    </div>
+                  </div>
+                  {showOption ? (
+                    <SelectToken
+                      selectedToken={buyToken}
+                      setSelectedToken={setBuyToken}
+                      setShowOption={setShowOption}
+                    />
+                  ) : null}
+                </button>
+              </div>
+              <div className="amount_wrap">
+                <span className="amount">Amount</span>
+                <div className="amount_inputbox_wrap">
+                  <input
+                    type="number"
+                    name="st_id"
+                    placeholder="0.00"
+                    className="amount_inputbox"
+                    value={buyAmount.toString()}
+                    onChange={handleBuyAmountChange}
+                  />
+                </div>
+              </div>
+              {/* 클릭하면 amount 계산해서 값 넣어주기*/}
+              <div className="asbtn_wrap">
+                <div className="amount_select_btn">
+                  <div
+                    className="txt_wrap"
+                    onClick={() => setBuyAmount(buyTokenHoldings * 0.1)}
+                  >
+                    <span>10%</span>
+                  </div>
+                  <div
+                    className="txt_wrap"
+                    onClick={() => setBuyAmount(buyTokenHoldings * 0.25)}
+                  >
+                    <span>25%</span>
+                  </div>
+                  <div
+                    className="txt_wrap"
+                    onClick={() => setBuyAmount(buyTokenHoldings * 0.5)}
+                  >
+                    <span>50%</span>
+                  </div>
+                  <div
+                    className="txt_wrap"
+                    onClick={() => setBuyAmount(buyTokenHoldings)}
+                  >
+                    <span>MAX</span>
                   </div>
                 </div>
-                <ul className="selectbox_list">
-                  {/* click 하면 option 선택되고 select box 닫기 */}
-                  {/* active 된 애는 hover 시 영향 없도록*/}
-                  <li className="option active">
-                    <div className="token">
-                      <Usdctoken />
-                      <span className="token_name">USDC</span>
-                    </div>
-                    <span className="token_subname">USD Coin</span>
-                  </li>
-                  <li className="option">
-                    <div className="token">
-                      <Usdttoken />
-                      <span className="token_name">USDT</span>
-                    </div>
-                    <span className="token_subname">Tether</span>
-                  </li>
-                  <li className="option">
-                    <div className="token">
-                      <Daitoken />
-                      <span className="token_name">DAI</span>
-                    </div>
-                    <span className="token_subname">Dai</span>
-                  </li>
-                  <li className="option">
-                    <div className="token">
-                      <Ethtoken />
-                      <span className="token_name">ETH</span>
-                    </div>
-                    <span className="token_subname">Ethereum</span>
-                  </li>
-                  <li className="option">
-                    <div className="token">
-                      <Matictoken />
-                      <span className="token_name">MATIC</span>
-                    </div>
-                    <span className="token_subname">Polygon</span>
-                  </li>
-                </ul>
-              </button>
-            </div>
-            <div className="amount_wrap">
-              <span className="amount">Amount</span>
-              <div className="amount_inputbox_wrap">
-                <input
-                  type="number"
-                  name="st_id"
-                  placeholder="0.00"
-                  className="amount_inputbox"
-                />
+              </div>
+              <div className="spacing_14px"></div>
+              <div className="convertedValue_wrap">
+                <span className="cv_txt">Converted value</span>
+                <span className="cv_price">$ 32,910</span>
+              </div>
+              <div className="spacing_20px"></div>
+              <div className="spacing_line"></div>
+              <div className="spacing_15px"></div>
+              <div className="invested_wrap">
+                <span className="iv_txt">Amount invested</span>
+                <span className="iv_price">$ 321.48</span>
+              </div>
+              <div className="spacing_8px"></div>
+              <div className="investableAmount_wrap">
+                <span className="ia_txt">Investable amount</span>
+                <span className="ia_price">
+                  {buyTokenHoldings} {buyToken.symbol}
+                </span>
+              </div>
+              <div className="spacing_67px"></div>
+              <div className="orderbtn_wrap">
+                <span className="btn">Order</span>
               </div>
             </div>
-            {/* 클릭하면 amount 계산해서 값 넣어주기*/}
-            <div className="asbtn_wrap">
-              <div className="amount_select_btn">
-                <div className="txt_wrap">
-                  <span>10%</span>
-                </div>
-                <div className="txt_wrap">
-                  <span>25%</span>
-                </div>
-                <div className="txt_wrap">
-                  <span>50%</span>
-                </div>
-                <div className="txt_wrap">
-                  <span>MAX</span>
+          ) : (
+            <div id="selltab_content">
+              <div className="investin_wrap">
+                <span className="investIn">Sell In</span>
+                <button className="selectbox_wrap">
+                  <div
+                    className="selectbox"
+                    onClick={() => setShowOption(!showOption)}
+                  >
+                    <div className="token">
+                      <img src={"/asset/" + sellToken.symbol + ".svg"} />
+                      <span className="token_name">{sellToken.symbol}</span>
+                    </div>
+                  </div>
+                  {showOption ? (
+                    <SelectToken
+                      selectedToken={sellToken}
+                      setSelectedToken={setSellToken}
+                      setShowOption={setShowOption}
+                    />
+                  ) : null}
+                </button>
+              </div>
+              <div className="amount_wrap">
+                <span className="amount">Amount</span>
+                <div className="amount_inputbox_wrap">
+                  <input
+                    type="number"
+                    name="st_id"
+                    placeholder="0.00"
+                    className="amount_inputbox"
+                    value={sellAmount.toString()}
+                    onChange={handleSellAmountChange}
+                  />
                 </div>
               </div>
-            </div>
-            <div className="spacing_14px"></div>
-            <div className="convertedValue_wrap">
-              <span className="cv_txt">Converted value</span>
-              <span className="cv_price">$ 32,910</span>
-            </div>
-            <div className="spacing_20px"></div>
-            <div className="spacing_line"></div>
-            <div className="spacing_15px"></div>
-            <div className="invested_wrap">
-              <span className="iv_txt">Amount invested</span>
-              <span className="iv_price">$ 321.48</span>
-            </div>
-            <div className="spacing_8px"></div>
-            <div className="investableAmount_wrap">
-              <span className="ia_txt">Investable amount</span>
-              <span className="ia_price">391,707.0271 USDC</span>
-            </div>
-            <div className="spacing_67px"></div>
-            <div className="orderbtn_wrap">
-              <span className="btn">Order</span>
-            </div>
-          </div>
-          <div id="selltab_content">
-            <div className="investin_wrap">
-              <span className="investIn">Sell In</span>
-              <button className="selectbox_wrap">
-                <div className="selectbox">
-                  {/* 이미지 안나오는 문제 */}
-                  <div className="token">
-                    <Usdctoken />
-                    <span className="token_name">USDC</span>
+              <div className="asbtn_wrap">
+                <div className="amount_select_btn">
+                  <div className="txt_wrap">
+                    <span>10%</span>
+                  </div>
+                  <div className="txt_wrap">
+                    <span>25%</span>
+                  </div>
+                  <div className="txt_wrap">
+                    <span>50%</span>
+                  </div>
+                  <div className="txt_wrap">
+                    <span>MAX</span>
                   </div>
                 </div>
-                <ul className="selectbox_list">
-                  <li className="option active">
-                    <div className="token">
-                      <Usdctoken />
-                      <span className="token_name">USDC</span>
-                    </div>
-                    <span className="token_subname">USD Coin</span>
-                  </li>
-                  <li className="option">
-                    <div className="token">
-                      <Usdttoken />
-                      <span className="token_name">USDT</span>
-                    </div>
-                    <span className="token_subname">Tether</span>
-                  </li>
-                  <li className="option">
-                    <div className="token">
-                      <Daitoken />
-                      <span className="token_name">DAI</span>
-                    </div>
-                    <span className="token_subname">Dai</span>
-                  </li>
-                  <li className="option">
-                    <div className="token">
-                      <Ethtoken />
-                      <span className="token_name">ETH</span>
-                    </div>
-                    <span className="token_subname">Ethereum</span>
-                  </li>
-                  <li className="option">
-                    <div className="token">
-                      <Matictoken />
-                      <span className="token_name">MATIC</span>
-                    </div>
-                    <span className="token_subname">Polygon</span>
-                  </li>
-                </ul>
-              </button>
-            </div>
-            <div className="amount_wrap">
-              <span className="amount">Amount</span>
-              <div className="amount_inputbox_wrap">
-                <input
-                  type="number"
-                  name="st_id"
-                  placeholder="0.00"
-                  className="amount_inputbox"
-                />
+              </div>
+              <div className="spacing_14px"></div>
+              <div className="convertedValue_wrap">
+                <span className="cv_txt">Converted value</span>
+                <span className="cv_price">$ 32,910</span>
+              </div>
+              <div className="spacing_20px"></div>
+              <div className="spacing_line"></div>
+              <div className="spacing_15px"></div>
+              <div className="investableAmount_wrap">
+                <span className="ia_txt">Sellable amount</span>
+                <span className="ia_price">391,707.0271 USDC</span>
+              </div>
+              <div className="spacing_67px"></div>
+              <div className="orderbtn_wrap">
+                <span className="btn">Order</span>
               </div>
             </div>
-            <div className="asbtn_wrap">
-              <div className="amount_select_btn">
-                <div className="txt_wrap">
-                  <span>10%</span>
-                </div>
-                <div className="txt_wrap">
-                  <span>25%</span>
-                </div>
-                <div className="txt_wrap">
-                  <span>50%</span>
-                </div>
-                <div className="txt_wrap">
-                  <span>MAX</span>
-                </div>
-              </div>
-            </div>
-            <div className="spacing_14px"></div>
-            <div className="convertedValue_wrap">
-              <span className="cv_txt">Converted value</span>
-              <span className="cv_price">$ 32,910</span>
-            </div>
-            <div className="spacing_20px"></div>
-            <div className="spacing_line"></div>
-            <div className="spacing_15px"></div>
-            <div className="investableAmount_wrap">
-              <span className="ia_txt">Sellable amount</span>
-              <span className="ia_price">391,707.0271 USDC</span>
-            </div>
-            <div className="spacing_67px"></div>
-            <div className="orderbtn_wrap">
-              <span className="btn">Order</span>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </body>
   );
-}
+};
 export default Vaultdetail;

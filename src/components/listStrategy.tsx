@@ -1,12 +1,11 @@
 import React from "react";
-import { ReactComponent as Tokenicon_eth } from "./asset/token_icon_eth.svg";
-import { ReactComponent as Uticon_up } from "./asset/ut_up_icon.svg";
+
 const ListStrategy = (props: any) => {
   return (
     <div className="list_strategy">
       <div className="token">
         <div className="tokenImg_wrap">
-          <Tokenicon_eth />
+          <img src="/asset/token_icon_eth.svg" />
         </div>
         <span className="token_txt">{props.tokenName}</span>
       </div>
@@ -21,9 +20,11 @@ const ListStrategy = (props: any) => {
         <span className="balance_percent">{props.balancePercent}</span>
       </div>
       <div className="PercentChange">
+        {/* up/down에 따라 totalVolume 클래스 바꿔주기 */}
         <div className="up_icon">
-          <Uticon_up></Uticon_up>
+          <img src="/asset/ut_up_icon.svg" />
         </div>
+        {/* up/down에 따라 totalVolume 클래스 바꿔주기 */}
         <span className="totalVolume">{props.percentChange}</span>
       </div>
       <div className="Totalvalue">
