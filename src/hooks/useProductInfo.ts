@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import product_abi from "../abis/IProduct.json";
-
-import { ethers } from "ethers";
+import erc20_abi from "../abis/ERC20.json";
+import { BigNumberish, ethers } from "ethers";
 import { ProductInfo, UnderlyingTokenInfo } from "../models/ProductInfo";
 
 export const useProductInfo = (ethereum: Window["ethereum"]) => {
@@ -25,8 +25,21 @@ export const useProductInfo = (ethereum: Window["ethereum"]) => {
     console.log(tvl, currentPrice, underlyingTokens);
     var newUnderlyingInfo: UnderlyingTokenInfo[] = [];
     for (let i = 0; i < underlyingTokens.length; i++) {
+      let address = underlyingTokens[i][0];
+      let symbol: string;
+      let name: string;
+      let balance: BigNumberish;
+      // get token name and symbol
+      // TODO : underlying Token 이 MATIC 일 경우 처리
+      let tokenContract = new ethers.Contract(address, erc20_abi.abi, provider);
+      symbol = await tokenContract.symbol();
+      name = await tokenContract.name();
+      balance = await product.assetBalance(address);
       let underlyingInfo: UnderlyingTokenInfo = {
-        address: underlyingTokens[i][0],
+        symbol: symbol,
+        name: name,
+        quantity: balance,
+        address: address,
         targetWeight: underlyingTokens[i][1],
         currentPrice: underlyingTokens[i][2],
       };

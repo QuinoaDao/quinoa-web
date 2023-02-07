@@ -145,6 +145,20 @@ const Vaultdetail = ({
           </header>
           <div className="headerUnderline"></div>
 
+          {/* undefined 면 스켈레톤 로드 */}
+          {productInfo === undefined ||
+          productInfo?.underlyingTokens === undefined
+            ? null
+            : productInfo.underlyingTokens.map((item, idx) => (
+                <ListStrategy
+                  tokenName={item.name}
+                  quantity={item.quantity}
+                  tokenUnit={item.symbol}
+                  // token price 는 코마캡, 퍼센트 체인지도 코마캡
+                  tokenPrice="$1,730.21"
+                  percentChange="4.82%"
+                />
+              ))}
           <ListStrategy
             tokenName="Ethereum"
             quantity="0.01830"

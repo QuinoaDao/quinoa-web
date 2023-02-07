@@ -23,10 +23,11 @@ export const useTokenHoldingInfo = (
       ERC20_abi.abi,
       provider
     );
-    console.log(tokenContract);
+
     let balance: ethers.BigNumberish;
     let amount: number;
-    if (token.symbol == "ETH") {
+
+    if (token.symbol == "MATIC") {
       balance = await provider.getBalance(currentAddress);
     } else {
       const tonkenContract = new ethers.Contract(

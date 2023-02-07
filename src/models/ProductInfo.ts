@@ -7,7 +7,10 @@ export interface ProductInfo {
 }
 
 export interface UnderlyingTokenInfo {
+  symbol: string;
+  name: string;
   address: string;
   targetWeight: BigNumberish;
+  quantity: BigNumberish;
   currentPrice: BigNumberish;
 }
