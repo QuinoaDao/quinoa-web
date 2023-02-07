@@ -20,7 +20,7 @@ function App() {
 
   const targetNetwork: Network = {
     name: "Mumbai",
-    id: "0x1",
+    id: "0x13881",
   };
 
   const listenMMAccount = async () => {

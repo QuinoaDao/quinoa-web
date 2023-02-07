@@ -8,7 +8,7 @@ export const useTokenHoldingInfo = (
   token: TokenInterface,
   ethereum: Window["ethereum"]
 ) => {
-  const [tokenHoling, setTokenHolding] = useState<number>(0);
+  const [tokenHolding, setTokenHolding] = useState<number>(0);
   const provider = new ethers.providers.Web3Provider(ethereum);
 
   const getHoldings = async (
@@ -42,5 +42,5 @@ export const useTokenHoldingInfo = (
   useEffect(() => {
     getHoldings(currentAccount, token);
   }, [currentAccount, token]);
-  return tokenHoling;
+  return tokenHolding;
 };

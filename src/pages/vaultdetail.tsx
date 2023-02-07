@@ -4,6 +4,8 @@ import ListStrategy from "../components/listStrategy";
 import TitleDetailWrap from "../components/titleDetailwrap";
 import SelectToken from "../components/SelectToken";
 import { useTokenHoldingInfo } from "../hooks/useTokenHoldingInfo";
+import { useProductInfo } from "../hooks/useProductInfo";
+import { ethers } from "ethers";
 
 export interface TokenInterface {
   symbol: string;
@@ -36,6 +38,7 @@ const Vaultdetail = ({
   const [sellAmount, setSellAmount] = useState(0);
 
   const buyTokenHoldings = useTokenHoldingInfo(currentAccount, buyToken, mm);
+  const productInfo = useProductInfo(mm);
   // const sellableAmount = useProductHoldingInfo()
 
   const handleBuyAmountChange = (e: any) => {
@@ -45,6 +48,8 @@ const Vaultdetail = ({
   const handleSellAmountChange = (e: any) => {
     setSellAmount(e.target.value);
   };
+
+  console.log(productInfo);
 
   return (
     <body id="body_wrap">
@@ -81,12 +86,18 @@ const Vaultdetail = ({
           <div className="aum">
             <span className="About_txt_short">AUM(TVL)</span>
             <span className="number_txt">
-              $821,143<span className="othercolor">.04</span>
+              ${productInfo?.tvl.toString()}
+              <span className="othercolor">.04</span>
             </span>
           </div>
           <div className="currentprice">
             <span className="About_txt_short">Current Price</span>
-            <span className="number_txt">$2,291.93</span>
+            <span className="number_txt">
+              $
+              {productInfo?.currentPrice === undefined
+                ? 0
+                : ethers.utils.formatEther(productInfo?.currentPrice)}
+            </span>
           </div>
           <div className="percentchange">
             {/*percent up/down 에 따라 이미지 바꿔주기*/}
