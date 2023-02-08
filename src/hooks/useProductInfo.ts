@@ -3,6 +3,7 @@ import product_abi from "../abis/IProduct.json";
 import erc20_abi from "../abis/ERC20.json";
 import { BigNumberish, ethers } from "ethers";
 import { ProductInfo, UnderlyingTokenInfo } from "../models/ProductInfo";
+import { PriceInfo } from "../utils/CoinMarketCapInfo";
 
 export const useProductInfo = (ethereum: Window["ethereum"]) => {
   const provider = new ethers.providers.Web3Provider(ethereum);
@@ -41,7 +42,6 @@ export const useProductInfo = (ethereum: Window["ethereum"]) => {
         quantity: balance,
         address: address,
         targetWeight: underlyingTokens[i][1],
-        currentPrice: underlyingTokens[i][2],
       };
       newUnderlyingInfo.push(underlyingInfo);
     }

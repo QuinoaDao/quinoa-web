@@ -32,7 +32,7 @@ const ListStrategy = (props: any) => {
       </div>
       <div className="balancegraphline_wrap">
         <div className="graphline_wrap">
-          <div className={`default${props.graphDefaultClass}`}></div>
+          <div className={`default`}></div>
           <div className={`balance${props.graphBalanceClass}`}></div>
           <div className={`balanceline${props.graphBalanceline}_txt`}>
             <span>{props.balancePercent}</span>

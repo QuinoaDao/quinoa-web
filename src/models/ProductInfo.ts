@@ -12,5 +12,4 @@ export interface UnderlyingTokenInfo {
   address: string;
   targetWeight: BigNumberish;
   quantity: BigNumberish;
-  currentPrice: BigNumberish;
 }

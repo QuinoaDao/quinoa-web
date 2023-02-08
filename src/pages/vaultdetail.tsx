@@ -6,6 +6,8 @@ import SelectToken from "../components/SelectToken";
 import { useTokenHoldingInfo } from "../hooks/useTokenHoldingInfo";
 import { useProductInfo } from "../hooks/useProductInfo";
 import { ethers } from "ethers";
+import { UnderlyingTokenList } from "../components/UnderlyingTokenList";
+import { useUnderlyingTokenPrice } from "../hooks/useUnderlyingTokenPrice";
 
 export interface TokenInterface {
   symbol: string;
@@ -39,6 +41,10 @@ const Vaultdetail = ({
 
   const buyTokenHoldings = useTokenHoldingInfo(currentAccount, buyToken, mm);
   const productInfo = useProductInfo(mm);
+
+  const underlyingPrices = useUnderlyingTokenPrice(
+    productInfo?.underlyingTokens
+  );
   // const sellableAmount = useProductHoldingInfo()
 
   const handleBuyAmountChange = (e: any) => {
@@ -49,7 +55,7 @@ const Vaultdetail = ({
     setSellAmount(e.target.value);
   };
 
-  console.log(productInfo);
+  console.log("CHECK", productInfo);
 
   return (
     <body id="body_wrap">
@@ -146,43 +152,9 @@ const Vaultdetail = ({
           <div className="headerUnderline"></div>
 
           {/* undefined 면 스켈레톤 로드 */}
-          {productInfo === undefined ||
-          productInfo?.underlyingTokens === undefined
-            ? null
-            : productInfo.underlyingTokens.map((item, idx) => (
-                <ListStrategy
-                  tokenName={item.name}
-                  quantity={item.quantity}
-                  tokenUnit={item.symbol}
-                  // token price 는 코마캡, 퍼센트 체인지도 코마캡
-                  tokenPrice="$1,730.21"
-                  percentChange="4.82%"
-                />
-              ))}
-          <ListStrategy
-            tokenName="Ethereum"
-            quantity="0.01830"
-            tokenUnit="ETH"
-            tokenPrice="$1,730.21"
-            balancePercent="50%"
-            percentChange="4.82%"
-            totalValue="$332.48"
-            graphDefaultClass="eth"
-            graphBalanceClass="eth"
-            graphBalanceline="eth"
-          />
-          <ListStrategy
-            tokenName="Polygon"
-            quantity="32.1430"
-            tokenUnit="MATIC"
-            tokenPrice="$1.03"
-            balancePercent="50%"
-            percentChange="24.82%"
-            totalValue="$32.48"
-            graphDefaultClass="poly"
-            graphBalanceClass="poly"
-            graphBalanceline="poly"
-          />
+          {productInfo?.underlyingTokens === undefined ? null : (
+            <UnderlyingTokenList tokens={productInfo?.underlyingTokens} />
+          )}
         </div>
         <div className="maintitle_wrap">
           <div className="spacing_100px"></div>
