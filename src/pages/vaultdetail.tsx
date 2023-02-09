@@ -151,10 +151,10 @@ const Vaultdetail = ({
           </header>
           <div className="headerUnderline"></div>
 
-          {/* undefined 면 스켈레톤 로드 */}
+          {/* undefined 면 스켈레톤 로드
           {productInfo?.underlyingTokens === undefined ? null : (
             <UnderlyingTokenList tokens={productInfo?.underlyingTokens} />
-          )}
+          )} */}
         </div>
         <div className="maintitle_wrap">
           <div className="spacing_100px"></div>
