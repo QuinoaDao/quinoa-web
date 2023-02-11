@@ -8,6 +8,7 @@ import { useProductInfo } from "../hooks/useProductInfo";
 import { ethers } from "ethers";
 import { UnderlyingTokenList } from "../components/UnderlyingTokenList";
 import { useUnderlyingTokenPrice } from "../hooks/useUnderlyingTokenPrice";
+import { ConvertPrice } from "../utils/PriceConvert";
 
 export interface TokenInterface {
   symbol: string;
@@ -53,6 +54,18 @@ const Vaultdetail = ({
 
   const handleSellAmountChange = (e: any) => {
     setSellAmount(e.target.value);
+  };
+
+  const convertPrice = (symbol: string, amount: number) => {
+    if (productInfo === undefined) {
+      return 0;
+    } else {
+      for (let i = 0; i < productInfo.underlyingTokens.length; i++) {
+        if (productInfo.underlyingTokens[i].symbol === symbol) {
+          return productInfo.underlyingTokens[i].dollarPrice * amount;
+        }
+      }
+    }
   };
 
   return (
@@ -334,7 +347,6 @@ const Vaultdetail = ({
                   />
                 </div>
               </div>
-              {/* 클릭하면 amount 계산해서 값 넣어주기*/}
               <div className="asbtn_wrap">
                 <div className="amount_select_btn">
                   <div
@@ -366,7 +378,9 @@ const Vaultdetail = ({
               <div className="spacing_14px"></div>
               <div className="convertedValue_wrap">
                 <span className="cv_txt">Converted value</span>
-                <span className="cv_price">$ 32,910</span>
+                <span className="cv_price">
+                  $ {convertPrice(buyToken.symbol, buyAmount)}
+                </span>
               </div>
               <div className="spacing_20px"></div>
               <div className="spacing_line"></div>
@@ -442,7 +456,9 @@ const Vaultdetail = ({
               <div className="spacing_14px"></div>
               <div className="convertedValue_wrap">
                 <span className="cv_txt">Converted value</span>
-                <span className="cv_price">$ 32,910</span>
+                <span className="cv_price">
+                  $ {convertPrice(sellToken.symbol, sellAmount)}
+                </span>
               </div>
               <div className="spacing_20px"></div>
               <div className="spacing_line"></div>

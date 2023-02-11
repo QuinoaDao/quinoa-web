@@ -4,6 +4,7 @@ import erc20_abi from "../abis/ERC20.json";
 import { BigNumberish, ethers } from "ethers";
 import { ProductInfo, UnderlyingTokenInfo } from "../models/ProductInfo";
 import { PriceInfo } from "../utils/CoinMarketCapInfo";
+import { ConvertPrice } from "../utils/PriceConvert";
 
 export const useProductInfo = (ethereum: Window["ethereum"]) => {
   const provider = new ethers.providers.Web3Provider(ethereum);
@@ -25,23 +26,28 @@ export const useProductInfo = (ethereum: Window["ethereum"]) => {
     ]);
     console.log(tvl, currentPrice, underlyingTokens);
     var newUnderlyingInfo: UnderlyingTokenInfo[] = [];
+    // get underlying token price per 1 token
     for (let i = 0; i < underlyingTokens.length; i++) {
       let address = underlyingTokens[i][0];
       let symbol: string;
       let name: string;
       let balance: BigNumberish;
+      let dollarPrice: number;
       // get token name and symbol
       // TODO : underlying Token 이 MATIC 일 경우 처리
       let tokenContract = new ethers.Contract(address, erc20_abi.abi, provider);
       symbol = await tokenContract.symbol();
       name = await tokenContract.name();
       balance = await product.assetBalance(address);
+      dollarPrice = await ConvertPrice(symbol, 1);
+
       let underlyingInfo: UnderlyingTokenInfo = {
         symbol: symbol,
         name: name,
         quantity: balance.toString(),
         address: address,
         targetWeight: underlyingTokens[i][1],
+        dollarPrice: dollarPrice,
       };
       newUnderlyingInfo.push(underlyingInfo);
     }
