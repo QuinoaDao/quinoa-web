@@ -8,6 +8,7 @@ import { useProductInfo } from "../hooks/useProductInfo";
 import { ethers } from "ethers";
 import { UnderlyingTokenList } from "../components/UnderlyingTokenList";
 import { useUnderlyingTokenPrice } from "../hooks/useUnderlyingTokenPrice";
+import { useBuy } from "../hooks/useBuy";
 
 export interface TokenInterface {
   symbol: string;
@@ -25,7 +26,7 @@ export const Tokens: TokenInterface[] = [
   { symbol: "USDT", subName: "Tether", address: "", decimal: 18 },
   { symbol: "DAI", subName: "Dai", address: "", decimal: 18 },
   { symbol: "ETH", subName: "Ethereum", address: "", decimal: 18 },
-  { symbol: "MATIC", subName: "Polygon", address: "", decimal: 18 },
+  { symbol: "MATIC", subName: "Polygon", address: "0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889", decimal: 18 },
 ];
 
 const Vaultdetail = ({
@@ -46,6 +47,13 @@ const Vaultdetail = ({
     productInfo?.underlyingTokens
   );
   // const sellableAmount = useProductHoldingInfo()
+
+  const {buy,buyTxStatus} = useBuy(
+    buyAmount, 
+    buyToken,
+    currentAccount,
+    mm
+  );
 
   const handleBuyAmountChange = (e: any) => {
     setBuyAmount(e.target.value);
@@ -389,7 +397,7 @@ const Vaultdetail = ({
               </div>
               <div className="spacing_67px"></div>
               <div className="orderbtn_wrap">
-                <span className="btn">Order</span>
+                <span className="btn" onClick={()=> buy(buyAmount, buyToken.address)}>Order</span>
               </div>
             </div>
           ) : (
