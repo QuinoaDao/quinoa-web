@@ -1,4 +1,4 @@
-#skeleton_wrap {
+#s_skeleton_wrap {
   position: relative;
   width: 1200px;
   height: auto;
@@ -9,7 +9,7 @@
   flex-flow: row;
   justify-content: space-between;
 }
-#skeleton_wrap .infomain_wrap {
+#s_skeleton_wrap .s_infomain_wrap {
   width: 792px;
   height: 100%;
   position: relative;
@@ -19,14 +19,14 @@
   margin-top: 62px;
   padding-bottom: 100px;
 }
-#skeleton_wrap .infomain_wrap .detail_wrap {
+#s_skeleton_wrap .s_infomain_wrap .s_detail_wrap {
   position: relative;
   width: 792px;
   height: auto;
   box-sizing: border-box;
   top: 0;
 }
-.vaultTitle_wrap {
+.s_vaultTitle_wrap {
   position: relative;
   width: 100%;
   height: 63px;
@@ -39,7 +39,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-.vaultTitle_wrap .vault_title {
+.s_vaultTitle_wrap .s_vault_title {
   width: 100%;
   height: fit-content;
   flex-grow: 0;
@@ -51,7 +51,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-.vaultTitle_wrap .vault_title .vault_img {
+.s_vaultTitle_wrap .s_vault_title .s_vault_img {
   width: 63px;
   height: 63px;
   flex: none;
@@ -71,7 +71,7 @@
   animation: shine5 1.6s infinite;
   border-radius: 26px;
 }
-.vaultTitle_wrap .vault_title .nametxt {
+.s_vaultTitle_wrap .s_vault_title .s_nametxt {
   width: 30%;
   height: 55px;
   flex-grow: 0;
@@ -85,7 +85,7 @@
   flex: none;
   order: 1;
 }
-.vaultTitle_wrap .vault_title .nametxt .vaultname {
+.s_vaultTitle_wrap .s_vault_title .s_nametxt .s_vaultname {
   width: 100%;
   height: 30px;
   flex-grow: 0;
@@ -105,7 +105,7 @@
   animation: shine6 1.6s infinite;
   border-radius: 30px;
 }
-.vaultTitle_wrap .vault_title .nametxt .dacname {
+.s_vaultTitle_wrap .s_vault_title .s_nametxt .s_dacname {
   width: 50%;
   height: 14px;
   flex-grow: 0;
@@ -133,7 +133,7 @@
   animation: shine7 1.6s infinite;
   border-radius: 14px;
 }
-.spacing_26px {
+.s_spacing_26px {
   position: relative;
   display: flex;
   width: 100%;
@@ -141,7 +141,7 @@
   /* background-color: #ffefef; */
   box-sizing: border-box;
 }
-.infomain_wrap .Intro_wrap {
+.s_infomain_wrap .s_Intro_wrap {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -152,7 +152,7 @@
   height: auto;
   box-sizing: border-box;
 }
-.Intro_wrap .Introduction {
+.s_Intro_wrap .s_Introduction {
   width: 16%;
   height: 20px;
   flex: none;
@@ -172,7 +172,7 @@
   animation: shine3 1.6s infinite;
   border-radius: 18px;
 }
-.Intro_wrap .Intro_txt {
+.s_Intro_wrap .s_Intro_txt {
   width: 100%;
   height: 15px;
   flex: none;
@@ -194,7 +194,7 @@
   border-radius: 16px;
   margin-top: 2px;
 }
-.Intro_wrap .tag_wrap {
+.s_Intro_wrap .s_s_tag_wrap {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -208,7 +208,7 @@
   flex-grow: 0;
   box-sizing: border-box;
 }
-.Intro_wrap .tag_wrap .tag {
+.s_Intro_wrap .s_s_tag_wrap .s_tag {
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -233,7 +233,7 @@
   background-repeat: repeat-y;
   animation: shine3 1.6s infinite;
 }
-.tag_wrap .tag_name {
+.s_s_tag_wrap .s_tag_name {
   width: auto;
   height: 13px;
   font-family: "Spoqa Han Sans Neo", sans-serif;
@@ -244,7 +244,7 @@
   text-align: center;
   color: #000000;
 }
-.spacing_33px_underline {
+.s_spacing_33px_underline {
   box-sizing: border-box;
   width: 100%;
   height: 34px;
@@ -254,7 +254,7 @@
   align-self: stretch;
   flex-grow: 0;
 }
-.spacing_51px {
+.s_spacing_51px {
   box-sizing: border-box;
   display: flex;
   width: 100%;
@@ -262,7 +262,7 @@
   /* background-color: #ffefef; */
   box-sizing: border-box;
 }
-.vault_priceinfo {
+.s_vault_priceinfo {
   width: 100%;
   height: 56px;
   display: flex;
@@ -272,7 +272,7 @@
   gap: 36px;
   padding: 0;
 }
-.vault_priceinfo .aum {
+.s_vault_priceinfo .s_aum {
   width: 20%;
   height: 100%;
   flex-grow: 0;
@@ -285,7 +285,7 @@
   flex: none;
   order: 0;
 }
-.vault_priceinfo .About_txt_short {
+.s_vault_priceinfo .s_About_txt_short {
   width: 35%;
   height: 15px;
   flex: none;
@@ -305,7 +305,7 @@
   animation: shine3 1.6s infinite;
   border-radius: 15px;
 }
-.vault_priceinfo .number_txt {
+.s_vault_priceinfo .s_number_txt {
   width: 100%;
   height: 34px;
   flex: none;
@@ -324,7 +324,7 @@
   animation: shine3 1.6s infinite;
   border-radius: 34px;
 }
-.spacing_33px {
+.s_spacing_33px {
   box-sizing: border-box;
   display: flex;
   width: 100%;
@@ -332,7 +332,7 @@
   /* background-color: #ffefef; */
   box-sizing: border-box;
 }
-.infomain_wrap .ut_wrap {
+.s_infomain_wrap .s_ut_wrap {
   position: relative;
   width: 100%;
   height: 190px;
@@ -355,7 +355,7 @@
   animation: shine2 1.6s infinite;
   box-sizing: border-box;
 }
-.infomain_wrap .maintitle_wrap {
+.s_infomain_wrap .s_maintitle_wrap {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -368,7 +368,7 @@
   height: 157px;
   box-sizing: border-box;
 }
-.infomain_wrap .maintitle_wrap .spacing_100px {
+.s_infomain_wrap .s_maintitle_wrap .s_spacing_100px {
   width: 100%;
   height: 100px;
   flex: none;
@@ -378,7 +378,7 @@
   box-sizing: border-box;
   /* background-color: #ffefef; */
 }
-.infomain_wrap .maintitle_wrap .maintitle_txt {
+.s_infomain_wrap .s_maintitle_wrap .s_maintitle_txt {
   width: 20%;
   height: 30px;
   flex: none;
@@ -402,7 +402,7 @@
   animation: shine3 1.6s infinite;
   border-radius: 38px;
 }
-.infomain_wrap .maintitle_wrap .maintitleUnderline {
+.s_infomain_wrap .s_maintitle_wrap .s_maintitleUnderline {
   width: 100%;
   height: 1px;
   flex: none;
@@ -411,7 +411,7 @@
   flex-grow: 0;
   box-sizing: border-box;
 }
-.infomain_wrap .performance_wrap {
+.s_infomain_wrap .s_performance_wrap {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -435,7 +435,7 @@
   animation: shine2 1.6s infinite;
   border-radius: 12px;
 }
-#skeleton_wrap .buysellBox_wrap {
+#s_skeleton_wrap .s_buysellBox_wrap {
   position: sticky;
   right: 0;
   top: 98px;
@@ -455,7 +455,7 @@
   box-shadow: 0px -12px 24px rgba(0, 0, 0, 0.01),
     0px 12px 24px rgba(0, 0, 0, 0.04);
 }
-.spacing_50px_line {
+.s_spacing_50px_line {
   position: relative;
   display: flex;
   width: 100%;
@@ -465,7 +465,7 @@
   box-sizing: border-box;
   margin-bottom: 10px;
 }
-.skeleton_box {
+.s_skeleton_box {
   position: relative;
   display: flex;
   width: 80%;

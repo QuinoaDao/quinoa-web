@@ -2,7 +2,7 @@ import React from "react";
 //TODO: 실제 토큰에 맞춰서 컬러값 추가해주기
 const colormap = {
   USDC: "rgba(62,115,196,1)",
-  MATIC: "rgba(95,180,246,1)",
+  WMATIC: "rgba(95,180,246,1)",
   WETH: "rgba(218,85,138,1)",
   LINK: "rgba(61,91,203,1)",
 };

@@ -8,7 +8,6 @@ import { useProductInfo } from "../hooks/useProductInfo";
 import { ethers } from "ethers";
 import { UnderlyingTokenList } from "../components/UnderlyingTokenList";
 import { useUnderlyingTokenPrice } from "../hooks/useUnderlyingTokenPrice";
-import { ConvertPrice } from "../utils/PriceConvert";
 import { ProductInfo, UnderlyingTokenInfo } from "../models/ProductInfo";
 import Skeleton from "../components/skeleton";
 
@@ -31,6 +30,7 @@ const Vaultdetail = ({
   const [sellAmount, setSellAmount] = useState(0);
   const [priceChangStat, setPriceChangeStat] = useState("up");
   const [priceChangePercent, setPriceChangePercent] = useState(0);
+  const [loadSkeleton, setLoadSkeleton] = useState(true);
 
   const buyTokenHoldings = useTokenHoldingInfo(
     currentAccount,
@@ -61,10 +61,6 @@ const Vaultdetail = ({
     }
   };
 
-  const underlyingPrices = useUnderlyingTokenPrice(
-    productInfo?.underlyingTokens
-  );
-
   const handleBuyAmountChange = (e: any) => {
     setBuyAmount(e.target.value);
   };
@@ -85,7 +81,11 @@ const Vaultdetail = ({
     }
   };
 
-  if (productInfo === undefined || productInfo.underlyingTokens.length === 0) {
+  if (
+    productInfo === undefined ||
+    productInfo.underlyingTokens.length === 0 ||
+    productInfo.underlyingTokens[3].dollarPrice === undefined
+  ) {
     return <Skeleton />;
   } else {
     return (
@@ -153,7 +153,10 @@ const Vaultdetail = ({
           </div>
           <div className="spacing_33px"></div>
           <div>
-            <UnderlyingTokenList tokens={productInfo?.underlyingTokens} />
+            <UnderlyingTokenList
+              tokens={productInfo?.underlyingTokens}
+              setLoadSkeleton={setLoadSkeleton}
+            />
           </div>
           <div className="maintitle_wrap">
             <div className="spacing_100px"></div>
@@ -256,7 +259,7 @@ const Vaultdetail = ({
           <div className="spacing_28px"></div>
           <div className="stat_list">
             <div className="aum_wrap st_wrap">
-              <span className="name">$840,201.02</span>
+              <span className="name">${productInfo?.tvl.toString()}</span>
               <span className="txt">AUM(TVL)</span>
             </div>
             <div className="propensity_wrap st_wrap">

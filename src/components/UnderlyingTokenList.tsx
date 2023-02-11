@@ -4,9 +4,13 @@ import { PriceInfo, PriceInfoType } from "../utils/CoinMarketCapInfo";
 import { useUnderlyingTokenPrice } from "../hooks/useUnderlyingTokenPrice";
 import { ProductInfo } from "../models/ProductInfo";
 
-export const UnderlyingTokenList = ({ tokens }: any) => {
-  const underlyingPrices = useUnderlyingTokenPrice(tokens);
-  console.log("2222", underlyingPrices);
+export const UnderlyingTokenList = ({ tokens, setLoadSkeleton }: any) => {
+  const [load, setload] = useState(false);
+  const underlyingPrices = useUnderlyingTokenPrice(tokens, setLoadSkeleton);
+  console.log("HERE", underlyingPrices);
+  if (underlyingPrices.length === 4) {
+    setLoadSkeleton(false);
+  }
   return (
     <div className="ut_wrap">
       <header>
@@ -41,7 +45,6 @@ export const UnderlyingTokenList = ({ tokens }: any) => {
       </header>
       <div className="headerUnderline"></div>
 
-      {/* undefined 면 스켈레톤 로드 */}
       {tokens === undefined || underlyingPrices.length === 0
         ? null
         : tokens.map((item: any, idx: any) => (

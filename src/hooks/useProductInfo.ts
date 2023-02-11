@@ -9,6 +9,13 @@ import { GetLogoImage } from "../utils/LogoImage";
 
 export const useProductInfo = (provider: any) => {
   //const provider = new ethers.providers.Web3Provider(ethereum);
+  const logomap = {
+    USDC: "https://s2.coinmarketcap.com/static/img/coins/64x64/3408.png",
+    WMATIC: "https://s2.coinmarketcap.com/static/img/coins/64x64/8925.png",
+    WETH: "https://s2.coinmarketcap.com/static/img/coins/64x64/2396.png",
+    LINK: "https://s2.coinmarketcap.com/static/img/coins/64x64/1975.png",
+  };
+
   const [productInfo, setProductInfo] = useState<ProductInfo>();
   const getProductInfo = async () => {
     const productAddress: string = process.env.REACT_APP_PRODUCT_ADDRESS || "";
@@ -29,22 +36,24 @@ export const useProductInfo = (provider: any) => {
     // get underlying token price per 1 token
     for (let i = 0; i < underlyingTokens.length; i++) {
       let address = underlyingTokens[i][0];
-      let symbol: string;
-      let name: string;
-      let balance: BigNumberish;
-      let dollarPrice: number;
-      let decimal: string;
-      let logo: string;
+      //let symbol: string;
+      //let dollarPrice: number;
+      //let logo: string;
       // get token name and symbol
       // TODO : underlying Token 이 MATIC 일 경우 처리
       let tokenContract = new ethers.Contract(address, erc20_abi.abi, provider);
+      console.log("00000");
 
-      name = await tokenContract.name();
-      decimal = await tokenContract.decimals();
-      balance = await product.assetBalance(address);
+      const [name, decimal, balance, symbol] = await Promise.all([
+        tokenContract.name(),
+        tokenContract.decimals(),
+        product.assetBalance(address),
+        tokenContract.symbol(),
+      ]);
 
+      console.log("11111");
       let underlyingInfo: UnderlyingTokenInfo = {
-        symbol: "",
+        symbol: symbol,
         name: name,
         quantity: balance.toString(),
         address: address,
@@ -53,21 +62,23 @@ export const useProductInfo = (provider: any) => {
         decimal: decimal.toString(),
         logo: "",
       };
+      console.log("22222");
+      const [dollarPrice] = await Promise.all([ConvertPrice(symbol, 1)]);
 
-      tokenContract.symbol().then((symbol: string) => {
-        symbol = symbol;
-        underlyingInfo.symbol = symbol;
-        ConvertPrice(symbol, 1).then((price: number) => {
-          dollarPrice = price;
-          underlyingInfo.dollarPrice = dollarPrice;
-        });
-        GetLogoImage(symbol).then((logo: string) => {
-          logo = logo;
-          underlyingInfo.logo = logo;
-        });
-      });
+      underlyingInfo.logo =
+        logomap[underlyingInfo.symbol as keyof typeof logomap];
+      underlyingInfo.dollarPrice = dollarPrice;
+      // ConvertPrice(symbol, 1).then((price: number) => {
+      //   dollarPrice = price;
+      //   underlyingInfo.dollarPrice = dollarPrice;
+      // });
+      // GetLogoImage(symbol).then((logo: string) => {
+      //   logo = logo;
+      //   underlyingInfo.logo = logo;
+      // });
       newUnderlyingInfo.push(underlyingInfo);
     }
+    console.log("33333");
     setProductInfo({
       tvl: tvl,
       currentPrice: currentPrice,
