@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import { PriceInfo, PriceInfoType } from "../utils/CoinMarketCapInfo";
 import { UnderlyingTokenInfo } from "../models/ProductInfo";
 
-export const useUnderlyingTokenPrice = (underlyingTokens: any) => {
+export const useUnderlyingTokenPrice = (
+  underlyingTokens: any,
+  setLoadSkeleton: any
+) => {
   const [tokenPrices, setTokenPrices] = useState<PriceInfoType[]>([]);
   const getPrices = async () => {
-    if (underlyingTokens !== undefined) {
+    if (underlyingTokens.length === 4) {
       let newTokenPriceList: PriceInfoType[] = [];
       for (let i = 0; i < underlyingTokens.length; i++) {
         let info = await PriceInfo(underlyingTokens[i].symbol);
@@ -15,11 +18,11 @@ export const useUnderlyingTokenPrice = (underlyingTokens: any) => {
         });
       }
       setTokenPrices(newTokenPriceList);
+      //setLoadSkeleton(false);
     }
   };
 
   useEffect(() => {
-    console.log("?");
     getPrices();
   }, [underlyingTokens]);
   return tokenPrices;
