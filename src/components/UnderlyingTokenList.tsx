@@ -47,6 +47,7 @@ export const UnderlyingTokenList = ({ tokens }: any) => {
         : tokens.map((item: any, idx: any) => (
             <ListStrategy
               tokenName={item.name}
+              tokenImage={item.logo}
               quantity={item.quantity}
               tokenUnit={item.symbol}
               balancePercent={parseInt(item.targetWeight) / 1000} // 만분율 -> 백분율

@@ -9,7 +9,7 @@ import { ethers } from "ethers";
 import { UnderlyingTokenList } from "../components/UnderlyingTokenList";
 import { useUnderlyingTokenPrice } from "../hooks/useUnderlyingTokenPrice";
 import { ConvertPrice } from "../utils/PriceConvert";
-import { ProductInfo } from "../models/ProductInfo";
+import { ProductInfo, UnderlyingTokenInfo } from "../models/ProductInfo";
 
 export interface TokenInterface {
   symbol: string;
@@ -46,8 +46,8 @@ const Vaultdetail = ({
   mm, // metamask
 }: any) => {
   const [showOption, setShowOption] = useState(false);
-  const [buyToken, setBuyToken] = useState(Tokens[0]);
-  const [sellToken, setSellToken] = useState(Tokens[0]);
+  const [buyToken, setBuyToken] = useState<UnderlyingTokenInfo>();
+  const [sellToken, setSellToken] = useState<UnderlyingTokenInfo>();
   const [orderStatus, setOrderStatus] = useState("buy");
   const [buyAmount, setBuyAmount] = useState(0);
   const [sellAmount, setSellAmount] = useState(0);
@@ -100,8 +100,8 @@ const Vaultdetail = ({
     setSellAmount(e.target.value);
   };
 
-  const convertPrice = (symbol: string, amount: number) => {
-    if (productInfo === undefined) {
+  const convertPrice = (symbol: string | undefined, amount: number) => {
+    if (productInfo === undefined || symbol === undefined) {
       return 0;
     } else {
       for (let i = 0; i < productInfo.underlyingTokens.length; i++) {
@@ -341,8 +341,8 @@ const Vaultdetail = ({
                     onClick={() => setShowOption(!showOption)}
                   >
                     <div className="token">
-                      <img src={"/asset/" + buyToken.symbol + ".svg"} />
-                      <span className="token_name">{buyToken.symbol}</span>
+                      <img src={buyToken?.logo} />
+                      <span className="token_name">{buyToken?.symbol}</span>
                     </div>
                   </div>
                   {showOption ? (
@@ -400,7 +400,7 @@ const Vaultdetail = ({
               <div className="convertedValue_wrap">
                 <span className="cv_txt">Converted value</span>
                 <span className="cv_price">
-                  $ {convertPrice(buyToken.symbol, buyAmount)}
+                  $ {convertPrice(buyToken?.symbol, buyAmount)}
                 </span>
               </div>
               <div className="spacing_20px"></div>
@@ -414,7 +414,7 @@ const Vaultdetail = ({
               <div className="investableAmount_wrap">
                 <span className="ia_txt">Investable amount</span>
                 <span className="ia_price">
-                  {buyTokenHoldings} {buyToken.symbol}
+                  {buyTokenHoldings} {buyToken?.symbol}
                 </span>
               </div>
               <div className="spacing_67px"></div>
@@ -432,12 +432,13 @@ const Vaultdetail = ({
                     onClick={() => setShowOption(!showOption)}
                   >
                     <div className="token">
-                      <img src={"/asset/" + sellToken.symbol + ".svg"} />
-                      <span className="token_name">{sellToken.symbol}</span>
+                      <img src={"/asset/" + sellToken?.symbol + ".svg"} />
+                      <span className="token_name">{sellToken?.symbol}</span>
                     </div>
                   </div>
                   {showOption ? (
                     <SelectToken
+                      underlyingTokens={productInfo?.underlyingTokens}
                       selectedToken={sellToken}
                       setSelectedToken={setSellToken}
                       setShowOption={setShowOption}
@@ -478,7 +479,7 @@ const Vaultdetail = ({
               <div className="convertedValue_wrap">
                 <span className="cv_txt">Converted value</span>
                 <span className="cv_price">
-                  $ {convertPrice(sellToken.symbol, sellAmount)}
+                  $ {convertPrice(sellToken?.symbol, sellAmount)}
                 </span>
               </div>
               <div className="spacing_20px"></div>

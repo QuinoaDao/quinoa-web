@@ -5,7 +5,7 @@ const ListStrategy = (props: any) => {
     <div className="list_strategy">
       <div className="token">
         <div className="tokenImg_wrap">
-          <img src="/asset/token_icon_eth.svg" />
+          <img src={props.tokenImage} />
         </div>
         <span className="token_txt">{props.tokenName}</span>
       </div>

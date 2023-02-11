@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import ERC20_abi from "../abis/ERC20.json";
 import { ethers } from "ethers";
 import { TokenInterface } from "../pages/vaultdetail";
+import { UnderlyingTokenInfo } from "../models/ProductInfo";
 
 export const useTokenHoldingInfo = (
   currentAccount: string | undefined,
-  token: TokenInterface,
+  token: UnderlyingTokenInfo | undefined,
   ethereum: Window["ethereum"]
 ) => {
   const [tokenHolding, setTokenHolding] = useState<number>(0);
@@ -13,7 +14,7 @@ export const useTokenHoldingInfo = (
 
   const getHoldings = async (
     currentAddress: string | undefined,
-    token: TokenInterface
+    token: UnderlyingTokenInfo
   ) => {
     if (currentAddress === undefined) {
       return;
@@ -41,7 +42,9 @@ export const useTokenHoldingInfo = (
     setTokenHolding(amount);
   };
   useEffect(() => {
-    getHoldings(currentAccount, token);
+    if (token !== undefined) {
+      getHoldings(currentAccount, token);
+    }
   }, [currentAccount, token]);
   return tokenHolding;
 };
