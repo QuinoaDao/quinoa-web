@@ -61,7 +61,7 @@ const ListStrategy = (props: any) => {
       )}
 
       <div className="Totalvalue">
-        <span className="tv_txt">{props.totalValue}</span>
+        <span className="tv_txt">$ {props.totalValue}</span>
       </div>
       <div className="balancegraphline_wrap">
         <div className="graphline_wrap">

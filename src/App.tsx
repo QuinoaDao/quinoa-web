@@ -17,7 +17,7 @@ function App() {
   const [mmInstalled, setMMInstalled] = useState(false);
   const [currentAccount, setCurrentAccount] = useState<any>();
   const [correctNetwork, setCorrectNetwork] = useState(true);
-  const [isLoaded, setIsLoaded] = useState(false);
+
   const { ethereum } = window;
   const [quinoa_provider, setQuinoaProvider] = useState(
     new ethers.providers.JsonRpcProvider("https://rpc-mumbai.maticvigil.com")
@@ -149,7 +149,6 @@ function App() {
         currentAccount={currentAccount}
         provider={quinoa_provider}
         mm={ethereum}
-        setIsLoaded={setIsLoaded}
       />
 
       <Footer />

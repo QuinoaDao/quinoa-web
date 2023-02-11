@@ -55,7 +55,8 @@ export const useProductInfo = (provider: any) => {
       let underlyingInfo: UnderlyingTokenInfo = {
         symbol: symbol,
         name: name,
-        quantity: balance.toString(),
+        quantity:
+          Math.round(Number(ethers.utils.formatEther(balance)) * 100) / 100,
         address: address,
         targetWeight: underlyingTokens[i][1],
         dollarPrice: 0,
@@ -80,8 +81,8 @@ export const useProductInfo = (provider: any) => {
     }
     console.log("33333");
     setProductInfo({
-      tvl: tvl,
-      currentPrice: currentPrice,
+      tvl: Math.round(Number(ethers.utils.formatEther(tvl)) * 100) / 100,
+      currentPrice: Math.round(Number(ethers.utils.formatEther(currentPrice))),
       underlyingTokens: newUnderlyingInfo,
     });
   };

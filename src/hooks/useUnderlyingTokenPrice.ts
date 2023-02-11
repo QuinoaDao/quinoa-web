@@ -2,10 +2,7 @@ import { useEffect, useState } from "react";
 import { PriceInfo, PriceInfoType } from "../utils/CoinMarketCapInfo";
 import { UnderlyingTokenInfo } from "../models/ProductInfo";
 
-export const useUnderlyingTokenPrice = (
-  underlyingTokens: any,
-  setLoadSkeleton: any
-) => {
+export const useUnderlyingTokenPrice = (underlyingTokens: any) => {
   const [tokenPrices, setTokenPrices] = useState<PriceInfoType[]>([]);
   const getPrices = async () => {
     if (underlyingTokens.length === 4) {

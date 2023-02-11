@@ -1,8 +1,8 @@
 import { BigNumberish, BigNumber } from "ethers";
 
 export interface ProductInfo {
-  tvl: BigNumberish;
-  currentPrice: BigNumberish;
+  tvl: number;
+  currentPrice: number;
   underlyingTokens: UnderlyingTokenInfo[];
 }
 

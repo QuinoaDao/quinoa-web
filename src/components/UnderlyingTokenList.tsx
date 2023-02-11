@@ -3,14 +3,10 @@ import ListStrategy from "./listStrategy";
 import { PriceInfo, PriceInfoType } from "../utils/CoinMarketCapInfo";
 import { useUnderlyingTokenPrice } from "../hooks/useUnderlyingTokenPrice";
 import { ProductInfo } from "../models/ProductInfo";
+import { UnderlyingTokenSkeleton } from "./UnderlyingTokenSkeleton";
+export const UnderlyingTokenList = ({ tokens }: any) => {
+  const underlyingPrices = useUnderlyingTokenPrice(tokens);
 
-export const UnderlyingTokenList = ({ tokens, setLoadSkeleton }: any) => {
-  const [load, setload] = useState(false);
-  const underlyingPrices = useUnderlyingTokenPrice(tokens, setLoadSkeleton);
-  console.log("HERE", underlyingPrices);
-  if (underlyingPrices.length === 4) {
-    setLoadSkeleton(false);
-  }
   return (
     <div className="ut_wrap">
       <header>
@@ -44,27 +40,27 @@ export const UnderlyingTokenList = ({ tokens, setLoadSkeleton }: any) => {
         </div>
       </header>
       <div className="headerUnderline"></div>
-      <div className="s_list_strategy_wrap">
-        <div className="s_list_strategy"></div>
-        <div className="s_list_strategy"></div>
-        <div className="s_list_strategy"></div>
-        <div className="s_list_strategy"></div>
-      </div>
-      {/* {tokens === undefined || underlyingPrices.length === 0
-        ? null
-        : tokens.map((item: any, idx: any) => (
-            <ListStrategy
-              symbol={item.symbol}
-              tokenName={item.name}
-              tokenImage={item.logo}
-              quantity={item.quantity}
-              tokenUnit={item.symbol}
-              balancePercent={parseInt(item.targetWeight) / 1000} // 만분율 -> 백분율
-              tokenPrice={underlyingPrices[idx].price}
-              percentChange={underlyingPrices[idx].percent_change}
-              totalValue={item.quantity * underlyingPrices[idx].price}
-            />
-          ))} */}
+
+      {tokens === undefined || underlyingPrices.length === 0 ? (
+        <UnderlyingTokenSkeleton />
+      ) : (
+        tokens.map((item: any, idx: any) => (
+          <ListStrategy
+            symbol={item.symbol}
+            tokenName={item.name}
+            tokenImage={item.logo}
+            quantity={item.quantity}
+            tokenUnit={item.symbol}
+            balancePercent={parseInt(item.targetWeight) / 1000} // 만분율 -> 백분율
+            tokenPrice={underlyingPrices[idx].price}
+            percentChange={underlyingPrices[idx].percent_change}
+            totalValue={
+              Math.floor(item.quantity * underlyingPrices[idx].price * 100) /
+              100
+            }
+          />
+        ))
+      )}
     </div>
   );
 };
