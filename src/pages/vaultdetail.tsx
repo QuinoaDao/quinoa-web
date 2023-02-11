@@ -55,8 +55,6 @@ const Vaultdetail = ({
     setSellAmount(e.target.value);
   };
 
-  console.log("CHECK", productInfo);
-
   return (
     <body id="body_wrap">
       <div className="infomain_wrap">
@@ -149,12 +147,9 @@ const Vaultdetail = ({
               <span className="column_txt">Total Value</span>
             </div>
           </header>
-          <div className="headerUnderline"></div>
 
-          {/* undefined 면 스켈레톤 로드
-          {productInfo?.underlyingTokens === undefined ? null : (
-            <UnderlyingTokenList tokens={productInfo?.underlyingTokens} />
-          )} */}
+          <div className="headerUnderline"></div>
+          <UnderlyingTokenList tokens={productInfo?.underlyingTokens} />
         </div>
         <div className="maintitle_wrap">
           <div className="spacing_100px"></div>

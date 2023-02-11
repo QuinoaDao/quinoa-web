@@ -43,7 +43,7 @@ export const UnderlyingTokenList = ({ tokens }: any) => {
       <div className="headerUnderline"></div>
 
       {/* undefined 면 스켈레톤 로드 */}
-      {tokens === undefined
+      {tokens === undefined || underlyingPrices.length === 0
         ? null
         : tokens.map((item: any, idx: any) => (
             <ListStrategy
@@ -51,7 +51,6 @@ export const UnderlyingTokenList = ({ tokens }: any) => {
               quantity={item.quantity}
               tokenUnit={item.symbol}
               balancePercent={parseInt(item.targetWeight) / 1000} // 만분율 -> 백분율
-              // token price 는 코마캡, 퍼센트 체인지도 코마캡
               tokenPrice={underlyingPrices[idx].price}
               percentChange={underlyingPrices[idx].percent_change}
             />
