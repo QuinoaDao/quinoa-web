@@ -20,11 +20,13 @@ export const useBuy = (amount: any, assetAddress: any, currentAccount: any, ethe
                 let tokenContract = new ethers.Contract(assetAddress, erc20_abi.abi, signer);
                 const approveTx = await tokenContract.approve(product.address, ethers.utils.parseUnits(amount.toString()));
                 await approveTx.wait();
+                setTxStatus("pending");
                 const mintTx = await product.deposit(assetAddress, ethers.utils.parseUnits(amount.toString()), currentAccount);
                 console.log(mintTx);
                 setTxStatus("pending");
                 const receipt = await mintTx.wait();
                 console.log(!!receipt.blockHash ? "success" : "error");
+                setTxStatus(!!receipt.blockHash ? "success" : "error");
             }
             
             catch(e) {
