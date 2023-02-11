@@ -5,7 +5,6 @@ import { useUnderlyingTokenPrice } from "../hooks/useUnderlyingTokenPrice";
 import { ProductInfo } from "../models/ProductInfo";
 
 export const UnderlyingTokenList = ({ tokens }: any) => {
-  console.log("1111", tokens);
   const underlyingPrices = useUnderlyingTokenPrice(tokens);
   console.log("2222", underlyingPrices);
   return (

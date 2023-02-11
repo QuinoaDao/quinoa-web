@@ -5,6 +5,7 @@ import { BigNumberish, ethers } from "ethers";
 import { ProductInfo, UnderlyingTokenInfo } from "../models/ProductInfo";
 import { PriceInfo } from "../utils/CoinMarketCapInfo";
 import { ConvertPrice } from "../utils/PriceConvert";
+import { GetLogoImage } from "../utils/LogoImage";
 
 export const useProductInfo = (ethereum: Window["ethereum"]) => {
   const provider = new ethers.providers.Web3Provider(ethereum);
@@ -33,22 +34,39 @@ export const useProductInfo = (ethereum: Window["ethereum"]) => {
       let name: string;
       let balance: BigNumberish;
       let dollarPrice: number;
+      let decimal: string;
+      let logo: string;
       // get token name and symbol
       // TODO : underlying Token 이 MATIC 일 경우 처리
       let tokenContract = new ethers.Contract(address, erc20_abi.abi, provider);
-      symbol = await tokenContract.symbol();
+
       name = await tokenContract.name();
+      decimal = await tokenContract.decimals();
       balance = await product.assetBalance(address);
-      dollarPrice = await ConvertPrice(symbol, 1);
 
       let underlyingInfo: UnderlyingTokenInfo = {
-        symbol: symbol,
+        symbol: "",
         name: name,
         quantity: balance.toString(),
         address: address,
         targetWeight: underlyingTokens[i][1],
-        dollarPrice: dollarPrice,
+        dollarPrice: 0,
+        decimal: decimal.toString(),
+        logo: "",
       };
+
+      tokenContract.symbol().then((symbol: string) => {
+        symbol = symbol;
+        underlyingInfo.symbol = symbol;
+        ConvertPrice(symbol, 1).then((price: number) => {
+          dollarPrice = price;
+          underlyingInfo.dollarPrice = dollarPrice;
+        });
+        GetLogoImage(symbol).then((logo: string) => {
+          logo = logo;
+          underlyingInfo.logo = logo;
+        });
+      });
       newUnderlyingInfo.push(underlyingInfo);
     }
     setProductInfo({

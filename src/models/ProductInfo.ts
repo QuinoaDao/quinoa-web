@@ -13,4 +13,6 @@ export interface UnderlyingTokenInfo {
   targetWeight: BigNumberish;
   quantity: BigNumberish;
   dollarPrice: number;
+  decimal: string;
+  logo: string;
 }

@@ -16,18 +16,29 @@ export interface TokenInterface {
   subName: string;
   address: string;
   decimal: number;
+  img: string;
 }
+
+// TODO : 알파 이후 undelrying tokens 정보에 맞춰서 동적으로 구성하도록 수정
+// usdc, wmatic, weth, chain
 export const Tokens: TokenInterface[] = [
   {
     symbol: "USDC",
     subName: "USD Coin",
     address: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
     decimal: 6,
+    img: "https://s2.coinmarketcap.com/static/img/coins/64x64/3408.png",
   },
-  { symbol: "USDT", subName: "Tether", address: "", decimal: 18 },
-  { symbol: "DAI", subName: "Dai", address: "", decimal: 18 },
-  { symbol: "ETH", subName: "Ethereum", address: "", decimal: 18 },
-  { symbol: "MATIC", subName: "Polygon", address: "", decimal: 18 },
+  {
+    symbol: "USDT",
+    subName: "Tether",
+    address: "",
+    decimal: 18,
+    img: "https://s2.coinmarketcap.com/static/img/coins/64x64/3408.png",
+  },
+  { symbol: "DAI", subName: "Dai", address: "", decimal: 18, img: "" },
+  { symbol: "ETH", subName: "Ethereum", address: "", decimal: 18, img: "" },
+  { symbol: "MATIC", subName: "Polygon", address: "", decimal: 18, img: "" },
 ];
 
 const Vaultdetail = ({
@@ -45,6 +56,24 @@ const Vaultdetail = ({
 
   const buyTokenHoldings = useTokenHoldingInfo(currentAccount, buyToken, mm);
   const productInfo = useProductInfo(mm);
+  console.log("*******", productInfo);
+  // const underlyingTokens: TokenInterface[] = () => {
+  //   if (productInfo !== undefined && productInfo.underlyingTokens !== undefined) {
+  //     let underlyings : TokenInterface[] = []
+  //       for (let i=0; i< productInfo.underlyingTokens.length; i++) {
+  //         underlyings.push({
+  //           symbol : productInfo.underlyingTokens[i].symbol,
+  //           subName: productInfo.underlyingTokens[i].name,
+  //           address: productInfo.underlyingTokens[i].address,
+  //           decimal: productInfo.underlyingTokens[i].decimal,
+  //           // logo json에서 가져오기
+  //           img : productInfo.
+  //         })
+  //       }
+  //   } else {
+  //     return []
+  //   }
+  // }
 
   const calculatePriceChange = (productInfo: ProductInfo) => {
     let currentPrice = parseFloat(
@@ -318,6 +347,7 @@ const Vaultdetail = ({
                   </div>
                   {showOption ? (
                     <SelectToken
+                      underlyingTokens={productInfo?.underlyingTokens}
                       selectedToken={buyToken}
                       setSelectedToken={setBuyToken}
                       setShowOption={setShowOption}
