@@ -11,6 +11,7 @@ import { useUnderlyingTokenPrice } from "../hooks/useUnderlyingTokenPrice";
 import { ProductInfo, UnderlyingTokenInfo } from "../models/ProductInfo";
 import Skeleton from "../components/skeleton";
 import { useBuy } from "../hooks/useBuy";
+import { useSell } from "../hooks/useSell";
 
 
 const Vaultdetail = ({
@@ -66,6 +67,12 @@ const Vaultdetail = ({
   const {buy,buyTxStatus} = useBuy(
     buyAmount, 
     buyToken,
+    currentAccount,
+    mm
+  );
+  const {sell,sellTxStatus} = useSell(
+    sellAmount, 
+    sellToken,
     currentAccount,
     mm
   );
@@ -479,7 +486,7 @@ const Vaultdetail = ({
                 </div>
                 <div className="spacing_67px"></div>
                 <div className="orderbtn_wrap">
-                  <span className="btn">Order</span>
+                  <span className="btn" onClick={()=> sell(sellAmount, sellToken?.address)}>Order</span>
                 </div>
               </div>
             )}
