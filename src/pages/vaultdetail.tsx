@@ -45,9 +45,14 @@ const Vaultdetail = ({
   currentAccount,
   mm, // metamask
 }: any) => {
+  const productInfo = useProductInfo(mm);
   const [showOption, setShowOption] = useState(false);
-  const [buyToken, setBuyToken] = useState<UnderlyingTokenInfo>();
-  const [sellToken, setSellToken] = useState<UnderlyingTokenInfo>();
+  const [buyToken, setBuyToken] = useState<UnderlyingTokenInfo | undefined>(
+    productInfo?.underlyingTokens[0]
+  );
+  const [sellToken, setSellToken] = useState<UnderlyingTokenInfo | undefined>(
+    productInfo?.underlyingTokens[0]
+  );
   const [orderStatus, setOrderStatus] = useState("buy");
   const [buyAmount, setBuyAmount] = useState(0);
   const [sellAmount, setSellAmount] = useState(0);
@@ -55,7 +60,12 @@ const Vaultdetail = ({
   const [priceChangePercent, setPriceChangePercent] = useState(0);
 
   const buyTokenHoldings = useTokenHoldingInfo(currentAccount, buyToken, mm);
-  const productInfo = useProductInfo(mm);
+
+  useEffect(() => {
+    setBuyToken(productInfo?.underlyingTokens[0]);
+    setSellToken(productInfo?.underlyingTokens[0]);
+  }, [productInfo]);
+
   console.log("*******", productInfo);
   // const underlyingTokens: TokenInterface[] = () => {
   //   if (productInfo !== undefined && productInfo.underlyingTokens !== undefined) {
@@ -432,7 +442,7 @@ const Vaultdetail = ({
                     onClick={() => setShowOption(!showOption)}
                   >
                     <div className="token">
-                      <img src={"/asset/" + sellToken?.symbol + ".svg"} />
+                      <img src={sellToken?.logo} />
                       <span className="token_name">{sellToken?.symbol}</span>
                     </div>
                   </div>

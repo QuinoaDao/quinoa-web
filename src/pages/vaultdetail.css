@@ -583,6 +583,11 @@
   box-sizing: border-box;
   background-color: #fff;
   border-radius: 50%;
+  overflow: hidden;
+}
+.ut_wrap .list_strategy .token .tokenImg_wrap img {
+  width: 24px;
+  height: 24px;
 }
 .ut_wrap .list_strategy .token .token_txt {
   width: auto;
@@ -1012,7 +1017,6 @@
   display: flex;
   align-items: center;
   letter-spacing: -0.25px;
-  color: #2f3030;
   flex: none;
   order: 0;
   flex-grow: 0;
@@ -1718,6 +1722,13 @@ input[name="btn_wrap"] {
   order: 0;
   flex-grow: 0;
 }
+.buysellBox_wrap .investin_wrap .selectbox_wrap .selectbox .token img {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
 .buysellBox_wrap .investin_wrap .selectbox_wrap .selectbox_list {
   width: calc(100% + 2px);
   height: auto;
@@ -1746,6 +1757,13 @@ input[name="btn_wrap"] {
   gap: 4px;
   order: 0;
   flex-grow: 0;
+}
+.buysellBox_wrap .investin_wrap .selectbox_wrap .selectbox_list img {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 .buysellBox_wrap .investin_wrap .selectbox_wrap .selectbox_list li.active {
   border-left: solid 1px #0937a8;

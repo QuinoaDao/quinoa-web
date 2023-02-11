@@ -46,6 +46,7 @@ export const UnderlyingTokenList = ({ tokens }: any) => {
         ? null
         : tokens.map((item: any, idx: any) => (
             <ListStrategy
+              symbol={item.symbol}
               tokenName={item.name}
               tokenImage={item.logo}
               quantity={item.quantity}

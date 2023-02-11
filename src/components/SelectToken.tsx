@@ -12,23 +12,30 @@ const SelectToken = ({
   console.log(selectedToken);
   return (
     <ul className="selectbox_list">
-      {underlyingTokens.map((t: UnderlyingTokenInfo) => {
-        return (
-          <li
-            className={t === selectedToken ? "active noHover" : "nonactive"}
-            onClick={() => {
-              setSelectedToken(t);
-              setShowOption(false);
-            }}
-          >
-            <div className="token">
-              <img src={t.logo} />
-              <span className="token_name">{t.symbol}</span>
-            </div>
-            <span className="token_subname">{t.name}</span>
-          </li>
-        );
-      })}
+      {underlyingTokens
+        .filter((token: UnderlyingTokenInfo) => {
+          if (token.symbol === "LINK") {
+            return false;
+          }
+          return true;
+        })
+        .map((t: UnderlyingTokenInfo) => {
+          return (
+            <li
+              className={t === selectedToken ? "active noHover" : "nonactive"}
+              onClick={() => {
+                setSelectedToken(t);
+                setShowOption(false);
+              }}
+            >
+              <div className="token">
+                <img src={t.logo} />
+                <span className="token_name">{t.symbol}</span>
+              </div>
+              <span className="token_subname">{t.name}</span>
+            </li>
+          );
+        })}
     </ul>
   );
 };
