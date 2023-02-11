@@ -12,6 +12,7 @@ import { ProductInfo, UnderlyingTokenInfo } from "../models/ProductInfo";
 import Skeleton from "../components/skeleton";
 import { useBuy } from "../hooks/useBuy";
 import { useSell } from "../hooks/useSell";
+import { Toast, toastProperties } from "../components/Modals/Toast";
 
 
 const Vaultdetail = ({
@@ -34,11 +35,30 @@ const Vaultdetail = ({
   const [priceChangStat, setPriceChangeStat] = useState("up");
   const [priceChangePercent, setPriceChangePercent] = useState(0);
   const [loadSkeleton, setLoadSkeleton] = useState(true);
+  const [toastList, setToastList] = useState<
+    toastProperties["data"] | undefined
+  >();
+  const closeToast: toastProperties["close"] = () => {
+    setToastList(undefined);
+  };
 
   const buyTokenHoldings = useTokenHoldingInfo(
     currentAccount,
     buyToken,
     provider
+  );
+
+  const {buy,buyTxStatus} = useBuy(
+    buyAmount, 
+    buyToken,
+    currentAccount,
+    mm
+  );
+  const {sell,sellTxStatus} = useSell(
+    sellAmount, 
+    sellToken,
+    currentAccount,
+    mm
   );
 
   useEffect(() => {
@@ -48,6 +68,49 @@ const Vaultdetail = ({
     setBuyToken(productInfo?.underlyingTokens[0]);
     setSellToken(productInfo?.underlyingTokens[0]);
   }, [productInfo]);
+
+  useEffect(() => {
+    showToast(buyTxStatus);
+    // console.log("arstarstarstarst",buyTxStatus)
+  }, [buyTxStatus]);
+  
+  useEffect(() => {
+    showToast(sellTxStatus);
+    // console.log("arstarstarstarst",sellTxStatus)
+  }, [sellTxStatus]);
+
+  let toastProperty: toastProperties["data"];
+  const showToast = (type: string) => {
+    switch (type) {
+      case "default":
+        toastProperty = undefined;
+        break;
+      case "pending":
+        toastProperty = {
+          title: "Pending",
+          description: "This may take up to a minute.",
+          backgroundColor: "#5bc0de",
+        };
+        break;
+      case "error":
+        toastProperty = {
+          title: "Failed",
+          description: "Transaction reverted ",
+          backgroundColor: "#f0ad4e",
+        };
+        break;
+      case "success":
+        toastProperty = {
+          title: "Success",
+          description: "Transaction closed successfully",
+          backgroundColor: "#5cb85c",
+        };
+        break;
+      default:
+        toastProperty = undefined;
+    }
+    setToastList(toastProperty);
+  };
 
   console.log("*******", productInfo);
 
@@ -63,19 +126,6 @@ const Vaultdetail = ({
       setPriceChangePercent((currentPrice - 1) * 100);
     }
   };
-
-  const {buy,buyTxStatus} = useBuy(
-    buyAmount, 
-    buyToken,
-    currentAccount,
-    mm
-  );
-  const {sell,sellTxStatus} = useSell(
-    sellAmount, 
-    sellToken,
-    currentAccount,
-    mm
-  );
 
   const handleBuyAmountChange = (e: any) => {
     setBuyAmount(e.target.value);
@@ -492,6 +542,7 @@ const Vaultdetail = ({
             )}
           </div>
         </div>
+          <Toast data={toastList} close={closeToast} />
       </body>
     );
   }
