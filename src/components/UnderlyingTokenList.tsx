@@ -44,8 +44,13 @@ export const UnderlyingTokenList = ({ tokens, setLoadSkeleton }: any) => {
         </div>
       </header>
       <div className="headerUnderline"></div>
-
-      {tokens === undefined || underlyingPrices.length === 0
+      <div className="s_list_strategy_wrap">
+        <div className="s_list_strategy"></div>
+        <div className="s_list_strategy"></div>
+        <div className="s_list_strategy"></div>
+        <div className="s_list_strategy"></div>
+      </div>
+      {/* {tokens === undefined || underlyingPrices.length === 0
         ? null
         : tokens.map((item: any, idx: any) => (
             <ListStrategy
@@ -59,7 +64,7 @@ export const UnderlyingTokenList = ({ tokens, setLoadSkeleton }: any) => {
               percentChange={underlyingPrices[idx].percent_change}
               totalValue={item.quantity * underlyingPrices[idx].price}
             />
-          ))}
+          ))} */}
     </div>
   );
 };

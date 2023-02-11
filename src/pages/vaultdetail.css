@@ -557,6 +557,45 @@
   box-sizing: border-box;
   justify-content: flex-start;
 }
+.s_list_strategy_wrap {
+  position: relative;
+  display: block;
+  order: 1;
+}
+.s_list_strategy {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 24px;
+  padding: 0px 16px;
+  width: 740px;
+  height: 40px;
+  border-radius: 50px;
+  flex: none;
+  order: 0;
+  align-self: center;
+  flex-grow: 0;
+  box-sizing: border-box;
+  justify-content: center;
+  background-image: linear-gradient(
+      90deg,
+      rgba(227, 233, 237, 0),
+      #eaeff1 50%,
+      rgba(227, 233, 237, 0)
+    ),
+    linear-gradient(#e3e9ed 100%, transparent 0);
+  background-size: 100% 100%, 100% 100%;
+  background-position: -740px 0, 0 0;
+  background-repeat: repeat-y;
+  animation: shine001 1.6s infinite;
+  border-radius: 26px;
+}
+@keyframes shine001 {
+  to {
+    background-position: 740px 0, 0 0;
+  }
+}
 .ut_wrap .list_strategy .token {
   display: flex;
   flex-direction: row;
