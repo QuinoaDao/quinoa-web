@@ -5,10 +5,10 @@ import erc20_abi from "../abis/ERC20.json";
 
 
 
-export const useBuy = (amount: any, assetAddress: any, currentAccount: any, ethereum: Window["ethereum"]) => {
+export const useSell = (amount: any, assetAddress: any, currentAccount: any, ethereum: Window["ethereum"]) => {
     const signer = new ethers.providers.Web3Provider(ethereum).getSigner();
-    const [buyTxStatus, setTxStatus] = useState<string>("default");
-    const buy = useCallback(
+    const [sellTxStatus, setTxStatus] = useState<string>("default");
+    const sell = useCallback(
         async (amount: any, assetAddress: any) => {
             const productAddress: string = process.env.REACT_APP_PRODUCT_ADDRESS || "";
             const product = new ethers.Contract(
@@ -17,11 +17,10 @@ export const useBuy = (amount: any, assetAddress: any, currentAccount: any, ethe
                 signer
               );
               try {
-                let tokenContract = new ethers.Contract(assetAddress, erc20_abi.abi, signer);
-                const approveTx = await tokenContract.approve(product.address, ethers.utils.parseUnits(amount.toString()));
-                await approveTx.wait();
-                setTxStatus("pending");
-                const mintTx = await product.deposit(assetAddress, ethers.utils.parseUnits(amount.toString()), currentAccount);
+                console.log(amount,assetAddress);
+                console.log("SELLLLLLLL")
+                const mintTx = await product.withdraw(assetAddress, ethers.utils.parseUnits(amount.toString()), currentAccount, currentAccount);
+                console.log("SELL")
                 console.log(mintTx);
                 setTxStatus("pending");
                 const receipt = await mintTx.wait();
@@ -35,5 +34,5 @@ export const useBuy = (amount: any, assetAddress: any, currentAccount: any, ethe
             }
         },
     [amount, assetAddress, currentAccount, signer]);
-    return {buy, buyTxStatus};
+    return {sell, sellTxStatus};
 };
