@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import ERC20_abi from "../abis/ERC20.json";
 import { ethers } from "ethers";
-import { TokenInterface } from "../pages/vaultdetail";
 import { UnderlyingTokenInfo } from "../models/ProductInfo";
 
 export const useTokenHoldingInfo = (

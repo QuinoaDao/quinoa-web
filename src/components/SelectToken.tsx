@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import { TokenInterface, Tokens } from "../pages/vaultdetail";
 import { UnderlyingTokenInfo } from "../models/ProductInfo";
 
 const SelectToken = ({

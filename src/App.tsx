@@ -17,6 +17,7 @@ function App() {
   const [mmInstalled, setMMInstalled] = useState(false);
   const [currentAccount, setCurrentAccount] = useState<any>();
   const [correctNetwork, setCorrectNetwork] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
   const { ethereum } = window;
 
   const targetNetwork: Network = {
@@ -143,8 +144,10 @@ function App() {
         currentAccount={currentAccount}
         provider={quinoa_provider}
         mm={ethereum}
+        setIsLoaded={setIsLoaded}
       />
-      <Footer></Footer>
+
+      {!isLoaded ? null : <Footer />}
     </div>
   );
 }
