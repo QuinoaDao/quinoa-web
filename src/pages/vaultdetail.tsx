@@ -11,6 +11,8 @@ import { useUnderlyingTokenPrice } from "../hooks/useUnderlyingTokenPrice";
 import { ConvertPrice } from "../utils/PriceConvert";
 import { ProductInfo, UnderlyingTokenInfo } from "../models/ProductInfo";
 import Skeleton from "../components/skeleton";
+import { useBuy } from "../hooks/useBuy";
+
 
 const Vaultdetail = ({
   currentAccount,
@@ -63,6 +65,13 @@ const Vaultdetail = ({
 
   const underlyingPrices = useUnderlyingTokenPrice(
     productInfo?.underlyingTokens
+  );
+
+  const {buy,buyTxStatus} = useBuy(
+    buyAmount, 
+    buyToken,
+    currentAccount,
+    mm
   );
 
   const handleBuyAmountChange = (e: any) => {
@@ -395,7 +404,7 @@ const Vaultdetail = ({
                 </div>
                 <div className="spacing_67px"></div>
                 <div className="orderbtn_wrap">
-                  <span className="btn">Order</span>
+                  <span className="btn" onClick={()=> buy(buyAmount, buyToken?.address)}>Order</span>
                 </div>
               </div>
             ) : (
