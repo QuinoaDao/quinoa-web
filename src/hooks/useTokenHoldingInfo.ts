@@ -7,10 +7,10 @@ import { UnderlyingTokenInfo } from "../models/ProductInfo";
 export const useTokenHoldingInfo = (
   currentAccount: string | undefined,
   token: UnderlyingTokenInfo | undefined,
-  ethereum: Window["ethereum"]
+  provider: any
 ) => {
   const [tokenHolding, setTokenHolding] = useState<number>(0);
-  const provider = new ethers.providers.Web3Provider(ethereum);
+  //const provider = new ethers.providers.Web3Provider(ethereum);
 
   const getHoldings = async (
     currentAddress: string | undefined,

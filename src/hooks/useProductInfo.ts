@@ -7,9 +7,8 @@ import { PriceInfo } from "../utils/CoinMarketCapInfo";
 import { ConvertPrice } from "../utils/PriceConvert";
 import { GetLogoImage } from "../utils/LogoImage";
 
-export const useProductInfo = (ethereum: Window["ethereum"]) => {
-  const provider = new ethers.providers.Web3Provider(ethereum);
-  const signer = provider.getSigner();
+export const useProductInfo = (provider: any) => {
+  //const provider = new ethers.providers.Web3Provider(ethereum);
   const [productInfo, setProductInfo] = useState<ProductInfo>();
   const getProductInfo = async () => {
     const productAddress: string = process.env.REACT_APP_PRODUCT_ADDRESS || "";

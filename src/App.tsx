@@ -3,6 +3,7 @@ import Landing from "./pages/Landing";
 import Vaultdetail from "./pages/vaultdetail";
 import Nav from "./components/nav";
 import Footer from "./components/footer";
+import { ethers } from "ethers";
 import "./App.css";
 
 // import { ethers } from "ethers";
@@ -22,6 +23,11 @@ function App() {
     name: "Mumbai",
     id: "0x13881",
   };
+
+  const quinoa_provider = new ethers.providers.JsonRpcProvider(
+    process.env.REACT_APP_ALCHEMY_RPC_URL
+  );
+  console.log("QUINOA PROVIDER", quinoa_provider);
 
   const listenMMAccount = async () => {
     if (mmInstalled) {
@@ -133,7 +139,11 @@ function App() {
         connectWallet={connectWallet}
         changeNetwork={changeNetwork}
       />
-      <Vaultdetail currentAccount={currentAccount} mm={ethereum} />
+      <Vaultdetail
+        currentAccount={currentAccount}
+        provider={quinoa_provider}
+        mm={ethereum}
+      />
       <Footer></Footer>
     </div>
   );

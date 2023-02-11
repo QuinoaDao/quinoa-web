@@ -43,9 +43,10 @@ export const Tokens: TokenInterface[] = [
 
 const Vaultdetail = ({
   currentAccount,
+  provider,
   mm, // metamask
 }: any) => {
-  const productInfo = useProductInfo(mm);
+  const productInfo = useProductInfo(provider);
   const [showOption, setShowOption] = useState(false);
   const [buyToken, setBuyToken] = useState<UnderlyingTokenInfo | undefined>(
     productInfo?.underlyingTokens[0]
@@ -59,7 +60,11 @@ const Vaultdetail = ({
   const [priceChangStat, setPriceChangeStat] = useState("up");
   const [priceChangePercent, setPriceChangePercent] = useState(0);
 
-  const buyTokenHoldings = useTokenHoldingInfo(currentAccount, buyToken, mm);
+  const buyTokenHoldings = useTokenHoldingInfo(
+    currentAccount,
+    buyToken,
+    provider
+  );
 
   useEffect(() => {
     setBuyToken(productInfo?.underlyingTokens[0]);
@@ -67,23 +72,6 @@ const Vaultdetail = ({
   }, [productInfo]);
 
   console.log("*******", productInfo);
-  // const underlyingTokens: TokenInterface[] = () => {
-  //   if (productInfo !== undefined && productInfo.underlyingTokens !== undefined) {
-  //     let underlyings : TokenInterface[] = []
-  //       for (let i=0; i< productInfo.underlyingTokens.length; i++) {
-  //         underlyings.push({
-  //           symbol : productInfo.underlyingTokens[i].symbol,
-  //           subName: productInfo.underlyingTokens[i].name,
-  //           address: productInfo.underlyingTokens[i].address,
-  //           decimal: productInfo.underlyingTokens[i].decimal,
-  //           // logo json에서 가져오기
-  //           img : productInfo.
-  //         })
-  //       }
-  //   } else {
-  //     return []
-  //   }
-  // }
 
   const calculatePriceChange = (productInfo: ProductInfo) => {
     let currentPrice = parseFloat(
