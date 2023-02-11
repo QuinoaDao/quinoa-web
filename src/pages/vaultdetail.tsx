@@ -117,7 +117,7 @@ const Vaultdetail = ({
         </div>
         <div className="spacing_33px"></div>
         <div className="ut_wrap">
-          <header>
+          {/* <header>
             <div className="column_first">
               <span className="column_txt">Underlying Tokens</span>
             </div>
@@ -146,7 +146,7 @@ const Vaultdetail = ({
               <div className="spacing_14px"></div>
               <span className="column_txt">Total Value</span>
             </div>
-          </header>
+          </header> */}
 
           <div className="headerUnderline"></div>
           <UnderlyingTokenList tokens={productInfo?.underlyingTokens} />

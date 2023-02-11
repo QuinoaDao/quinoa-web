@@ -53,6 +53,7 @@ export const UnderlyingTokenList = ({ tokens }: any) => {
               balancePercent={parseInt(item.targetWeight) / 1000} // 만분율 -> 백분율
               tokenPrice={underlyingPrices[idx].price}
               percentChange={underlyingPrices[idx].percent_change}
+              totalValue={item.quantity * underlyingPrices[idx].price}
             />
           ))}
     </div>

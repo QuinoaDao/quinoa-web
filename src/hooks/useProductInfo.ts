@@ -39,7 +39,7 @@ export const useProductInfo = (ethereum: Window["ethereum"]) => {
       let underlyingInfo: UnderlyingTokenInfo = {
         symbol: symbol,
         name: name,
-        quantity: balance,
+        quantity: balance.toString(),
         address: address,
         targetWeight: underlyingTokens[i][1],
       };

@@ -14,27 +14,41 @@ const ListStrategy = (props: any) => {
         <span className="token_name">{props.tokenUnit}</span>
       </div>
       <div className="TokenPrice">
-        <span className="totalVolume">{props.tokenPrice}</span>
+        <span className="totalVolume">
+          $ {Math.round(props.tokenPrice * 100) / 100}
+        </span>
       </div>
       <div className="Balance">
         <span className="balance_percent">{props.balancePercent}</span>
       </div>
-      <div className="PercentChange">
-        {/* up/down에 따라 totalVolume 클래스 바꿔주기 */}
-        <div className="up_icon">
-          <img src="/asset/ut_up_icon.svg" />
+      {props.percentChange > 0 ? (
+        <div className="PercentChange">
+          <div className="up_icon">
+            <img src="/asset/ut_up_icon.svg" />
+          </div>
+          <span className="totalVolume up">
+            {Math.round(props.percentChange * 100) / 100}%
+          </span>
         </div>
-        {/* up/down에 따라 totalVolume 클래스 바꿔주기 */}
-        <span className="totalVolume">{props.percentChange}</span>
-      </div>
+      ) : (
+        <div className="PercentChange">
+          <div className="down_icon">
+            <img src="/asset/ut_down_icon.svg" />
+          </div>
+          <span className="totalVolume down">
+            {Math.round(props.percentChange * -1 * 100) / 100}%
+          </span>
+        </div>
+      )}
+
       <div className="Totalvalue">
         <span className="tv_txt">{props.totalValue}</span>
       </div>
       <div className="balancegraphline_wrap">
         <div className="graphline_wrap">
           <div className={`default`}></div>
-          <div className={`balance${props.graphBalanceClass}`}></div>
-          <div className={`balanceline${props.graphBalanceline}_txt`}>
+          <div className={`balance`}></div>
+          <div className={`balanceline_txt`}>
             <span>{props.balancePercent}</span>
           </div>
         </div>
