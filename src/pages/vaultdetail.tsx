@@ -9,6 +9,7 @@ import { ethers } from "ethers";
 import { UnderlyingTokenList } from "../components/UnderlyingTokenList";
 import { useUnderlyingTokenPrice } from "../hooks/useUnderlyingTokenPrice";
 import { ConvertPrice } from "../utils/PriceConvert";
+import { ProductInfo } from "../models/ProductInfo";
 
 export interface TokenInterface {
   symbol: string;
@@ -39,14 +40,28 @@ const Vaultdetail = ({
   const [orderStatus, setOrderStatus] = useState("buy");
   const [buyAmount, setBuyAmount] = useState(0);
   const [sellAmount, setSellAmount] = useState(0);
+  const [priceChangStat, setPriceChangeStat] = useState("up");
+  const [priceChangePercent, setPriceChangePercent] = useState(0);
 
   const buyTokenHoldings = useTokenHoldingInfo(currentAccount, buyToken, mm);
   const productInfo = useProductInfo(mm);
 
+  const calculatePriceChange = (productInfo: ProductInfo) => {
+    let currentPrice = parseFloat(
+      ethers.utils.formatEther(productInfo.currentPrice)
+    );
+    if (1 - currentPrice > 0) {
+      setPriceChangeStat("down");
+      setPriceChangePercent((currentPrice - 1) * -1 * 100);
+    } else {
+      setPriceChangeStat("up");
+      setPriceChangePercent((currentPrice - 1) * 100);
+    }
+  };
+
   const underlyingPrices = useUnderlyingTokenPrice(
     productInfo?.underlyingTokens
   );
-  // const sellableAmount = useProductHoldingInfo()
 
   const handleBuyAmountChange = (e: any) => {
     setBuyAmount(e.target.value);
@@ -117,51 +132,22 @@ const Vaultdetail = ({
             </span>
           </div>
           <div className="percentchange">
-            {/*percent up/down 에 따라 이미지 바꿔주기*/}
             <span className="About_txt_short">Percent Change</span>
             {/*up/down 에 따라 percent_txt 클래스 바꿔주기*/}
             <span className="percent_txt">
               <span className="pc_icon">
-                <img src="/asset/pc_icon_up.svg" />
+                {priceChangStat === "up" ? (
+                  <img src="/asset/pc_icon_up.svg" />
+                ) : (
+                  <img src="/asset/pc_icon_down.svg" />
+                )}
               </span>
-              <span>21.39%</span>
+              <span>{priceChangePercent}%</span>
             </span>
           </div>
         </div>
         <div className="spacing_33px"></div>
-        <div className="ut_wrap">
-          {/* <header>
-            <div className="column_first">
-              <span className="column_txt">Underlying Tokens</span>
-            </div>
-            <div className="column_quantity">
-              <div className="spacing_line"></div>
-              <div className="spacing_14px"></div>
-              <span className="column_txt">Quantity</span>
-            </div>
-            <div className="column_Tokenprice">
-              <div className="spacing_line"></div>
-              <div className="spacing_14px"></div>
-              <span className="column_txt">Token Price</span>
-            </div>
-            <div className="column_Tokenbalance">
-              <div className="spacing_line"></div>
-              <div className="spacing_14px"></div>
-              <span className="column_txt">Balance</span>
-            </div>
-            <div className="column_PercentChange">
-              <div className="spacing_line"></div>
-              <div className="spacing_14px"></div>
-              <span className="column_txt">Percent Change</span>
-            </div>
-            <div className="column_Totalvalue">
-              <div className="spacing_line"></div>
-              <div className="spacing_14px"></div>
-              <span className="column_txt">Total Value</span>
-            </div>
-          </header> */}
-
-          <div className="headerUnderline"></div>
+        <div>
           <UnderlyingTokenList tokens={productInfo?.underlyingTokens} />
         </div>
         <div className="maintitle_wrap">
@@ -304,7 +290,12 @@ const Vaultdetail = ({
             id="selltab"
             type="radio"
             name="btn_wrap"
-            onClick={() => setOrderStatus("sell")}
+            onClick={() => {
+              setOrderStatus("sell");
+              if (showOption) {
+                setShowOption(false);
+              }
+            }}
             checked={orderStatus === "sell" ? true : false}
           />
           <label className="btn_wrap sellbtn" htmlFor="selltab">

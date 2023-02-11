@@ -389,7 +389,7 @@
 .infomain_wrap .ut_wrap {
   position: relative;
   width: 100%;
-  height: 253px;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
