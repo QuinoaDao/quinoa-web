@@ -185,23 +185,22 @@ const Vaultdetail = ({
         <div className="vault_priceinfo">
           <div className="aum">
             <span className="About_txt_short">AUM(TVL)</span>
-            <span className="number_txt">
-              ${productInfo?.tvl === undefined ? 0 : productInfo?.tvl}
-              {/* <span className="othercolor">.04</span> */}
-            </span>
+            {productInfo === undefined ? (
+              <div className="s_number_txt"></div>
+            ) : (
+              <span className="number_txt">${productInfo?.tvl}</span>
+            )}
           </div>
           <div className="currentprice">
             <span className="About_txt_short">Current Price</span>
-            <span className="number_txt">
-              $
-              {productInfo?.currentPrice === undefined
-                ? 0
-                : productInfo?.currentPrice}
-            </span>
+            {productInfo === undefined ? (
+              <div className="s_number_txt"></div>
+            ) : (
+              <span className="number_txt">${productInfo?.currentPrice}</span>
+            )}
           </div>
           <div className="percentchange">
             <span className="About_txt_short">Percent Change</span>
-            {/*up/down 에 따라 percent_txt 클래스 바꿔주기*/}
             <span className="percent_txt">
               <span className="pc_icon">
                 {priceChangStat === "up" ? (
@@ -210,7 +209,11 @@ const Vaultdetail = ({
                   <img src="/asset/pc_icon_down.svg" />
                 )}
               </span>
-              <span>{priceChangePercent}%</span>
+              {productInfo === undefined ? (
+                <div className="s_number_txt"></div>
+              ) : (
+                <span>{priceChangePercent}%</span>
+              )}
             </span>
           </div>
         </div>
@@ -319,11 +322,19 @@ const Vaultdetail = ({
         <div className="spacing_28px"></div>
         <div className="stat_list">
           <div className="aum_wrap st_wrap">
-            <span className="name">${productInfo?.tvl.toString()}</span>
+            {productInfo === undefined ? (
+              <div className="s_name"></div>
+            ) : (
+              <span className="name">${productInfo?.tvl.toString()}</span>
+            )}
             <span className="txt">AUM(TVL)</span>
           </div>
           <div className="propensity_wrap st_wrap">
-            <span className="name">Agressive</span>
+            {productInfo === undefined ? (
+              <div className="s_name"></div>
+            ) : (
+              <span className="name">Agressive</span>
+            )}
             <span className="txt">Propensity</span>
           </div>
           <div className="protocolfee_wrap st_wrap">
@@ -331,7 +342,11 @@ const Vaultdetail = ({
             <span className="txt">Protocol Fee</span>
           </div>
           <div className="managefee_wrap st_wrap">
-            <span className="name">0.00%</span>
+            {productInfo === undefined ? (
+              <div className="s_name"></div>
+            ) : (
+              <span className="name">0.00%</span>
+            )}
             <span className="txt">Management Fee</span>
           </div>
         </div>

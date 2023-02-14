@@ -10,8 +10,8 @@ export interface UnderlyingTokenInfo {
   symbol: string;
   name: string;
   address: string;
-  targetWeight: BigNumberish;
-  quantity: BigNumberish;
+  targetWeight: number;
+  quantity: number;
   dollarPrice: number;
   decimal: string;
   logo: string;
