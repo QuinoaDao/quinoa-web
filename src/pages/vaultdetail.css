@@ -1568,6 +1568,55 @@
   letter-spacing: normal;
   text-align: left;
 }
+#body_wrap .s_buysellBox_wrap {
+  position: sticky;
+  right: 0;
+  top: 98px;
+  height: 340px;
+  width: 366px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  object-fit: contain;
+  box-sizing: border-box;
+  align-items: center;
+  padding: 0px 0px 21px;
+  border-radius: 18px;
+  margin-top: 60px;
+  border: 1px solid #e3e9ed;
+  box-shadow: 0px -12px 24px rgba(0, 0, 0, 0.01),
+    0px 12px 24px rgba(0, 0, 0, 0.04);
+}
+.s_spacing_50px_line {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 50px;
+  /* background-color: #ffefef; */
+  border-bottom: 1px solid #e3e9ed;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+.s_skeleton_box {
+  position: relative;
+  display: flex;
+  width: 80%;
+  height: 36px;
+  background-image: linear-gradient(
+      90deg,
+      rgba(227, 233, 237, 0),
+      #eaeff1 50%,
+      rgba(227, 233, 237, 0)
+    ),
+    linear-gradient(#e3e9ed 100%, transparent 0);
+  background-size: 100% 100%, 100% 100%;
+  background-position: calc(-366px * 0.8) 0, 0 0;
+  background-repeat: repeat-y;
+  animation: shine8 1.6s infinite;
+  margin-top: 16px;
+  border-radius: 36px;
+}
 #body_wrap .buysellBox_wrap {
   position: sticky;
   right: 0;
@@ -2192,33 +2241,6 @@ input[name="btn_wrap"] {
   flex-grow: 0;
   box-sizing: border-box;
 }
-.buysellBox_wrap .s_convertedValue {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px 21px;
-  width: 100%;
-  height: 18px;
-  border-radius: 8px;
-  flex: none;
-  order: 6;
-  align-self: center;
-  align-self: stretch;
-  flex-grow: 0;
-  box-sizing: border-box;
-  background-image: linear-gradient(
-      90deg,
-      rgba(227, 233, 237, 0),
-      #eaeff1 50%,
-      rgba(227, 233, 237, 0)
-    ),
-    linear-gradient(#e3e9ed 100%, transparent 0);
-  background-size: 100% 100%, 100% 100%;
-  background-position: -120px 0, 0 0;
-  background-repeat: repeat-y;
-  animation: shine002 1.6s infinite;
-}
 .buysellBox_wrap .convertedValue_wrap .cv_txt {
   width: auto;
   height: auto;
@@ -2246,6 +2268,7 @@ input[name="btn_wrap"] {
   order: 1;
   flex-grow: 0;
 }
+
 .buysellBox_wrap .invested_wrap {
   display: flex;
   flex-direction: row;
@@ -2259,31 +2282,6 @@ input[name="btn_wrap"] {
   align-self: stretch;
   flex-grow: 0;
   box-sizing: border-box;
-}
-.buysellBox_wrap .s_invested {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  width: 100%;
-  height: 18px;
-  border-radius: 8px;
-  flex: none;
-  order: 0;
-  align-self: center;
-  flex-grow: 0;
-  box-sizing: border-box;
-  justify-content: center;
-  background-image: linear-gradient(
-      90deg,
-      rgba(227, 233, 237, 0),
-      #eaeff1 50%,
-      rgba(227, 233, 237, 0)
-    ),
-    linear-gradient(#e3e9ed 100%, transparent 0);
-  background-size: 100% 100%, 100% 100%;
-  background-position: -120px 0, 0 0;
-  background-repeat: repeat-y;
-  animation: shine002 1.6s infinite;
 }
 .buysellBox_wrap .invested_wrap .iv_txt {
   width: auto;
@@ -2329,32 +2327,6 @@ input[name="btn_wrap"] {
   align-self: stretch;
   flex-grow: 0;
   box-sizing: border-box;
-}
-.buysellBox_wrap .s_investableAmount {
-  margin-top: 8px;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  width: 100%;
-  height: 18px;
-  border-radius: 8px;
-  flex: none;
-  order: 0;
-  align-self: center;
-  flex-grow: 0;
-  box-sizing: border-box;
-  justify-content: center;
-  background-image: linear-gradient(
-      90deg,
-      rgba(227, 233, 237, 0),
-      #eaeff1 50%,
-      rgba(227, 233, 237, 0)
-    ),
-    linear-gradient(#e3e9ed 100%, transparent 0);
-  background-size: 100% 100%, 100% 100%;
-  background-position: -120px 0, 0 0;
-  background-repeat: repeat-y;
-  animation: shine002 1.6s infinite;
 }
 .buysellBox_wrap .investableAmount_wrap .ia_txt {
   width: auto;
