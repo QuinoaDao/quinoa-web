@@ -35,5 +35,18 @@ export const useBuy = (amount: any, assetAddress: any, currentAccount: any, ethe
             }
         },
     [amount, assetAddress, currentAccount, signer]);
+
+    useEffect(() => {
+        if(buyTxStatus === "error") {
+            setTimeout(() => {
+                setTxStatus("default")
+            }, 8000)
+        }
+        else if (buyTxStatus === "success") {
+            setTimeout(() => {
+                setTxStatus("default")
+            }, 4000)
+        }
+    }, [buyTxStatus]);
     return {buy, buyTxStatus};
 };

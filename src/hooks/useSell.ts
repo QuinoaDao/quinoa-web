@@ -18,7 +18,6 @@ export const useSell = (amount: any, assetAddress: any, currentAccount: any, eth
               );
               try {
                 console.log(amount,assetAddress);
-                console.log("SELLLLLLLL")
                 const mintTx = await product.withdraw(assetAddress, ethers.utils.parseUnits(amount.toString()), currentAccount, currentAccount);
                 console.log("SELL")
                 console.log(mintTx);
@@ -34,5 +33,17 @@ export const useSell = (amount: any, assetAddress: any, currentAccount: any, eth
             }
         },
     [amount, assetAddress, currentAccount, signer]);
+    useEffect(() => {
+        if(sellTxStatus === "error") {
+            setTimeout(() => {
+                setTxStatus("default")
+            }, 8000)
+        }
+        else if (sellTxStatus === "success") {
+            setTimeout(() => {
+                setTxStatus("default")
+            }, 4000)
+        }
+    }, [sellTxStatus])
     return {sell, sellTxStatus};
 };
