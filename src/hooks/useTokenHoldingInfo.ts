@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 import ERC20_abi from "../abis/ERC20.json";
 import { ethers } from "ethers";
-import { TokenInterface } from "../pages/vaultdetail";
+import { UnderlyingTokenInfo } from "../models/ProductInfo";
 
 export const useTokenHoldingInfo = (
   currentAccount: string | undefined,
-  token: TokenInterface,
+  token: UnderlyingTokenInfo | undefined,
   ethereum: Window["ethereum"]
 ) => {
-  const [tokenHoling, setTokenHolding] = useState<number>(0);
+  const [tokenHolding, setTokenHolding] = useState<number>(0);
   const provider = new ethers.providers.Web3Provider(ethereum);
 
   const getHoldings = async (
     currentAddress: string | undefined,
-    token: TokenInterface
+    token: UnderlyingTokenInfo
   ) => {
     if (currentAddress === undefined) {
       return;
@@ -23,10 +23,11 @@ export const useTokenHoldingInfo = (
       ERC20_abi.abi,
       provider
     );
-    console.log(tokenContract);
+
     let balance: ethers.BigNumberish;
     let amount: number;
-    if (token.symbol == "ETH") {
+
+    if (token.symbol == "MATIC") {
       balance = await provider.getBalance(currentAddress);
     } else {
       const tonkenContract = new ethers.Contract(
@@ -40,7 +41,9 @@ export const useTokenHoldingInfo = (
     setTokenHolding(amount);
   };
   useEffect(() => {
-    getHoldings(currentAccount, token);
+    if (token !== undefined) {
+      getHoldings(currentAccount, token);
+    }
   }, [currentAccount, token]);
-  return tokenHoling;
+  return tokenHolding;
 };

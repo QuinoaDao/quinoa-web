@@ -350,6 +350,32 @@
   order: 1;
   flex-grow: 0;
 }
+.vault_priceinfo .s_number_txt {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 120px;
+  height: 34px;
+  border-radius: 34px;
+  flex: none;
+  order: 0;
+  align-self: center;
+  flex-grow: 0;
+  box-sizing: border-box;
+  justify-content: center;
+  background-image: linear-gradient(
+      90deg,
+      rgba(227, 233, 237, 0),
+      #eaeff1 50%,
+      rgba(227, 233, 237, 0)
+    ),
+    linear-gradient(#e3e9ed 100%, transparent 0);
+  background-size: 100% 100%, 100% 100%;
+  background-position: -120px 0, 0 0;
+  background-repeat: repeat-y;
+  animation: shine002 1.6s infinite;
+}
 .vault_priceinfo .percent_txt {
   width: auto;
   height: 34px;
@@ -389,7 +415,7 @@
 .infomain_wrap .ut_wrap {
   position: relative;
   width: 100%;
-  height: 253px;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -557,6 +583,41 @@
   box-sizing: border-box;
   justify-content: flex-start;
 }
+.s_list_strategy_wrap {
+  position: relative;
+  display: block;
+  order: 1;
+}
+.s_list_strategy {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 24px;
+  padding: 0px 16px;
+  width: 740px;
+  height: 40px;
+  border-radius: 50px;
+  flex: none;
+  order: 0;
+  align-self: center;
+  flex-grow: 0;
+  box-sizing: border-box;
+  justify-content: center;
+  background-image: linear-gradient(
+      90deg,
+      rgba(227, 233, 237, 0),
+      #eaeff1 50%,
+      rgba(227, 233, 237, 0)
+    ),
+    linear-gradient(#e3e9ed 100%, transparent 0);
+  background-size: 100% 100%, 100% 100%;
+  background-position: -740px 0, 0 0;
+  background-repeat: repeat-y;
+  animation: shine001 1.6s infinite;
+  border-radius: 26px;
+}
+
 .ut_wrap .list_strategy .token {
   display: flex;
   flex-direction: row;
@@ -583,6 +644,11 @@
   box-sizing: border-box;
   background-color: #fff;
   border-radius: 50%;
+  overflow: hidden;
+}
+.ut_wrap .list_strategy .token .tokenImg_wrap img {
+  width: 24px;
+  height: 24px;
 }
 .ut_wrap .list_strategy .token .token_txt {
   width: auto;
@@ -1012,7 +1078,6 @@
   display: flex;
   align-items: center;
   letter-spacing: -0.25px;
-  color: #2f3030;
   flex: none;
   order: 0;
   flex-grow: 0;
@@ -1118,6 +1183,33 @@
   box-sizing: border-box;
   justify-content: flex-start;
   align-items: stretch;
+}
+.s_performance {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 26px;
+  width: 100%;
+  height: 140px;
+  flex: none;
+  order: 0;
+  align-self: center;
+  flex-grow: 0;
+  box-sizing: border-box;
+  justify-content: center;
+  background-image: linear-gradient(
+      90deg,
+      rgba(227, 233, 237, 0),
+      #eaeff1 50%,
+      rgba(227, 233, 237, 0)
+    ),
+    linear-gradient(#e3e9ed 100%, transparent 0);
+  background-size: 100% 100%, 100% 100%;
+  background-position: -740px 0, 0 0;
+  background-repeat: repeat-y;
+  animation: shine001 1.6s infinite;
+  border-radius: 12px;
 }
 .performance_wrap .performance .percentChange_row {
   display: flex;
@@ -1365,6 +1457,32 @@
   text-align: left;
   box-sizing: border-box;
 }
+.about_list .al_wrap .s_name,
+.stat_list .st_wrap .s_name {
+  flex-direction: row;
+  align-items: flex-start;
+  margin-top: -12px;
+  width: 140px;
+  height: 28px;
+  border-radius: 28px;
+  flex: none;
+  order: 0;
+  align-self: left;
+  flex-grow: 0;
+  box-sizing: border-box;
+  justify-content: center;
+  background-image: linear-gradient(
+      90deg,
+      rgba(227, 233, 237, 0),
+      #eaeff1 50%,
+      rgba(227, 233, 237, 0)
+    ),
+    linear-gradient(#e3e9ed 100%, transparent 0);
+  background-size: 100% 100%, 100% 100%;
+  background-position: -120px 0, 0 0;
+  background-repeat: repeat-y;
+  animation: shine002 1.6s infinite;
+}
 .about_list .contract_wrap .name,
 .about_list .contract_wrap a {
   color: #0f99ff;
@@ -1372,6 +1490,7 @@
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
 }
+
 .about_list .al_wrap .txt {
   width: auto;
   height: 13px;
@@ -1448,6 +1567,55 @@
   font-stretch: normal;
   letter-spacing: normal;
   text-align: left;
+}
+#body_wrap .s_buysellBox_wrap {
+  position: sticky;
+  right: 0;
+  top: 98px;
+  height: 340px;
+  width: 366px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  object-fit: contain;
+  box-sizing: border-box;
+  align-items: center;
+  padding: 0px 0px 21px;
+  border-radius: 18px;
+  margin-top: 60px;
+  border: 1px solid #e3e9ed;
+  box-shadow: 0px -12px 24px rgba(0, 0, 0, 0.01),
+    0px 12px 24px rgba(0, 0, 0, 0.04);
+}
+.s_spacing_50px_line {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 50px;
+  /* background-color: #ffefef; */
+  border-bottom: 1px solid #e3e9ed;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+.s_skeleton_box {
+  position: relative;
+  display: flex;
+  width: 80%;
+  height: 36px;
+  background-image: linear-gradient(
+      90deg,
+      rgba(227, 233, 237, 0),
+      #eaeff1 50%,
+      rgba(227, 233, 237, 0)
+    ),
+    linear-gradient(#e3e9ed 100%, transparent 0);
+  background-size: 100% 100%, 100% 100%;
+  background-position: calc(-366px * 0.8) 0, 0 0;
+  background-repeat: repeat-y;
+  animation: shine8 1.6s infinite;
+  margin-top: 16px;
+  border-radius: 36px;
 }
 #body_wrap .buysellBox_wrap {
   position: sticky;
@@ -1684,6 +1852,31 @@ input[name="btn_wrap"] {
   cursor: pointer;
   border-radius: 4px;
 }
+.buysellBox_wrap .investin_wrap .s_selectbox_wrap,
+.buysellBox_wrap .amount_wrap .s_selectbox_wrap {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 211px;
+  height: 44px;
+  border-radius: 8px;
+  flex: none;
+  order: 1;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: center;
+  background-image: linear-gradient(
+      90deg,
+      rgba(227, 233, 237, 0),
+      #eaeff1 50%,
+      rgba(227, 233, 237, 0)
+    ),
+    linear-gradient(#e3e9ed 100%, transparent 0);
+  background-size: 100% 100%, 100% 100%;
+  background-position: -120px 0, 0 0;
+  background-repeat: repeat-y;
+  animation: shine002 1.6s infinite;
+}
 .buysellBox_wrap .investin_wrap .selectbox_wrap:hover {
   transition: 100ms;
   /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.06), 0px -4px 6px rgba(0, 0, 0, 0.02); */
@@ -1693,6 +1886,7 @@ input[name="btn_wrap"] {
   outline: none;
   border: 1px solid #e3e9ed;
 }
+
 .buysellBox_wrap .investin_wrap .selectbox_wrap .selectbox {
   display: flex;
   flex-direction: row;
@@ -1717,6 +1911,13 @@ input[name="btn_wrap"] {
   flex: none;
   order: 0;
   flex-grow: 0;
+}
+.buysellBox_wrap .investin_wrap .selectbox_wrap .selectbox .token img {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 .buysellBox_wrap .investin_wrap .selectbox_wrap .selectbox_list {
   width: calc(100% + 2px);
@@ -1746,6 +1947,13 @@ input[name="btn_wrap"] {
   gap: 4px;
   order: 0;
   flex-grow: 0;
+}
+.buysellBox_wrap .investin_wrap .selectbox_wrap .selectbox_list img {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 .buysellBox_wrap .investin_wrap .selectbox_wrap .selectbox_list li.active {
   border-left: solid 1px #0937a8;
@@ -1916,6 +2124,30 @@ input[name="btn_wrap"] {
   order: 0;
   flex-grow: 1;
 }
+.buysellBox_wrap .asbtn_wrap .s_amount_select_btn {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 27px;
+  border-radius: 8px;
+  flex: none;
+  flex: none;
+  order: 0;
+  flex-grow: 1;
+  align-items: center;
+  box-sizing: border-box;
+  background-image: linear-gradient(
+      90deg,
+      rgba(227, 233, 237, 0),
+      #eaeff1 50%,
+      rgba(227, 233, 237, 0)
+    ),
+    linear-gradient(#e3e9ed 100%, transparent 0);
+  background-size: 100% 100%, 100% 100%;
+  background-position: -120px 0, 0 0;
+  background-repeat: repeat-y;
+  animation: shine002 1.6s infinite;
+}
 .buysellBox_wrap .asbtn_wrap .amount_select_btn .txt_wrap {
   position: relative;
   box-sizing: border-box;
@@ -2036,6 +2268,7 @@ input[name="btn_wrap"] {
   order: 1;
   flex-grow: 0;
 }
+
 .buysellBox_wrap .invested_wrap {
   display: flex;
   flex-direction: row;
@@ -2327,4 +2560,15 @@ input[type="number"]:-mos-placeholder {
 
 .amount_inputbox_wrap input[type="number"]:focus {
   border: 1px solid #205ae7;
+}
+
+@keyframes shine001 {
+  to {
+    background-position: 740px 0, 0 0;
+  }
+}
+@keyframes shine002 {
+  to {
+    background-position: 120px 0, 0 0;
+  }
 }
