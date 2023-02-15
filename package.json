@@ -1,6 +1,5 @@
 {
   "name": "quinoa-web",
-  "homepage": "quinoa.investments/static-allocation-product",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
