@@ -42,7 +42,6 @@ export const useProductInfo = (provider: any) => {
       // get token name and symbol
       // TODO : underlying Token 이 MATIC 일 경우 처리
       let tokenContract = new ethers.Contract(address, erc20_abi.abi, provider);
-      console.log("00000");
 
       const [name, decimal, balance, symbol] = await Promise.all([
         tokenContract.name(),
@@ -51,7 +50,6 @@ export const useProductInfo = (provider: any) => {
         tokenContract.symbol(),
       ]);
 
-      console.log("11111");
       let underlyingInfo: UnderlyingTokenInfo = {
         symbol: symbol,
         name: name,
@@ -63,23 +61,13 @@ export const useProductInfo = (provider: any) => {
         decimal: decimal.toString(),
         logo: "",
       };
-      console.log("22222");
       const [dollarPrice] = await Promise.all([ConvertPrice(symbol, 1)]);
 
       underlyingInfo.logo =
         logomap[underlyingInfo.symbol as keyof typeof logomap];
       underlyingInfo.dollarPrice = dollarPrice;
-      // ConvertPrice(symbol, 1).then((price: number) => {
-      //   dollarPrice = price;
-      //   underlyingInfo.dollarPrice = dollarPrice;
-      // });
-      // GetLogoImage(symbol).then((logo: string) => {
-      //   logo = logo;
-      //   underlyingInfo.logo = logo;
-      // });
       newUnderlyingInfo.push(underlyingInfo);
     }
-    console.log("33333");
     setProductInfo({
       tvl: Math.round(Number(ethers.utils.formatEther(tvl)) * 100) / 100,
       currentPrice: Math.round(Number(ethers.utils.formatEther(currentPrice))),

@@ -20,16 +20,15 @@ function App() {
 
   const { ethereum } = window;
   const [quinoa_provider, setQuinoaProvider] = useState(
-    new ethers.providers.JsonRpcProvider("https://rpc-mumbai.maticvigil.com")
+    new ethers.providers.JsonRpcProvider(
+      process.env.REACT_APP_ALCHEMY_RPC_URL || ""
+    )
   );
   const targetNetwork: Network = {
-    name: "Mumbai",
-    id: "0x13881",
+    name: process.env.REACT_APP_NETWORK_NAME || "",
+    id: process.env.REACT_APP_NETWORK_ID || "",
   };
 
-  // const quinoa_provider = new ethers.providers.JsonRpcProvider(
-  //   process.env.REACT_APP_ALCHEMY_RPC_URL
-  // );
   // const quinoa_provider = new ethers.providers.JsonRpcProvider(
   //   "https://rpc-mumbai.maticvigil.com"
   // );
