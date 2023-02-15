@@ -11,11 +11,13 @@ cd quinoa-web
 yarn install
 ```
 
+
 ## 🛫 Usage
 To run the development server for Quinoa-Web,
 ```bash
 yarn start
 ```
+
 
 This will start a development server at http://localhost:3000, where you can view and test the application.
 
@@ -24,6 +26,7 @@ To build the production version of the application, you can use the npm run buil
 yarn build
 ```
 This will create a production-ready build of the application in the build/ directory.
+
 
 
 ## 👼 Contributing
