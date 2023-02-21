@@ -201,7 +201,7 @@
   gap: 3px;
   position: relative;
   width: 792px;
-  height: 206px;
+  height: fit-content;
   box-sizing: border-box;
 }
 .Intro_wrap .Introduction {
@@ -273,6 +273,126 @@
   line-height: 13px;
   text-align: center;
   color: #000000;
+}
+.Intro_wrap .positionInfo_wrap {
+  width: 100%;
+  height: 95px;
+  display: flex;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 14px;
+  flex-direction: row;
+  flex: none;
+  order: 4;
+  align-self: stretch;
+  flex-grow: 0;
+  box-sizing: border-box;
+  margin-top: 16px;
+  margin-bottom: -7px;
+}
+.Intro_wrap .positionInfo_wrap .positionInfo {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 22px 17px;
+  gap: 8px;
+  width: calc(100% / 3 - 28px);
+  height: 100%;
+  border: 1px solid #e3e9ed;
+  border-radius: 12px;
+  flex: none;
+  order: 0;
+  flex-grow: 1;
+}
+.positionInfo_wrap .positionInfo .txt {
+  width: auto;
+  height: 15px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15px;
+  color: #000000;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.positionInfo_wrap .positionInfo .number {
+  width: auto;
+  height: 28px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  color: #000000;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.positionInfo_wrap .positionInfo .totalReturn_txt {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 1px;
+  width: auto;
+  height: 28px;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.positionInfo_wrap .positionInfo .totalReturn_txt .position_icon {
+  display: flex;
+  width: 19px;
+  height: 100%;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.positionInfo_wrap .positionInfo .totalReturn_txt .tr_number {
+  width: auto;
+  height: 28px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  color: #1bc100;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.tr_number.up {
+  color: #1bc100;
+}
+.tr_number.down {
+  color: #ff3156;
+}
+.positionInfo_wrap .positionInfo .totalReturn_txt .tr_percent {
+  width: auto;
+  height: 28px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  color: #1bc100;
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.tr_percent.up {
+  color: #1bc100;
+}
+.tr_percent.down {
+  color: #ff3156;
 }
 .vault_priceinfo {
   width: 100%;
@@ -798,7 +918,8 @@
   z-index: 4;
   box-sizing: border-box;
 }
-.ut_wrap .list_strategy .PercentChange .up_icon {
+.ut_wrap .list_strategy .PercentChange .up_icon,
+.ut_wrap .list_strategy .PercentChange .down_icon {
   width: 11px;
   height: 14px;
   flex: none;
@@ -2475,6 +2596,16 @@ input[name="btn_wrap"] {
   box-sizing: border-box;
   margin: 0 auto;
 }
+.spacing_16px {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  height: 16px;
+  /* background-color: #ffefef; */
+  box-sizing: border-box;
+  flex: none;
+  order: 3;
+}
 .spacing_26px {
   position: relative;
   display: flex;
@@ -2486,10 +2617,10 @@ input[name="btn_wrap"] {
 .spacing_33px_underline {
   box-sizing: border-box;
   width: 100%;
-  height: 34px;
+  height: 33px;
   border-bottom: 1px solid #e3e9ed;
   flex: none;
-  order: 3;
+  order: 5;
   align-self: stretch;
   flex-grow: 0;
 }
@@ -2505,7 +2636,7 @@ input[name="btn_wrap"] {
   box-sizing: border-box;
   display: flex;
   width: 100%;
-  height: 33px;
+  height: 31px;
   /* background-color: #ffefef; */
   box-sizing: border-box;
 }

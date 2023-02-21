@@ -44,6 +44,26 @@ const Vaultdetail = ({
               <span className="tag_name">Top10 marketcap</span>
             </div>
           </div>
+          <div className="positionInfo_wrap">
+            <div className="positionInfo investmentValue">
+              <span className="txt">Your Investment Value</span>
+              <span className="number">$32.101.38</span>
+            </div>
+            <div className="positionInfo averageUnitprice">
+              <span className="txt">Your Average unit price</span>
+              <span className="number">$101.38</span>
+            </div>
+            <div className="positionInfo totalReturn">
+              <span className="txt">Total Return</span>
+              <div className="totalReturn_txt">
+                <span className="position_icon">
+                  <img src="/asset/tr_icon_up.svg" />
+                </span>
+                <span className="tr_number">$401.38</span>
+                <span className="tr_percent">(99.99%)</span>
+              </div>
+            </div>
+          </div>
           <div className="spacing_33px_underline"></div>
         </div>
         <div className="spacing_51px"></div>
