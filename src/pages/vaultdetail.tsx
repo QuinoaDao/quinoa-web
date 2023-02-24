@@ -184,11 +184,11 @@ const Vaultdetail = ({
         <div className="spacing_28px"></div>
         <div className="about_list">
           <div className="creator_wrap al_wrap">
-            <span className="name">Quinoa quant</span>
+            <span className="name">Quinoa DAC</span>
             <span className="txt">Creator</span>
           </div>
           <div className="inceptiondate_wrap al_wrap">
-            <span className="name">May 5, 2022</span>
+            <span className="name">2 24, 2023</span>
             <span className="txt">Inception Date</span>
           </div>
           <div className="network_wrap al_wrap">
@@ -196,7 +196,7 @@ const Vaultdetail = ({
             <span className="txt">Network</span>
           </div>
           <div className="contract_wrap al_wrap">
-            <a href="">
+            <a href={"https://polygonscan.com/address/" + process.env.REACT_APP_PRODUCT_ADDRESS} target="_blank">
               <span className="name">View Contract</span>
             </a>
             <span className="txt">Contract Link</span>
@@ -218,11 +218,7 @@ const Vaultdetail = ({
             <span className="txt">AUM(TVL)</span>
           </div>
           <div className="propensity_wrap st_wrap">
-            {productInfo === undefined ? (
-              <div className="s_name"></div>
-            ) : (
               <span className="name">Moderate</span>
-            )}
             <span className="txt">Propensity</span>
           </div>
           <div className="protocolfee_wrap st_wrap">
@@ -230,11 +226,7 @@ const Vaultdetail = ({
             <span className="txt">Protocol Fee</span>
           </div>
           <div className="managefee_wrap st_wrap">
-            {productInfo === undefined ? (
-              <div className="s_name"></div>
-            ) : (
               <span className="name">0.00%</span>
-            )}
             <span className="txt">Management Fee</span>
           </div>
         </div>
