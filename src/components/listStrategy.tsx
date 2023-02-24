@@ -34,11 +34,11 @@ const ListStrategy = (props: any) => {
       </div>
       <div className="TokenPrice">
         <span className="totalVolume">
-          $ {Math.round(props.tokenPrice * 100) / 100}
+          ${Math.round(props.tokenPrice * 100) / 100}
         </span>
       </div>
       <div className="Balance">
-        <span className="balance_percent">{props.balancePercent}</span>
+        <span className="balance_percent">{props.balancePercent}%</span>
       </div>
       {props.percentChange > 0 ? (
         <div className="PercentChange">
@@ -61,7 +61,7 @@ const ListStrategy = (props: any) => {
       )}
 
       <div className="Totalvalue">
-        <span className="tv_txt">$ {props.totalValue}</span>
+        <span className="tv_txt">${props.totalValue}</span>
       </div>
       <div className="balancegraphline_wrap">
         <div className="graphline_wrap">

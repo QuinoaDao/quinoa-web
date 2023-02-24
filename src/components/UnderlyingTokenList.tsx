@@ -26,7 +26,7 @@ export const UnderlyingTokenList = ({ tokens }: any) => {
         <div className="column_Tokenbalance">
           <div className="spacing_line"></div>
           <div className="spacing_14px"></div>
-          <span className="column_txt">Balance</span>
+          <span className="column_txt">Allocation</span>
         </div>
         <div className="column_PercentChange">
           <div className="spacing_line"></div>

@@ -167,7 +167,7 @@ const Vaultdetail = ({
             <div className="performance_sort">
               <div className="vault_per_info">
                 <div className="vp_icon"></div>
-                <span className="vp_txt">Stable Defi Fund</span>
+                <span className="vp_txt">Static allocation Product</span>
               </div>
               <div className="benchmark_per_info">
                 <div className="bm_icon"></div>
@@ -192,7 +192,7 @@ const Vaultdetail = ({
             <span className="txt">Inception Date</span>
           </div>
           <div className="network_wrap al_wrap">
-            <span className="name">on Ethereum</span>
+            <span className="name">on Polygon</span>
             <span className="txt">Network</span>
           </div>
           <div className="contract_wrap al_wrap">
@@ -221,7 +221,7 @@ const Vaultdetail = ({
             {productInfo === undefined ? (
               <div className="s_name"></div>
             ) : (
-              <span className="name">Agressive</span>
+              <span className="name">Moderate</span>
             )}
             <span className="txt">Propensity</span>
           </div>
