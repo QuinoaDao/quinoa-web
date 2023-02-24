@@ -87,17 +87,20 @@ const Vaultdetail = ({
           <div className="percentchange">
             <span className="About_txt_short">Percent Change</span>
             <span className="percent_txt">
-              <span className="pc_icon">
-                {priceChangStat === "up" ? (
-                  <img src="/asset/pc_icon_up.svg" />
-                ) : (
-                  <img src="/asset/pc_icon_down.svg" />
-                )}
-              </span>
+
               {productInfo === undefined ? (
                 <div className="s_number_txt"></div>
               ) : (
+                <>
+                <span className="pc_icon">
+                  {priceChangStat === "up" ? (
+                    <img src="/asset/pc_icon_up.svg" />
+                  ) : (
+                    <img src="/asset/pc_icon_down.svg" />
+                  )}
+                </span>
                 <span>{priceChangePercent}%</span>
+                </>
               )}
             </span>
           </div>
