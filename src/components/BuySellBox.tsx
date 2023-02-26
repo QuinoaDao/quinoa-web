@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
-import TitleDetailWrap from "../components/titleDetailwrap";
-import SelectToken from "../components/SelectToken";
+import TitleDetailWrap from "./vaultDetailInfo";
+import SelectToken from "./SelectToken";
 import { useTokenHoldingInfo } from "../hooks/useTokenHoldingInfo";
 import { useProductInfo } from "../hooks/useProductInfo";
-import { UnderlyingTokenList } from "../components/UnderlyingTokenList";
+import { UnderlyingTokenList } from "./underlyingTokenList";
 import { ProductInfo, UnderlyingTokenInfo } from "../models/ProductInfo";
 import { useBuy } from "../hooks/useBuy";
 import { useInvestedAmountInfo } from "../hooks/useInvestedAmountInfo";
 import { useSellableAmountInfo } from "../hooks/useSellableAmountInfo";
 import { useSell } from "../hooks/useSell";
-import { Toast, toastProperties } from "../components/Modals/Toast";
+import { Toast, toastProperties } from "./modals/Toast";
+import { roundNumbers } from "../utils/MathUtils";
 
 export const BuySellBox = ({
   currentAccount,
@@ -25,8 +26,8 @@ export const BuySellBox = ({
   const [sellToken, setSellToken] = useState<UnderlyingTokenInfo | undefined>(
     productInfo?.underlyingTokens[0]
   );
-  const [buyAmount, setBuyAmount] = useState(0);
-  const [sellAmount, setSellAmount] = useState(0);
+  const [buyAmount, setBuyAmount] = useState("");
+  const [sellAmount, setSellAmount] = useState("");
   const [shareBalance, setShareBalance] = useState();
   const [toastList, setToastList] = useState<
     toastProperties["data"] | undefined
@@ -69,12 +70,29 @@ export const BuySellBox = ({
   }, [sellTxStatus]);
 
   const handleBuyAmountChange = (e: any) => {
-    setBuyAmount(e.target.value);
+    setBuyAmount((e.target.value).replace(/^0+(?!\.|$)/, ''));
   };
 
   const handleSellAmountChange = (e: any) => {
-    setSellAmount(e.target.value);
+    setSellAmount((e.target.value).replace(/^0+(?!\.|$)/, ''));
   };
+
+  const handleOrderBnt = (opt: string, tokenAmount: any, tokenAddress: any) => {
+    if(tokenAmount == undefined || tokenAmount == "" || tokenAmount == "0") {
+      return;
+    }
+    if(tokenAddress == undefined) {
+      return;
+    }
+    
+    if(opt == "buy") { 
+      buy(tokenAmount, tokenAddress);
+    }
+    else if(opt == "sell") {
+      sell(tokenAmount, tokenAddress);
+    }
+
+  }
 
   const closeToast: toastProperties["close"] = () => {
     setToastList(undefined);
@@ -200,25 +218,25 @@ export const BuySellBox = ({
                 <div className="amount_select_btn">
                   <div
                     className="txt_wrap"
-                    onClick={() => setBuyAmount(buyTokenHoldings * 0.1)}
+                    onClick={() => setBuyAmount((buyTokenHoldings * 0.1).toString())}
                   >
                     <span>10%</span>
                   </div>
                   <div
                     className="txt_wrap"
-                    onClick={() => setBuyAmount(buyTokenHoldings * 0.25)}
+                    onClick={() => setBuyAmount((buyTokenHoldings * 0.25).toString())}
                   >
                     <span>25%</span>
                   </div>
                   <div
                     className="txt_wrap"
-                    onClick={() => setBuyAmount(buyTokenHoldings * 0.5)}
+                    onClick={() => setBuyAmount((buyTokenHoldings * 0.5).toString())}
                   >
                     <span>50%</span>
                   </div>
                   <div
                     className="txt_wrap"
-                    onClick={() => setBuyAmount(buyTokenHoldings)}
+                    onClick={() => setBuyAmount((buyTokenHoldings).toString())}
                   >
                     <span>MAX</span>
                   </div>
@@ -228,7 +246,7 @@ export const BuySellBox = ({
               <div className="convertedValue_wrap">
                 <span className="cv_txt">Converted value</span>
                 <span className="cv_price">
-                  $ {convertPrice(buyToken?.symbol, buyAmount)}
+                  $ {convertPrice(buyToken?.symbol, Number(buyAmount))}
                 </span>
               </div>
               <div className="spacing_20px"></div>
@@ -236,20 +254,20 @@ export const BuySellBox = ({
               <div className="spacing_15px"></div>
               <div className="invested_wrap">
                 <span className="iv_txt">Amount invested</span>
-                <span className="iv_price">$ {amountInvested}</span>
+                <span className="iv_price">$ {roundNumbers(amountInvested)}</span>
               </div>
               <div className="spacing_8px"></div>
               <div className="investableAmount_wrap">
                 <span className="ia_txt">Investable amount</span>
                 <span className="ia_price">
-                  {buyTokenHoldings} {buyToken?.symbol}
+                  {roundNumbers(buyTokenHoldings)} {buyToken?.symbol}
                 </span>
               </div>
               <div className="spacing_67px"></div>
               <div className="orderbtn_wrap">
                 <span
                   className="btn"
-                  onClick={() => buy(buyAmount, buyToken?.address)}
+                  onClick={() => {handleOrderBnt("buy", buyAmount, buyToken?.address)}}
                 >
                   Order
                 </span>
@@ -296,25 +314,25 @@ export const BuySellBox = ({
                 <div className="amount_select_btn">
                   <div
                     className="txt_wrap"
-                    onClick={() => setBuyAmount(sellableTokenAmount * 0.1)}
+                    onClick={() => setBuyAmount((sellableTokenAmount * 0.1).toString())}
                   >
                     <span>10%</span>
                   </div>
                   <div
                     className="txt_wrap"
-                    onClick={() => setSellAmount(sellableTokenAmount * 0.25)}
+                    onClick={() => setSellAmount((sellableTokenAmount * 0.25).toString())}
                   >
                     <span>25%</span>
                   </div>
                   <div
                     className="txt_wrap"
-                    onClick={() => setSellAmount(sellableTokenAmount * 0.5)}
+                    onClick={() => setSellAmount((sellableTokenAmount * 0.5).toString())}
                   >
                     <span>50%</span>
                   </div>
                   <div
                     className="txt_wrap"
-                    onClick={() => setSellAmount(sellableTokenAmount * 0.1)}
+                    onClick={() => setSellAmount((sellableTokenAmount * 0.1).toString())}
                   >
                     <span>MAX</span>
                   </div>
@@ -324,7 +342,7 @@ export const BuySellBox = ({
               <div className="convertedValue_wrap">
                 <span className="cv_txt">Converted value</span>
                 <span className="cv_price">
-                  $ {convertPrice(sellToken?.symbol, sellAmount)}
+                  $ {convertPrice(sellToken?.symbol, Number(sellAmount))}
                 </span>
               </div>
               <div className="spacing_20px"></div>
@@ -333,14 +351,14 @@ export const BuySellBox = ({
               <div className="investableAmount_wrap">
                 <span className="ia_txt">Sellable amount</span>
                 <span className="ia_price">
-                  {sellableTokenAmount} {sellToken?.symbol}
+                  {roundNumbers(sellableTokenAmount)} {sellToken?.symbol}
                 </span>
               </div>
               <div className="spacing_67px"></div>
               <div className="orderbtn_wrap">
                 <span
                   className="btn"
-                  onClick={() => sell(sellAmount, sellToken?.address)}
+                  onClick={() => {handleOrderBnt("sell", sellAmount, sellToken?.address)}}
                 >
                   Order
                 </span>
