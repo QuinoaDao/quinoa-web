@@ -6,7 +6,7 @@ export const useInvestedAmountInfo = (
   currentAddress: string | undefined,
   ethereum: Window["ethereum"],
   setShareBalance: any
-) => {
+  ) => {
   const [investedAmount, setInvestedAmount] = useState(0);
   const provider = new ethers.providers.Web3Provider(ethereum);
   const productContract = new ethers.Contract(
@@ -20,9 +20,10 @@ export const useInvestedAmountInfo = (
       return;
     }
     const balance = await productContract.balanceOf(currentAddress);
-    setShareBalance(balance);
+    if(setShareBalance != undefined) {
+      setShareBalance(balance);
+    }
     const amount = await productContract.shareValue(balance);
-    console.log("INVESTEDAMO?U?NT ", amount);
     setInvestedAmount(Number(ethers.utils.formatEther(amount)));
   };
 

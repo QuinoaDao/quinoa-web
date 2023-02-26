@@ -13,7 +13,7 @@ const SelectToken = ({
     <ul className="selectbox_list">
       {underlyingTokens
         .filter((token: UnderlyingTokenInfo) => {
-          if (token.symbol === "LINK") {
+          if (token.symbol === "QUICK") {
             return false;
           }
           return true;

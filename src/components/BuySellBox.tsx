@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TitleDetailWrap from "./vaultDetailInfo";
-import SelectToken from "./SelectToken";
+import SelectToken from "./selectToken";
 import { useTokenHoldingInfo } from "../hooks/useTokenHoldingInfo";
 import { useProductInfo } from "../hooks/useProductInfo";
 import { UnderlyingTokenList } from "./underlyingTokenList";
@@ -13,10 +13,12 @@ import { Toast, toastProperties } from "./modals/Toast";
 import { roundNumbers } from "../utils/MathUtils";
 
 export const BuySellBox = ({
+  connectWallet,
+  changeNetwork,
   currentAccount,
   provider,
-  mm,
-  productInfo, // metamask
+  mm, // metamask
+  productInfo, 
 }: any) => {
   const [showOption, setShowOption] = useState(false);
   const [orderStatus, setOrderStatus] = useState("buy");
@@ -77,12 +79,19 @@ export const BuySellBox = ({
     setSellAmount((e.target.value).replace(/^0+(?!\.|$)/, ''));
   };
 
-  const handleOrderBnt = (opt: string, tokenAmount: any, tokenAddress: any) => {
+  const handleOrderBnt = async (opt: string, tokenAmount: any, tokenAddress: any) => {
     if(tokenAmount == undefined || tokenAmount == "" || tokenAmount == "0") {
       return;
     }
     if(tokenAddress == undefined) {
       return;
+    }
+
+    if(await mm.request({ method: "eth_accounts" }) == undefined || ((await mm.request({ method: "eth_accounts" })).length == 0)) {
+      await connectWallet();
+    }
+    if(mm.networkVersion != (process.env.REACT_APP_NETWORK_ID || "0x89")) {
+      await changeNetwork();
     }
     
     if(opt == "buy") { 

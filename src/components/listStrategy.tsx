@@ -1,4 +1,5 @@
 import React from "react";
+import { roundNumbers } from "../utils/MathUtils";
 //TODO: 실제 토큰에 맞춰서 컬러값 추가해주기
 const colormap = {
   USDC: "rgba(62,115,196,1)",
@@ -7,6 +8,7 @@ const colormap = {
   LINK: "rgba(61,91,203,1)",
 };
 const ListStrategy = (props: any) => {
+
   const default_bar_styles = {
     background: colormap[props.symbol as keyof typeof colormap],
   };
@@ -20,6 +22,7 @@ const ListStrategy = (props: any) => {
   const text_styles = {
     color: colormap[props.symbol as keyof typeof colormap],
   };
+
   return (
     <div className="list_strategy">
       <div className="token">
@@ -29,12 +32,12 @@ const ListStrategy = (props: any) => {
         <span className="token_txt">{props.tokenName}</span>
       </div>
       <div className="Quantity">
-        <span className="number">{props.quantity}</span>
+        <span className="number">{roundNumbers(props.quantity)}</span>
         <span className="token_name">{props.tokenUnit}</span>
       </div>
       <div className="TokenPrice">
         <span className="totalVolume">
-          ${Math.round(props.tokenPrice * 100) / 100}
+          ${roundNumbers(props.tokenPrice)}
         </span>
       </div>
       <div className="Balance">
@@ -46,7 +49,7 @@ const ListStrategy = (props: any) => {
             <img src="/asset/ut_up_icon.svg" />
           </div>
           <span className="totalVolume up">
-            {Math.round(props.percentChange * 100) / 100}%
+            {roundNumbers(props.percentChange)}%
           </span>
         </div>
       ) : (
@@ -55,13 +58,13 @@ const ListStrategy = (props: any) => {
             <img src="/asset/ut_down_icon.svg" />
           </div>
           <span className="totalVolume down">
-            {Math.round(props.percentChange * -1 * 100) / 100}%
+            {roundNumbers(props.percentChange)}%
           </span>
         </div>
       )}
 
       <div className="Totalvalue">
-        <span className="tv_txt">${props.totalValue}</span>
+        <span className="tv_txt">${roundNumbers(props.totalValue)}</span>
       </div>
       <div className="balancegraphline_wrap">
         <div className="graphline_wrap">
