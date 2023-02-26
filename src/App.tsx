@@ -22,6 +22,7 @@ function App() {
   const [quinoa_provider, setQuinoaProvider] = useState(
     new ethers.providers.JsonRpcProvider(process.env.REACT_APP_ALCHEMY_RPC_URL || "https://polygon-rpc.com")
   );
+
   const targetNetwork: Network = {
     name: process.env.REACT_APP_NETWORK_NAME || "Polygon",
     id: process.env.REACT_APP_NETWORK_ID || "0x89",
@@ -56,6 +57,7 @@ function App() {
       return;
     }
     const accounts = await ethereum.request({ method: "eth_accounts" });
+
     if (accounts.length !== 0) {
       console.log("Found authorized Account: ", accounts[0]);
       setCurrentAccount(accounts[0]);
@@ -73,8 +75,7 @@ function App() {
       }
       let chainId = await ethereum.request({ method: "eth_chainId" });
 
-      const address = await ethereum.enable();
-      await console.log("address : ", address);
+      let address = await ethereum.request({method: 'eth_requestAccounts'});
 
       if (chainId !== targetNetwork.id) {
         console.log(
@@ -129,6 +130,7 @@ function App() {
     checkIfWalletIsConnected();
     listenMMAccount();
     listenMMNetwork();
+    console.log("currnet account: ", currentAccount);
   }, [currentAccount]);
 
   return (
@@ -140,6 +142,8 @@ function App() {
         changeNetwork={changeNetwork}
       />
       <Vaultdetail
+        connectWallet={connectWallet}
+        changeNetwork={changeNetwork}
         currentAccount={currentAccount}
         provider={quinoa_provider}
         mm={ethereum}

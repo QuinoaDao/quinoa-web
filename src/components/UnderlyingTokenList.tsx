@@ -3,11 +3,14 @@ import ListStrategy from "./listStrategy";
 import { PriceInfo, PriceInfoType } from "../utils/CoinMarketCapInfo";
 import { useUnderlyingTokenPrice } from "../hooks/useUnderlyingTokenPrice";
 import { ProductInfo } from "../models/ProductInfo";
-import { UnderlyingTokenSkeleton } from "./UnderlyingTokenSkeleton";
+import { UnderlyingTokenSkeleton } from "./underlyingTokenSkeleton";
+
 export const UnderlyingTokenList = ({ tokens }: any) => {
   const underlyingPrices = useUnderlyingTokenPrice(tokens);
 
   return (
+    <>
+    <div className="spacing_33px"></div>
     <div className="ut_wrap">
       <header>
         <div className="column_first">
@@ -51,16 +54,16 @@ export const UnderlyingTokenList = ({ tokens }: any) => {
             tokenImage={item.logo}
             quantity={item.quantity}
             tokenUnit={item.symbol}
-            balancePercent={parseInt(item.targetWeight) / 1000} // 만분율 -> 백분율
+            balancePercent={parseInt(item.targetWeight) / 1000} // 십만분율 -> 백분율
             tokenPrice={underlyingPrices[idx].price}
             percentChange={underlyingPrices[idx].percent_change}
             totalValue={
-              Math.floor(item.quantity * underlyingPrices[idx].price * 100) /
-              100
+              item.quantity * underlyingPrices[idx].price
             }
           />
         ))
       )}
     </div>
+    </>
   );
 };
