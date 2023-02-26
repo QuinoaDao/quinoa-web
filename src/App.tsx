@@ -20,19 +20,13 @@ function App() {
 
   const { ethereum } = window;
   const [quinoa_provider, setQuinoaProvider] = useState(
-    new ethers.providers.JsonRpcProvider("https://rpc-mumbai.maticvigil.com")
+    new ethers.providers.JsonRpcProvider(process.env.REACT_APP_ALCHEMY_RPC_URL || "https://polygon-rpc.com")
   );
   const targetNetwork: Network = {
-    name: "Mumbai",
-    id: "0x13881",
+    name: process.env.REACT_APP_NETWORK_NAME || "Polygon",
+    id: process.env.REACT_APP_NETWORK_ID || "0x89",
   };
 
-  // const quinoa_provider = new ethers.providers.JsonRpcProvider(
-  //   process.env.REACT_APP_ALCHEMY_RPC_URL
-  // );
-  // const quinoa_provider = new ethers.providers.JsonRpcProvider(
-  //   "https://rpc-mumbai.maticvigil.com"
-  // );
   console.log("QUINOA PROVIDER", quinoa_provider);
 
   const listenMMAccount = async () => {
@@ -113,7 +107,7 @@ function App() {
               {
                 chainName: targetNetwork.name,
                 chainId: targetNetwork.id,
-                rpcUrls: ["https://polygon-testnet-rpc.allthatnode.com:8545"],
+                rpcUrls: ["https://polygon-rpc.com"],
               },
             ],
           });
