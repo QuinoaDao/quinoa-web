@@ -1,9 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { roundNumbers } from "../utils/MathUtils";
 
 const VaultPriceInfo = ({productInfo}: any) => {
 
     const [priceChangStat, setPriceChangeStat] = useState("up");
     const [priceChangePercent, setPriceChangePercent] = useState(0);
+
+    useEffect(() =>{
+      if(productInfo !== undefined) {
+        let changePercent = (productInfo.currentPrice - 1) * 100;
+        if(productInfo.currentPrice < 1) { // 1보다 작은 경우 (손해가 난 경우) 
+          setPriceChangeStat("down");
+          changePercent *= -1;
+        }
+        else {
+          setPriceChangeStat("up");
+        }
+        setPriceChangePercent(changePercent);
+      }
+    }, [productInfo])
   
     return (
         <>
@@ -15,7 +30,7 @@ const VaultPriceInfo = ({productInfo}: any) => {
             {productInfo === undefined ? (
               <div className="s_number_txt"></div>
             ) : (
-              <span className="number_txt">${Math.round(productInfo?.tvl * 100) / 100}</span>
+              <span className="number_txt">${roundNumbers(productInfo?.tvl)}</span>
             )}
           </div>
           <div className="currentprice">
@@ -41,7 +56,7 @@ const VaultPriceInfo = ({productInfo}: any) => {
                     <img src="/asset/pc_icon_down.svg" />
                   )}
                 </span>
-                <span>{priceChangePercent}%</span>
+                <span>{roundNumbers(priceChangePercent)}%</span>
                 </>
               )}
             </span>
