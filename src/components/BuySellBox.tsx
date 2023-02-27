@@ -27,7 +27,7 @@ export const BuySellBox = ({
     productInfo?.underlyingTokens[0]
   );
   const [sellToken, setSellToken] = useState<UnderlyingTokenInfo | undefined>(
-    productInfo?.underlyingTokens[0]
+    productInfo?.underlyingTokens[productInfo.underlyingTokens.length - 1]
   );
   const [buyAmount, setBuyAmount] = useState("");
   const [sellAmount, setSellAmount] = useState("");
@@ -65,8 +65,6 @@ export const BuySellBox = ({
     sellToken,
     mm
   );
-
-  console.log("sellableTokenAmount: ", sellableTokenAmount);
 
   useEffect(() => {
     setBuyToken(productInfo?.underlyingTokens[0]);
