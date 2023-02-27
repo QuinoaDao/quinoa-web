@@ -5,11 +5,11 @@ import erc20_abi from "../abis/ERC20.json";
 
 
 
-export const useSell = (amount: any, assetAddress: any, currentAccount: any, ethereum: Window["ethereum"]) => {
+export const useSell = (amount: any, assetInfo: any, currentAccount: any, ethereum: Window["ethereum"]) => {
     const signer = new ethers.providers.Web3Provider(ethereum).getSigner();
     const [sellTxStatus, setTxStatus] = useState<string>("default");
     const sell = useCallback(
-        async (amount: any, assetAddress: any) => {
+        async (amount: any, assetAddress: any, assetDecimal: any) => {
             const productAddress: string = process.env.REACT_APP_PRODUCT_ADDRESS || "";
             const product = new ethers.Contract(
                 productAddress,
@@ -18,7 +18,7 @@ export const useSell = (amount: any, assetAddress: any, currentAccount: any, eth
               );
               try {
                 console.log(amount,assetAddress);
-                const mintTx = await product.withdraw(assetAddress, ethers.utils.parseUnits(amount.toString()), currentAccount, currentAccount);
+                const mintTx = await product.withdraw(assetAddress, ethers.utils.parseUnits(amount.toString(), assetDecimal), currentAccount, currentAccount);
                 console.log("SELL")
                 console.log(mintTx);
                 setTxStatus("pending");
@@ -32,7 +32,7 @@ export const useSell = (amount: any, assetAddress: any, currentAccount: any, eth
                 setTxStatus("error");
             }
         },
-    [amount, assetAddress, currentAccount, signer]);
+    [amount, assetInfo, currentAccount, signer]);
     useEffect(() => {
         if(sellTxStatus === "error") {
             setTimeout(() => {

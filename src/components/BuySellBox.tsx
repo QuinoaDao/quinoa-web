@@ -62,6 +62,14 @@ export const BuySellBox = ({
   }, [productInfo]);
 
   useEffect(() => {
+    setBuyAmount("");
+  }, [buyToken])
+
+  useEffect(() => {
+    setSellAmount("");
+  }, [sellToken])
+  
+  useEffect(() => {
     showToast(buyTxStatus);
     // console.log("arstarstarstarst",buyTxStatus)
   }, [buyTxStatus]);
@@ -79,7 +87,7 @@ export const BuySellBox = ({
     setSellAmount((e.target.value).replace(/^0+(?!\.|$)/, ''));
   };
 
-  const handleOrderBnt = async (tokenAmount: any, tokenAddress: any) => {
+  const handleOrderBnt = async (tokenAmount: any, tokenAddress: any, tokenDecimal: any) => {
     if(tokenAmount === undefined || tokenAmount === "" || tokenAmount === "0") {
       return;
     }
@@ -95,10 +103,10 @@ export const BuySellBox = ({
     }
     
     if(orderStatus === "buy") { 
-      buy(tokenAmount, tokenAddress);
+      buy(tokenAmount, tokenAddress, tokenDecimal);
     }
     else if(orderStatus === "sell") {
-      sell(tokenAmount, tokenAddress);
+      sell(tokenAmount, tokenAddress, tokenDecimal);
     }
 
   }
@@ -277,7 +285,7 @@ export const BuySellBox = ({
               <div className="orderbtn_wrap">
                 <span
                   className="btn"
-                  onClick={() => {handleOrderBnt(buyAmount, buyToken?.address)}}
+                  onClick={() => {handleOrderBnt(buyAmount, buyToken?.address, buyToken?.decimal)}}
                 >
                   Order
                 </span>
@@ -369,7 +377,7 @@ export const BuySellBox = ({
               <div className="orderbtn_wrap">
                 <span
                   className="btn"
-                  onClick={() => {handleOrderBnt(sellAmount, sellToken?.address)}}
+                  onClick={() => {handleOrderBnt(sellAmount, sellToken?.address, sellToken?.decimal)}}
                 >
                   Order
                 </span>
