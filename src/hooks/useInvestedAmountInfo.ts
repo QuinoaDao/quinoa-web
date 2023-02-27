@@ -24,7 +24,8 @@ export const useInvestedAmountInfo = (
       setShareBalance(balance);
     }
     const amount = await productContract.shareValue(balance);
-    setInvestedAmount(Number(ethers.utils.formatEther(amount)));
+    // setInvestedAmount(Number(ethers.utils.formatEther(amount)));
+    setInvestedAmount(amount);
   };
 
   useEffect(() => {

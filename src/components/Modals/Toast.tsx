@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react"
-import "./Toast.css"
+import "./toast.css"
 
 export interface toastProperties {
     data: {

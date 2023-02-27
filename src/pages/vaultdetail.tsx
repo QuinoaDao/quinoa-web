@@ -10,6 +10,7 @@ import About from "../components/about";
 import Stat from "../components/stat";
 import Performance from "../components/performance";
 import VaultPriceInfo from "../components/vaultPriceInfo";
+import { useInvestedAmountInfo } from "../hooks/useInvestedAmountInfo";
 
 const Vaultdetail = ({
   connectWallet,
@@ -19,6 +20,8 @@ const Vaultdetail = ({
   mm, // metamask
 }: any) => {
   const productInfo = useProductInfo(provider);
+  const [shareBalance, setShareBalance] = useState(0);
+  const investedValue = useInvestedAmountInfo(currentAccount, mm, setShareBalance);
 
   return (
     <body id="body_wrap">
@@ -28,7 +31,9 @@ const Vaultdetail = ({
           dacName="QuinoaDAC"
           propensity="Moderate"
         />
-        <PositionInfo currentAccount={currentAccount} mm={mm}/>
+        {productInfo === undefined || shareBalance.toString() === "0" ?
+          null : <PositionInfo currentAccount={currentAccount} shareBalance={shareBalance} investedValue={investedValue} mm={mm}/>
+        }
         <VaultPriceInfo productInfo={productInfo}/>
         <UnderlyingTokenList tokens={productInfo?.underlyingTokens} />
         <Performance />

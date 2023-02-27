@@ -9,8 +9,9 @@ import { useBuy } from "../hooks/useBuy";
 import { useInvestedAmountInfo } from "../hooks/useInvestedAmountInfo";
 import { useSellableAmountInfo } from "../hooks/useSellableAmountInfo";
 import { useSell } from "../hooks/useSell";
-import { Toast, toastProperties } from "./modals/Toast";
+import { Toast, toastProperties } from "./modals/toast";
 import { roundNumbers } from "../utils/MathUtils";
+import { formatEther } from "ethers/lib/utils";
 
 export const BuySellBox = ({
   connectWallet,
@@ -42,6 +43,7 @@ export const BuySellBox = ({
     mm,
     setShareBalance
   );
+
   const { buy, buyTxStatus } = useBuy(buyAmount, buyToken, currentAccount, mm);
   const { sell, sellTxStatus } = useSell(
     sellAmount,
@@ -159,6 +161,7 @@ export const BuySellBox = ({
       }
     }
   };
+
   return (
     <div>
       <div className="buysellBox_wrap">
@@ -272,7 +275,7 @@ export const BuySellBox = ({
               <div className="spacing_15px"></div>
               <div className="invested_wrap">
                 <span className="iv_txt">Amount invested</span>
-                <span className="iv_price">$ {roundNumbers(amountInvested)}</span>
+                <span className="iv_price">$ {roundNumbers(formatEther(amountInvested))}</span>
               </div>
               <div className="spacing_8px"></div>
               <div className="investableAmount_wrap">
