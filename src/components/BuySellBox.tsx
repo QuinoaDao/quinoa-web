@@ -9,7 +9,7 @@ import { useBuy } from "../hooks/useBuy";
 import { useInvestedAmountInfo } from "../hooks/useInvestedAmountInfo";
 import { useSellableAmountInfo } from "../hooks/useSellableAmountInfo";
 import { useSell } from "../hooks/useSell";
-import { Toast, toastProperties } from "./Modals/toast";
+import { Toast, toastProperties } from "./modals/toast";
 import { roundNumbers } from "../utils/MathUtils";
 
 export const BuySellBox = ({
