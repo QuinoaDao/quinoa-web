@@ -19,7 +19,7 @@ export const BuySellBox = ({
   currentAccount,
   provider,
   mm, // metamask
-  productInfo, 
+  productInfo,
 }: any) => {
   const [showOption, setShowOption] = useState(false);
   const [orderStatus, setOrderStatus] = useState("buy");
@@ -82,11 +82,11 @@ export const BuySellBox = ({
   }, [sellTxStatus]);
 
   const handleBuyAmountChange = (e: any) => {
-    setBuyAmount((e.target.value).replace(/^0+(?!\.|$)/, ''));
+    setBuyAmount(e.target.value.replace(/^0+(?!\.|$)/, ""));
   };
 
   const handleSellAmountChange = (e: any) => {
-    setSellAmount((e.target.value).replace(/^0+(?!\.|$)/, ''));
+    setSellAmount(e.target.value.replace(/^0+(?!\.|$)/, ""));
   };
 
   const handleOrderBnt = async (tokenAmount: any, tokenAddress: any, tokenDecimal: any) => {
@@ -110,8 +110,7 @@ export const BuySellBox = ({
     else if(orderStatus === "sell") {
       sell(tokenAmount, tokenAddress, tokenDecimal);
     }
-
-  }
+  };
 
   const closeToast: toastProperties["close"] = () => {
     setToastList(undefined);
@@ -239,25 +238,31 @@ export const BuySellBox = ({
                 <div className="amount_select_btn">
                   <div
                     className="txt_wrap"
-                    onClick={() => setBuyAmount((buyTokenHoldings * 0.1).toString())}
+                    onClick={() =>
+                      setBuyAmount((buyTokenHoldings * 0.1).toString())
+                    }
                   >
                     <span>10%</span>
                   </div>
                   <div
                     className="txt_wrap"
-                    onClick={() => setBuyAmount((buyTokenHoldings * 0.25).toString())}
+                    onClick={() =>
+                      setBuyAmount((buyTokenHoldings * 0.25).toString())
+                    }
                   >
                     <span>25%</span>
                   </div>
                   <div
                     className="txt_wrap"
-                    onClick={() => setBuyAmount((buyTokenHoldings * 0.5).toString())}
+                    onClick={() =>
+                      setBuyAmount((buyTokenHoldings * 0.5).toString())
+                    }
                   >
                     <span>50%</span>
                   </div>
                   <div
                     className="txt_wrap"
-                    onClick={() => setBuyAmount((buyTokenHoldings).toString())}
+                    onClick={() => setBuyAmount(buyTokenHoldings.toString())}
                   >
                     <span>MAX</span>
                   </div>
@@ -285,6 +290,16 @@ export const BuySellBox = ({
                 </span>
               </div>
               <div className="spacing_67px"></div>
+              <div className="amount_error">
+                <div className="errorIcon">
+                  <img src="./asset/amount_error.svg" />
+                </div>
+                <p className="error_txt">
+                  Don't have enough ETH to buy this product.
+                </p>
+                {/* <p className="error_txt"> Please enter an amount.</p> */}
+                <div className="spacing_9px"></div>
+              </div>
               <div className="orderbtn_wrap">
                 <span
                   className="btn"
@@ -336,25 +351,33 @@ export const BuySellBox = ({
                 <div className="amount_select_btn">
                   <div
                     className="txt_wrap"
-                    onClick={() => setBuyAmount((sellableTokenAmount * 0.1).toString())}
+                    onClick={() =>
+                      setBuyAmount((sellableTokenAmount * 0.1).toString())
+                    }
                   >
                     <span>10%</span>
                   </div>
                   <div
                     className="txt_wrap"
-                    onClick={() => setSellAmount((sellableTokenAmount * 0.25).toString())}
+                    onClick={() =>
+                      setSellAmount((sellableTokenAmount * 0.25).toString())
+                    }
                   >
                     <span>25%</span>
                   </div>
                   <div
                     className="txt_wrap"
-                    onClick={() => setSellAmount((sellableTokenAmount * 0.5).toString())}
+                    onClick={() =>
+                      setSellAmount((sellableTokenAmount * 0.5).toString())
+                    }
                   >
                     <span>50%</span>
                   </div>
                   <div
                     className="txt_wrap"
-                    onClick={() => setSellAmount((sellableTokenAmount * 0.1).toString())}
+                    onClick={() =>
+                      setSellAmount((sellableTokenAmount * 0.1).toString())
+                    }
                   >
                     <span>MAX</span>
                   </div>
