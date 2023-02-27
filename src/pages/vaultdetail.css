@@ -2523,20 +2523,47 @@ input[name="btn_wrap"] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0px 21px;
   width: 100%;
-  height: 58px;
+  height: fit-content;
   box-sizing: border-box;
   flex: none;
   order: 14;
   align-self: stretch;
   flex-grow: 0;
-  background-color: red;
+  padding: 0px 10px;
+  gap: 7px;
 }
 .buysellBox_wrap .amount_error .errorIcon {
   display: flex;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
   width: 17px;
   height: 17px;
+}
+.buysellBox_wrap .amount_error .error_txt {
+  width: auto;
+  height: auto;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #ff5555;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.buysellBox_wrap .amount_error .spacing_9px {
+  width: 100%;
+  height: 9px;
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
 }
 /* ---------------spacing--------------- */
 /* #spacing_400px {
