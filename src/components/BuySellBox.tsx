@@ -79,25 +79,25 @@ export const BuySellBox = ({
     setSellAmount((e.target.value).replace(/^0+(?!\.|$)/, ''));
   };
 
-  const handleOrderBnt = async (opt: string, tokenAmount: any, tokenAddress: any) => {
-    if(tokenAmount == undefined || tokenAmount == "" || tokenAmount == "0") {
+  const handleOrderBnt = async (tokenAmount: any, tokenAddress: any) => {
+    if(tokenAmount === undefined || tokenAmount === "" || tokenAmount === "0") {
       return;
     }
-    if(tokenAddress == undefined) {
+    if(tokenAddress === undefined) {
       return;
     }
 
-    if(await mm.request({ method: "eth_accounts" }) == undefined || ((await mm.request({ method: "eth_accounts" })).length == 0)) {
+    if(await mm.request({ method: "eth_accounts" }) === undefined || ((await mm.request({ method: "eth_accounts" })).length === 0)) {
       await connectWallet();
     }
-    if(mm.networkVersion != (process.env.REACT_APP_NETWORK_ID || "0x89")) {
+    if(mm.networkVersion !== (process.env.REACT_APP_NETWORK_ID || "0x89")) {
       await changeNetwork();
     }
     
-    if(opt == "buy") { 
+    if(orderStatus === "buy") { 
       buy(tokenAmount, tokenAddress);
     }
-    else if(opt == "sell") {
+    else if(orderStatus === "sell") {
       sell(tokenAmount, tokenAddress);
     }
 
@@ -186,7 +186,7 @@ export const BuySellBox = ({
             Sell
           </label>
           <div className="spacing_24px"></div>
-          {orderStatus == "buy" ? (
+          {orderStatus === "buy" ? (
             <div id="buytab_content">
               <div className="investin_wrap">
                 <span className="investIn">Invest In</span>
@@ -220,6 +220,7 @@ export const BuySellBox = ({
                     className="amount_inputbox"
                     value={buyAmount.toString()}
                     onChange={handleBuyAmountChange}
+                    onKeyPress={(e) => !/[0-9|.]/.test(e.key) && e.preventDefault()}
                   />
                 </div>
               </div>
@@ -276,7 +277,7 @@ export const BuySellBox = ({
               <div className="orderbtn_wrap">
                 <span
                   className="btn"
-                  onClick={() => {handleOrderBnt("buy", buyAmount, buyToken?.address)}}
+                  onClick={() => {handleOrderBnt(buyAmount, buyToken?.address)}}
                 >
                   Order
                 </span>
@@ -316,6 +317,7 @@ export const BuySellBox = ({
                     className="amount_inputbox"
                     value={sellAmount.toString()}
                     onChange={handleSellAmountChange}
+                    onKeyPress={(e) => !/[0-9|.]/.test(e.key) && e.preventDefault()}
                   />
                 </div>
               </div>
@@ -367,7 +369,7 @@ export const BuySellBox = ({
               <div className="orderbtn_wrap">
                 <span
                   className="btn"
-                  onClick={() => {handleOrderBnt("sell", sellAmount, sellToken?.address)}}
+                  onClick={() => {handleOrderBnt(sellAmount, sellToken?.address)}}
                 >
                   Order
                 </span>
