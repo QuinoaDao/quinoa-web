@@ -43,23 +43,29 @@ const VaultPriceInfo = ({productInfo}: any) => {
           </div>
           <div className="percentchange">
             <span className="About_txt_short">Percent Change</span>
-            <span className="percent_txt">
-
-              {productInfo === undefined ? (
-                <div className="s_number_txt"></div>
-              ) : (
-                <>
-                <span className="pc_icon">
-                  {priceChangStat === "up" ? (
-                    <img src="/asset/pc_icon_up.svg" />
-                  ) : (
-                    <img src="/asset/pc_icon_down.svg" />
-                  )}
-                </span>
-                <span>{roundNumbers(priceChangePercent)}%</span>
-                </>
-              )}
-            </span>
+            {
+              productInfo === undefined?
+              (
+                <div className="s_number_txt" />
+              )
+              :
+              (
+                priceChangStat === "up" ?
+                  (
+                    <span className="percent_txt">
+                      <img src="/asset/pc_icon_up.svg" />
+                      <span className="up">{roundNumbers(priceChangePercent)}%</span>
+                    </span>
+                  )
+                  :
+                  (
+                    <span className="percent_txt">
+                      <img src="/asset/pc_icon_down.svg" />
+                      <span className="down">{roundNumbers(priceChangePercent)}%</span>
+                    </span>
+                  )
+              )
+            }
           </div>
         </div>
         </>

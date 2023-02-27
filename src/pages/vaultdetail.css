@@ -516,10 +516,10 @@
   order: 1;
   flex-grow: 0;
 }
-.percent_txt.down {
+.percent_txt .down {
   color: #ff3156;
 }
-.percent_txt.up {
+.percent_txt .up {
   color: #1bc100;
 }
 .vault_priceinfo .pc_icon {
