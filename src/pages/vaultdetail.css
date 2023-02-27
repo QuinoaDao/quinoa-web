@@ -2533,6 +2533,11 @@ input[name="btn_wrap"] {
   flex-grow: 0;
   background-color: red;
 }
+.buysellBox_wrap .amount_error .errorIcon {
+  display: flex;
+  width: 17px;
+  height: 17px;
+}
 /* ---------------spacing--------------- */
 /* #spacing_400px {
   width: 100%;

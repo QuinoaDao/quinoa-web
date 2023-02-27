@@ -288,7 +288,7 @@ export const BuySellBox = ({
               <div className="spacing_67px"></div>
               <div className="amount_error">
                 <div className="errorIcon">
-                  <img src="" />
+                  <img src="./amount_error.svg" />
                 </div>
                 <p className="error_txt"></p>
                 <div className="spacing_9px"></div>
