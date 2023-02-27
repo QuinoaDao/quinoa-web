@@ -5,7 +5,7 @@ import { useProductInfo } from "../hooks/useProductInfo";
 import { UnderlyingTokenList } from "../components/underlyingTokenList";
 import { BuySellBox } from "../components/buySellBox";
 import { BuySellBoxSkeleton } from "../components/buySellBoxSkeleton";
-import PositionInfo from "../components/positionInfo";
+// import PositionInfo from "../components/positionInfo";
 import About from "../components/about";
 import Stat from "../components/stat";
 import Performance from "../components/performance";
@@ -28,8 +28,8 @@ const Vaultdetail = ({
           dacName="QuinoaDAC"
           propensity="Moderate"
         />
-        <PositionInfo currentAccount={currentAccount} mm={mm}/>
-        <VaultPriceInfo productInfo={productInfo}/>
+        {/* <PositionInfo currentAccount={currentAccount} mm={mm} /> */}
+        <VaultPriceInfo productInfo={productInfo} />
         <UnderlyingTokenList tokens={productInfo?.underlyingTokens} />
         <Performance />
         <About />

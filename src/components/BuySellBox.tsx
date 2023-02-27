@@ -9,7 +9,7 @@ import { useBuy } from "../hooks/useBuy";
 import { useInvestedAmountInfo } from "../hooks/useInvestedAmountInfo";
 import { useSellableAmountInfo } from "../hooks/useSellableAmountInfo";
 import { useSell } from "../hooks/useSell";
-import { Toast, toastProperties } from "./modals/Toast";
+import { Toast, toastProperties } from "./Modals/toast";
 import { roundNumbers } from "../utils/MathUtils";
 
 export const BuySellBox = ({
@@ -18,7 +18,7 @@ export const BuySellBox = ({
   currentAccount,
   provider,
   mm, // metamask
-  productInfo, 
+  productInfo,
 }: any) => {
   const [showOption, setShowOption] = useState(false);
   const [orderStatus, setOrderStatus] = useState("buy");
@@ -72,36 +72,41 @@ export const BuySellBox = ({
   }, [sellTxStatus]);
 
   const handleBuyAmountChange = (e: any) => {
-    setBuyAmount((e.target.value).replace(/^0+(?!\.|$)/, ''));
+    setBuyAmount(e.target.value.replace(/^0+(?!\.|$)/, ""));
   };
 
   const handleSellAmountChange = (e: any) => {
-    setSellAmount((e.target.value).replace(/^0+(?!\.|$)/, ''));
+    setSellAmount(e.target.value.replace(/^0+(?!\.|$)/, ""));
   };
 
-  const handleOrderBnt = async (opt: string, tokenAmount: any, tokenAddress: any) => {
-    if(tokenAmount == undefined || tokenAmount == "" || tokenAmount == "0") {
+  const handleOrderBnt = async (
+    opt: string,
+    tokenAmount: any,
+    tokenAddress: any
+  ) => {
+    if (tokenAmount == undefined || tokenAmount == "" || tokenAmount == "0") {
       return;
     }
-    if(tokenAddress == undefined) {
+    if (tokenAddress == undefined) {
       return;
     }
 
-    if(await mm.request({ method: "eth_accounts" }) == undefined || ((await mm.request({ method: "eth_accounts" })).length == 0)) {
+    if (
+      (await mm.request({ method: "eth_accounts" })) == undefined ||
+      (await mm.request({ method: "eth_accounts" })).length == 0
+    ) {
       await connectWallet();
     }
-    if(mm.networkVersion != (process.env.REACT_APP_NETWORK_ID || "0x89")) {
+    if (mm.networkVersion != (process.env.REACT_APP_NETWORK_ID || "0x89")) {
       await changeNetwork();
     }
-    
-    if(opt == "buy") { 
+
+    if (opt == "buy") {
       buy(tokenAmount, tokenAddress);
-    }
-    else if(opt == "sell") {
+    } else if (opt == "sell") {
       sell(tokenAmount, tokenAddress);
     }
-
-  }
+  };
 
   const closeToast: toastProperties["close"] = () => {
     setToastList(undefined);
@@ -227,25 +232,31 @@ export const BuySellBox = ({
                 <div className="amount_select_btn">
                   <div
                     className="txt_wrap"
-                    onClick={() => setBuyAmount((buyTokenHoldings * 0.1).toString())}
+                    onClick={() =>
+                      setBuyAmount((buyTokenHoldings * 0.1).toString())
+                    }
                   >
                     <span>10%</span>
                   </div>
                   <div
                     className="txt_wrap"
-                    onClick={() => setBuyAmount((buyTokenHoldings * 0.25).toString())}
+                    onClick={() =>
+                      setBuyAmount((buyTokenHoldings * 0.25).toString())
+                    }
                   >
                     <span>25%</span>
                   </div>
                   <div
                     className="txt_wrap"
-                    onClick={() => setBuyAmount((buyTokenHoldings * 0.5).toString())}
+                    onClick={() =>
+                      setBuyAmount((buyTokenHoldings * 0.5).toString())
+                    }
                   >
                     <span>50%</span>
                   </div>
                   <div
                     className="txt_wrap"
-                    onClick={() => setBuyAmount((buyTokenHoldings).toString())}
+                    onClick={() => setBuyAmount(buyTokenHoldings.toString())}
                   >
                     <span>MAX</span>
                   </div>
@@ -263,7 +274,9 @@ export const BuySellBox = ({
               <div className="spacing_15px"></div>
               <div className="invested_wrap">
                 <span className="iv_txt">Amount invested</span>
-                <span className="iv_price">$ {roundNumbers(amountInvested)}</span>
+                <span className="iv_price">
+                  $ {roundNumbers(amountInvested)}
+                </span>
               </div>
               <div className="spacing_8px"></div>
               <div className="investableAmount_wrap">
@@ -273,10 +286,19 @@ export const BuySellBox = ({
                 </span>
               </div>
               <div className="spacing_67px"></div>
+              <div className="amount_error">
+                <div className="errorIcon">
+                  <img src="" />
+                </div>
+                <p className="error_txt"></p>
+                <div className="spacing_9px"></div>
+              </div>
               <div className="orderbtn_wrap">
                 <span
                   className="btn"
-                  onClick={() => {handleOrderBnt("buy", buyAmount, buyToken?.address)}}
+                  onClick={() => {
+                    handleOrderBnt("buy", buyAmount, buyToken?.address);
+                  }}
                 >
                   Order
                 </span>
@@ -323,25 +345,33 @@ export const BuySellBox = ({
                 <div className="amount_select_btn">
                   <div
                     className="txt_wrap"
-                    onClick={() => setBuyAmount((sellableTokenAmount * 0.1).toString())}
+                    onClick={() =>
+                      setBuyAmount((sellableTokenAmount * 0.1).toString())
+                    }
                   >
                     <span>10%</span>
                   </div>
                   <div
                     className="txt_wrap"
-                    onClick={() => setSellAmount((sellableTokenAmount * 0.25).toString())}
+                    onClick={() =>
+                      setSellAmount((sellableTokenAmount * 0.25).toString())
+                    }
                   >
                     <span>25%</span>
                   </div>
                   <div
                     className="txt_wrap"
-                    onClick={() => setSellAmount((sellableTokenAmount * 0.5).toString())}
+                    onClick={() =>
+                      setSellAmount((sellableTokenAmount * 0.5).toString())
+                    }
                   >
                     <span>50%</span>
                   </div>
                   <div
                     className="txt_wrap"
-                    onClick={() => setSellAmount((sellableTokenAmount * 0.1).toString())}
+                    onClick={() =>
+                      setSellAmount((sellableTokenAmount * 0.1).toString())
+                    }
                   >
                     <span>MAX</span>
                   </div>
@@ -367,7 +397,9 @@ export const BuySellBox = ({
               <div className="orderbtn_wrap">
                 <span
                   className="btn"
-                  onClick={() => {handleOrderBnt("sell", sellAmount, sellToken?.address)}}
+                  onClick={() => {
+                    handleOrderBnt("sell", sellAmount, sellToken?.address);
+                  }}
                 >
                   Order
                 </span>
