@@ -36,6 +36,14 @@ export const BuySellBox = ({
     toastProperties["data"] | undefined
   >();
 
+  const errorMsgs = {
+    NO_INPUT: "Please enter an amount.",
+    NO_TOKEN: `Don't have enough ${orderStatus==="buy"? buyToken?.symbol : sellToken?.symbol} to ${orderStatus} this product.`,
+    NO_ERROR: ""
+  };
+  const [orderErrorMsg, setOrderErrorMsg] = useState(errorMsgs.NO_ERROR);
+
+
   const buyTokenHoldings = useTokenHoldingInfo(currentAccount, buyToken, mm);
 
   const amountInvested = useInvestedAmountInfo(
@@ -58,19 +66,20 @@ export const BuySellBox = ({
     mm
   );
 
+  console.log("sellableTokenAmount: ", sellableTokenAmount);
+
   useEffect(() => {
     setBuyToken(productInfo?.underlyingTokens[0]);
     setSellToken(productInfo?.underlyingTokens[0]);
-  }, [productInfo]);
+  }, [productInfo, orderStatus]);
 
   useEffect(() => {
     setBuyAmount("");
-  }, [buyToken])
-
-  useEffect(() => {
     setSellAmount("");
-  }, [sellToken])
-  
+    setOrderErrorMsg(errorMsgs.NO_ERROR);
+  }, [buyToken, sellToken, orderStatus]);
+
+
   useEffect(() => {
     showToast(buyTxStatus);
     // console.log("arstarstarstarst",buyTxStatus)
@@ -91,11 +100,22 @@ export const BuySellBox = ({
 
   const handleOrderBnt = async (tokenAmount: any, tokenAddress: any, tokenDecimal: any) => {
     if(tokenAmount === undefined || tokenAmount === "" || tokenAmount === "0") {
+      setOrderErrorMsg(errorMsgs.NO_INPUT);
+      return;
+    }
+    if(orderStatus === "buy" && Number(buyAmount) > Number(buyTokenHoldings)) {
+      setOrderErrorMsg(errorMsgs.NO_TOKEN);
+      return;
+    }
+    if(orderStatus === "sell" && Number(sellAmount) > Number(sellableTokenAmount)) {
+      setOrderErrorMsg(errorMsgs.NO_TOKEN);
       return;
     }
     if(tokenAddress === undefined) {
       return;
     }
+
+    setOrderErrorMsg(errorMsgs.NO_ERROR);
 
     if(await mm.request({ method: "eth_accounts" }) === undefined || ((await mm.request({ method: "eth_accounts" })).length === 0)) {
       await connectWallet();
@@ -290,16 +310,19 @@ export const BuySellBox = ({
                 </span>
               </div>
               <div className="spacing_67px"></div>
-              <div className="amount_error">
-                <div className="errorIcon">
-                  <img src="./asset/amount_error.svg" />
+              {orderErrorMsg == "" ?
+                null :
+                <div className="amount_error">
+                  <div className="errorIcon">
+                    <img src="./asset/amount_error.svg" />
+                  </div>
+                  <p className="error_txt">
+                    {orderErrorMsg}
+                  </p>
+                  <div className="spacing_9px"></div>
                 </div>
-                <p className="error_txt">
-                  Don't have enough ETH to buy this product.
-                </p>
-                {/* <p className="error_txt"> Please enter an amount.</p> */}
-                <div className="spacing_9px"></div>
-              </div>
+              }
+
               <div className="orderbtn_wrap">
                 <span
                   className="btn"
@@ -400,6 +423,18 @@ export const BuySellBox = ({
                 </span>
               </div>
               <div className="spacing_67px"></div>
+              {orderErrorMsg == "" ?
+                null :
+                <div className="amount_error">
+                  <div className="errorIcon">
+                    <img src="./asset/amount_error.svg" />
+                  </div>
+                  <p className="error_txt">
+                    {orderErrorMsg}
+                  </p>
+                  <div className="spacing_9px"></div>
+                </div>
+              }
               <div className="orderbtn_wrap">
                 <span
                   className="btn"

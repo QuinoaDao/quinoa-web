@@ -1,6 +1,6 @@
 import React from "react";
 import { roundNumbers } from "../utils/MathUtils";
-//TODO: 실제 토큰에 맞춰서 컬러값 추가해주기
+
 const colormap = {
   USDC: "rgba(62,115,196,1)",
   WMATIC: "rgba(95,180,246,1)",
@@ -8,6 +8,7 @@ const colormap = {
   LINK: "rgba(61,91,203,1)",
   QUICK: "#282F6E"
 };
+
 const ListStrategy = (props: any) => {
 
   const default_bar_styles = {

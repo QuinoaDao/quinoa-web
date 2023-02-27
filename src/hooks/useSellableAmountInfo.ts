@@ -33,7 +33,7 @@ export const useSellableAmountInfo = (
 
   useEffect(() => {
     getSellableAmount();
-  }, [asset]);
+  }, [asset, currentAddress]);
   // string
   return sellabeAmount;
 };
