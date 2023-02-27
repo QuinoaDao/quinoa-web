@@ -6,6 +6,7 @@ const colormap = {
   WMATIC: "rgba(95,180,246,1)",
   WETH: "rgba(218,85,138,1)",
   LINK: "rgba(61,91,203,1)",
+  QUICK: "#282F6E"
 };
 const ListStrategy = (props: any) => {
 

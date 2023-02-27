@@ -9,8 +9,6 @@ export const usePositionInfo = (currentAddress: any, shareBalance: any, invested
     shareBalance = BigNumber.from(shareBalance);
     investedValue = BigNumber.from(investedValue);
 
-    console.log("in get positionInfo func: ", shareBalance, investedValue);
-    // console.log("in getPositionInfo: ", shareBalance, investedValue)
     let averageUnitPrice = "0";
 
     let totalReturn = "0";
