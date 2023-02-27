@@ -288,9 +288,12 @@ export const BuySellBox = ({
               <div className="spacing_67px"></div>
               <div className="amount_error">
                 <div className="errorIcon">
-                  <img src="./amount_error.svg" />
+                  <img src="./asset/amount_error.svg" />
                 </div>
-                <p className="error_txt"></p>
+                <p className="error_txt">
+                  Don't have enough ETH to buy this product.
+                </p>
+                {/* <p className="error_txt"> Please enter an amount.</p> */}
                 <div className="spacing_9px"></div>
               </div>
               <div className="orderbtn_wrap">
