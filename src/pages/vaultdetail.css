@@ -1284,12 +1284,13 @@
   padding: 0px;
   gap: 27px;
   width: 100%;
-  height: 330px;
+  height: 300px;
   flex: none;
   order: 0;
   flex-grow: 0;
   box-sizing: border-box;
   justify-content: flex-start;
+  margin-top: 30px;
 }
 .performance_wrap .performance {
   display: flex;
@@ -1297,7 +1298,7 @@
   padding: 0px;
   gap: 30px;
   width: 100%;
-  height: 240px;
+  height: 212px;
   flex: none;
   order: 0;
   flex-grow: 0;
@@ -1347,13 +1348,6 @@
   justify-content: flex-start;
   box-sizing: border-box;
 }
-.performance_wrap .performance .percentChange_row .spacing_1px {
-  width: 100%;
-  height: 0.5px;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-}
 .performance_wrap .performance .percentChange_row span {
   width: auto;
   height: 13px;
@@ -1375,7 +1369,7 @@
 .performance_wrap .performance .performance_monthly {
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: flex-start;
   padding: 0px;
   gap: 57px;
   width: 726px;
@@ -1386,22 +1380,35 @@
   flex-grow: 1;
   justify-content: flex-start;
   box-sizing: border-box;
+  overflow: visible;
 }
 .performance .performance_monthly .before_nm {
   width: 52px;
-  height: 88%;
+  height: 100%;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  position: relative;
+  transform: rotate(0.5turn);
+}
+.performance .performance_monthly .before_nm .circle_wrap {
+  width: 52px;
+  height: 166px;
   flex: none;
   order: 0;
   flex-grow: 0;
   box-sizing: border-box;
   position: relative;
+  top: 34px;
 }
 .performance_monthly .before_nm .bm_txt {
   position: absolute;
   width: 100%;
   height: 13px;
   flex-grow: 0;
-  bottom: 0;
+  top: 0;
   font-family: "Spoqa Han Sans Neo", sans-serif;
   font-size: 13px;
   font-weight: normal;
@@ -1412,6 +1419,7 @@
   text-align: center;
   align-items: center;
   color: #000;
+  transform: rotate(0.5turn);
 }
 .performance_monthly .before_nm .vaultCircle {
   position: absolute;
@@ -1422,17 +1430,18 @@
   background: #1bc100;
   border-radius: 50%;
   z-index: 10;
+  top: 100%;
 }
 .performance_monthly .before_nm .benchCircle {
   position: absolute;
   width: 13px;
   height: 13px;
-  top: 20px;
   left: 50%;
   transform: translate(-50%, 0);
   background: #dde1e4;
   border-radius: 50%;
   z-index: 8;
+  top: 0;
 }
 .performance_wrap .performancesort_wrap {
   display: flex;
