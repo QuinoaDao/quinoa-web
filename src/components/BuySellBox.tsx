@@ -298,7 +298,7 @@ export const BuySellBox = ({
               </div>
               <div className="orderbtn_wrap">
                 <span
-                  className="btn"
+                  className="btn disabled"
                   onClick={() => {
                     handleOrderBnt("buy", buyAmount, buyToken?.address);
                   }}
