@@ -17,7 +17,8 @@ export const useSell = (amount: any, assetInfo: any, currentAccount: any, ethere
                 signer
               );
               try {
-                const mintTx = await product.withdraw(assetAddress, ethers.utils.parseUnits(amount.toString(), 18), currentAccount, currentAccount);
+                const shareTokenAmount = await product.convertToShares(assetAddress, ethers.utils.parseUnits(amount, assetDecimal));
+                const mintTx = await product.withdraw(assetAddress, shareTokenAmount.toString(), currentAccount, currentAccount);
                 console.log("SELL")
                 console.log(mintTx);
                 setTxStatus("pending");
