@@ -4,4 +4,5 @@ export interface PositionInfo {
   averageUnitPrice: any;
   totalReturn: any;
   totalReturnChange: any;
+  investStat: string;
 }

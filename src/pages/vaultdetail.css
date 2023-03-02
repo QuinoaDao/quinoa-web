@@ -388,10 +388,32 @@
   align-self: stretch;
   flex-grow: 0;
 }
-.tr_percent.up {
+.positionInfo_wrap .positionInfo .totalReturn_txt > .up {
+  width: auto;
+  height: 28px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
   color: #1bc100;
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
 }
-.tr_percent.down {
+.positionInfo_wrap .positionInfo .totalReturn_txt > .down {
+  width: auto;
+  height: 28px;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
   color: #ff3156;
 }
 .vault_priceinfo {

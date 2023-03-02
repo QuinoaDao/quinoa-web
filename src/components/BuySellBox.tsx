@@ -82,12 +82,10 @@ export const BuySellBox = ({
     if(currentAccount === undefined) {
       setOrderBtnStatus(btnStatuses.DISABLE);
       setOrderErrorMsg(errorMsgs.NO_WALLET);
-      console.log("..?uu");
     }
     else if(correctNetwork === false) {
       setOrderBtnStatus(btnStatuses.DISABLE);
       setOrderErrorMsg(errorMsgs.BAD_NETWORK);
-      console.log(".......ㅇㅁㅇ... nn");
     }
     else {
       setOrderBtnStatus(btnStatuses.ABLE);
@@ -99,12 +97,10 @@ export const BuySellBox = ({
 
   useEffect(() => {
     showToast(buyTxStatus);
-    // console.log("arstarstarstarst",buyTxStatus)
   }, [buyTxStatus]);
 
   useEffect(() => {
     showToast(sellTxStatus);
-    // console.log("arstarstarstarst",sellTxStatus)
   }, [sellTxStatus]);
 
   const handleBuyAmountChange = (e: any) => {
@@ -146,7 +142,6 @@ export const BuySellBox = ({
 
     setOrderErrorMsg(errorMsgs.NO_ERROR);
 
-    
     if(orderStatus === "buy") { 
       buy(tokenAmount, tokenAddress, tokenDecimal);
     }
@@ -154,6 +149,8 @@ export const BuySellBox = ({
       sell(tokenAmount, tokenAddress, tokenDecimal);
     }
   };
+
+  
 
   const closeToast: toastProperties["close"] = () => {
     setToastList(undefined);
@@ -203,8 +200,6 @@ export const BuySellBox = ({
       }
     }
   };
-
-  console.log(orderBntStatus, orderErrorMsg);
 
   return (
     <div>
