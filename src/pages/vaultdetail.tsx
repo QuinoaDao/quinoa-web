@@ -13,8 +13,7 @@ import VaultPriceInfo from "../components/vaultPriceInfo";
 import { useInvestedAmountInfo } from "../hooks/useInvestedAmountInfo";
 
 const Vaultdetail = ({
-  connectWallet,
-  changeNetwork,
+  correctNetwork,
   currentAccount,
   provider,
   mm, // metamask
@@ -32,7 +31,12 @@ const Vaultdetail = ({
           propensity="Moderate"
         />
         {productInfo === undefined || shareBalance.toString() === "0" ?
-          null : <PositionInfo currentAccount={currentAccount} shareBalance={shareBalance} investedValue={investedValue} mm={mm}/>
+          null : <PositionInfo 
+                  currentAccount={currentAccount} 
+                  shareBalance={shareBalance} 
+                  investedValue={investedValue} 
+                  provider={provider}
+                  />
         }
         <VaultPriceInfo productInfo={productInfo}/>
         <UnderlyingTokenList tokens={productInfo?.underlyingTokens} />
@@ -44,8 +48,7 @@ const Vaultdetail = ({
         <BuySellBoxSkeleton />
       ) : (
         <BuySellBox
-          connectWallet={connectWallet}
-          changeNetwork={changeNetwork}
+          correctNetwork={correctNetwork}
           currentAccount={currentAccount}
           provider={provider}
           mm={mm}

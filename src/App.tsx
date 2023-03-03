@@ -142,9 +142,8 @@ function App() {
         changeNetwork={changeNetwork}
       />
       <Vaultdetail
-        connectWallet={connectWallet}
-        changeNetwork={changeNetwork}
         currentAccount={currentAccount}
+        correctNetwork={correctNetwork}
         provider={quinoa_provider}
         mm={ethereum}
       />

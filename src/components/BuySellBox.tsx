@@ -14,8 +14,7 @@ import { roundNumbers } from "../utils/MathUtils";
 import { formatEther } from "ethers/lib/utils";
 
 export const BuySellBox = ({
-  connectWallet,
-  changeNetwork,
+  correctNetwork,
   currentAccount,
   provider,
   mm, // metamask
@@ -37,11 +36,19 @@ export const BuySellBox = ({
   >();
 
   const errorMsgs = {
+    BAD_NETWORK: "Change network",
+    NO_WALLET: "Connect your wallet",
     NO_INPUT: "Please enter an amount.",
     NO_TOKEN: `Don't have enough ${orderStatus==="buy"? buyToken?.symbol : sellToken?.symbol} to ${orderStatus} this product.`,
-    NO_ERROR: ""
+    NO_ERROR: "Order",
   };
   const [orderErrorMsg, setOrderErrorMsg] = useState(errorMsgs.NO_ERROR);
+
+  const btnStatuses = {
+    ABLE: "",
+    DISABLE: "disabled"
+  }
+  const [orderBntStatus, setOrderBtnStatus] = useState(btnStatuses.DISABLE);
 
 
   const buyTokenHoldings = useTokenHoldingInfo(currentAccount, buyToken, mm);
@@ -72,20 +79,28 @@ export const BuySellBox = ({
   }, [productInfo, orderStatus]);
 
   useEffect(() => {
+    if(currentAccount === undefined) {
+      setOrderBtnStatus(btnStatuses.DISABLE);
+      setOrderErrorMsg(errorMsgs.NO_WALLET);
+    }
+    else if(correctNetwork === false) {
+      setOrderBtnStatus(btnStatuses.DISABLE);
+      setOrderErrorMsg(errorMsgs.BAD_NETWORK);
+    }
+    else {
+      setOrderBtnStatus(btnStatuses.ABLE);
+      setOrderErrorMsg(errorMsgs.NO_ERROR);
+    }
     setBuyAmount("");
     setSellAmount("");
-    setOrderErrorMsg(errorMsgs.NO_ERROR);
-  }, [buyToken, sellToken, orderStatus]);
-
+  }, [buyToken, sellToken, orderStatus, currentAccount, correctNetwork])
 
   useEffect(() => {
     showToast(buyTxStatus);
-    // console.log("arstarstarstarst",buyTxStatus)
   }, [buyTxStatus]);
 
   useEffect(() => {
     showToast(sellTxStatus);
-    // console.log("arstarstarstarst",sellTxStatus)
   }, [sellTxStatus]);
 
   const handleBuyAmountChange = (e: any) => {
@@ -97,6 +112,18 @@ export const BuySellBox = ({
   };
 
   const handleOrderBnt = async (tokenAmount: any, tokenAddress: any, tokenDecimal: any) => {
+    if(await mm.request({ method: "eth_accounts" }) === undefined || ((await mm.request({ method: "eth_accounts" })).length === 0)) {
+      setOrderBtnStatus(btnStatuses.DISABLE);
+      setOrderErrorMsg(errorMsgs.NO_WALLET);
+      return;
+    }
+    else if(!correctNetwork) {
+      setOrderBtnStatus(btnStatuses.DISABLE);
+      setOrderErrorMsg(errorMsgs.BAD_NETWORK);
+      return;
+    }
+    else setOrderBtnStatus(btnStatuses.ABLE);
+
     if(tokenAmount === undefined || tokenAmount === "" || tokenAmount === "0") {
       setOrderErrorMsg(errorMsgs.NO_INPUT);
       return;
@@ -115,13 +142,6 @@ export const BuySellBox = ({
 
     setOrderErrorMsg(errorMsgs.NO_ERROR);
 
-    if(await mm.request({ method: "eth_accounts" }) === undefined || ((await mm.request({ method: "eth_accounts" })).length === 0)) {
-      await connectWallet();
-    }
-    if(mm.networkVersion !== (process.env.REACT_APP_NETWORK_ID || "0x89")) {
-      await changeNetwork();
-    }
-    
     if(orderStatus === "buy") { 
       buy(tokenAmount, tokenAddress, tokenDecimal);
     }
@@ -129,6 +149,8 @@ export const BuySellBox = ({
       sell(tokenAmount, tokenAddress, tokenDecimal);
     }
   };
+
+  
 
   const closeToast: toastProperties["close"] = () => {
     setToastList(undefined);
@@ -308,8 +330,7 @@ export const BuySellBox = ({
                 </span>
               </div>
               <div className="spacing_67px"></div>
-              {orderErrorMsg == "" ?
-                null :
+              {orderErrorMsg !== errorMsgs.NO_ERROR && orderBntStatus === btnStatuses.ABLE ?
                 <div className="amount_error">
                   <div className="errorIcon">
                     <img src="./asset/amount_error.svg" />
@@ -319,14 +340,16 @@ export const BuySellBox = ({
                   </p>
                   <div className="spacing_9px"></div>
                 </div>
+                :
+                null
               }
 
               <div className="orderbtn_wrap">
                 <span
-                  className="btn"
+                  className= {`btn ${orderBntStatus}`}
                   onClick={() => {handleOrderBnt(buyAmount, buyToken?.address, buyToken?.decimal)}}
                 >
-                  Order
+                  {orderBntStatus === btnStatuses.DISABLE ? orderErrorMsg : "Order"}
                 </span>
               </div>
             </div>
@@ -421,8 +444,7 @@ export const BuySellBox = ({
                 </span>
               </div>
               <div className="spacing_67px"></div>
-              {orderErrorMsg == "" ?
-                null :
+              {orderErrorMsg !== errorMsgs.NO_ERROR && orderBntStatus === btnStatuses.ABLE ?
                 <div className="amount_error">
                   <div className="errorIcon">
                     <img src="./asset/amount_error.svg" />
@@ -432,13 +454,15 @@ export const BuySellBox = ({
                   </p>
                   <div className="spacing_9px"></div>
                 </div>
+                :
+                null
               }
               <div className="orderbtn_wrap">
                 <span
-                  className="btn"
+                  className= {`btn ${orderBntStatus}`}
                   onClick={() => {handleOrderBnt(sellAmount, sellToken?.address, sellToken?.decimal)}}
                 >
-                  Order
+                {orderBntStatus === btnStatuses.DISABLE ? orderErrorMsg : "Order"}
                 </span>
               </div>
             </div>
