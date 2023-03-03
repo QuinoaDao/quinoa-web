@@ -1,8 +1,16 @@
-<svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 12 14" style="enable-background:new 0 0 12 14;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FF3156;}
+	.st1{fill:none;stroke:#FF3156;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+</style>
 <g id="up_icon">
-<g id="Group 261">
-<path id="Vector" d="M8.52911 10.4667C8.82205 10.7595 8.82212 11.2344 8.52927 11.5273C8.23642 11.8203 7.76155 11.8203 7.46861 11.5275L8.52911 10.4667ZM1.46975 5.53042L0.93934 5.00017L1.99984 3.93935L2.53025 4.4696L1.46975 5.53042ZM7.46861 11.5275L1.46975 5.53042L2.53025 4.4696L8.52911 10.4667L7.46861 11.5275Z" fill="#FF3156"/>
-<path id="Vector_2" d="M2.50159 11H8.00006V5.64301" stroke="#FF3156" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
+	<g id="Group_261">
+		<path id="Vector" class="st0" d="M8.5,10.2c0.3,0.3,0.3,0.8,0,1.1c-0.3,0.3-0.8,0.3-1.1,0L8.5,10.2z M1.5,5.2L0.9,4.7L2,3.6
+			l0.5,0.5L1.5,5.2z M7.5,11.2l-6-6l1.1-1.1l6,6L7.5,11.2z"/>
+		<path id="Vector_2" class="st1" d="M2.5,10.7H8V5.3"/>
+	</g>
 </g>
 </svg>

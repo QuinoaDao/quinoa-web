@@ -9,7 +9,6 @@ export const Footer = () => {
           <span className="Copyright">
             Copyright 2023 Quinoa team. All Rights Reserved.
           </span>
-          <span className="tvl">Total Volume $ 3,928,081</span>
         </div>
       </div>
     </footer>
