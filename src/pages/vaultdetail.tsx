@@ -50,6 +50,8 @@ const Vaultdetail = ({
         <BuySellBox
           correctNetwork={correctNetwork}
           currentAccount={currentAccount}
+          shareBalance = {shareBalance}
+          amountInvested = {investedValue}
           provider={provider}
           mm={mm}
           productInfo={productInfo}

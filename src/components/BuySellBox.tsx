@@ -16,7 +16,8 @@ import { formatEther } from "ethers/lib/utils";
 export const BuySellBox = ({
   correctNetwork,
   currentAccount,
-  provider,
+  shareBalance,
+  amountInvested,
   mm, // metamask
   productInfo,
 }: any) => {
@@ -30,7 +31,6 @@ export const BuySellBox = ({
   );
   const [buyAmount, setBuyAmount] = useState("");
   const [sellAmount, setSellAmount] = useState("");
-  const [shareBalance, setShareBalance] = useState();
   const [toastList, setToastList] = useState<
     toastProperties["data"] | undefined
   >();
@@ -52,12 +52,6 @@ export const BuySellBox = ({
 
 
   const buyTokenHoldings = useTokenHoldingInfo(currentAccount, buyToken, mm);
-
-  const amountInvested = useInvestedAmountInfo(
-    currentAccount,
-    mm,
-    setShareBalance
-  );
 
   const { buy, buyTxStatus } = useBuy(buyAmount, buyToken, currentAccount, mm);
   const { sell, sellTxStatus } = useSell(

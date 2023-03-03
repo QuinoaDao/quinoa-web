@@ -108,7 +108,7 @@ function App() {
               {
                 chainName: targetNetwork.name,
                 chainId: targetNetwork.id,
-                rpcUrls: [process.env.REACT_APP_ALCHEMY_RPC_URL || "https://polygon-rpc.com"],
+                rpcUrls: ["https://polygon-rpc.com"],
               },
             ],
           });
