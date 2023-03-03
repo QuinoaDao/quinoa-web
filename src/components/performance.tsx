@@ -1,4 +1,12 @@
+import MonthlyPerformance from "./monthlyPerformance";
+import PerformanceHistory from "../utils/PerformanceHistory.json";
+
 const Performance = () => {
+
+  const calcPosition = (historyPercent: number) => {
+    return (historyPercent - PerformanceHistory.percentPoint[0]) * 100 / (PerformanceHistory.percentPoint[4] - PerformanceHistory.percentPoint[0]);
+  }
+
   return (
     <>
       <div className="maintitle_wrap">
@@ -9,62 +17,19 @@ const Performance = () => {
       <div className="performance_wrap">
         <div className="performance">
           <div className="percentChange_row">
-            <span>24%</span>
-            <span>19%</span>
-            <span>14%</span>
-            <span>9%</span>
-            <span>4%</span>
+            {
+              PerformanceHistory.percentPoint.slice(0).reverse().map((cur: number, idx) => {
+                return <span key={idx}>{cur}%</span>
+              })
+            }
           </div>
           <div className="performance_monthly">
-            <div className="before_nm">
-              <div className="circle_wrap">
-                <div className="vaultCircle"></div>
-                <div className="benchCircle"></div>
-              </div>
-              <span className="bm_txt">07, 2022</span>
-            </div>
-            <div className="before_nm">
-              <div className="circle_wrap">
-                <div className="vaultCircle"></div>
-                <div className="benchCircle"></div>
-              </div>
-              <span className="bm_txt">08, 2022</span>
-            </div>
-            <div className="before_nm">
-              <div className="circle_wrap">
-                <div className="vaultCircle"></div>
-                <div className="benchCircle"></div>
-              </div>
-              <span className="bm_txt">09, 2022</span>
-            </div>
-            <div className="before_nm">
-              <div className="circle_wrap">
-                <div className="vaultCircle"></div>
-                <div className="benchCircle"></div>
-              </div>
-              <span className="bm_txt">10, 2022</span>
-            </div>
-            <div className="before_nm">
-              <div className="circle_wrap">
-                <div className="vaultCircle"></div>
-                <div className="benchCircle"></div>
-              </div>
-              <span className="bm_txt">11, 2022</span>
-            </div>
-            <div className="before_nm">
-              <div className="circle_wrap">
-                <div className="vaultCircle"></div>
-                <div className="benchCircle"></div>
-              </div>
-              <span className="bm_txt">12, 2022</span>
-            </div>
-            <div className="before_nm">
-              <div className="circle_wrap">
-                <div className="vaultCircle"></div>
-                <div className="benchCircle"></div>
-              </div>
-              <span className="bm_txt">01, 2023</span>
-            </div>
+            {
+              PerformanceHistory.history.slice(PerformanceHistory.history.length-7,PerformanceHistory.history.length).map((cur, idx) => {
+                return <MonthlyPerformance key={idx} monthDate={cur.date} vaultPosition={calcPosition(cur.vaultPercent)} venchPercent={calcPosition(cur.benchPercent)}/> 
+              })
+            }
+
           </div>
         </div>
         <div className="performancesort_wrap">

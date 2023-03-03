@@ -1,0 +1,47 @@
+{
+    "history": [
+        {
+            "date": "07, 2022",
+            "vaultPercent": 14,
+            "benchPercent": 4
+        },
+        {
+            "date": "08, 2022",
+            "vaultPercent": 15,
+            "benchPercent": 4
+        },
+        {
+            "date": "09, 2022",
+            "vaultPercent": 17,
+            "benchPercent": 5
+        },
+        {
+            "date": "10, 2022",
+            "vaultPercent": 19,
+            "benchPercent": 5
+        },
+        {
+            "date": "11, 2022",
+            "vaultPercent": 21,
+            "benchPercent": 6
+        },
+        {
+            "date": "12, 2022",
+            "vaultPercent": 23,
+            "benchPercent": 6
+        },
+        {
+            "date": "01, 2022",
+            "vaultPercent": 24,
+            "benchPercent": 7
+        },
+        {
+            "date": "02, 2022",
+            "vaultPercent": 24,
+            "benchPercent": 10
+        }
+    ],
+    "percentPoint": [
+        4, 9, 14, 19, 24
+    ]
+}
