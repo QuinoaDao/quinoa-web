@@ -23,8 +23,6 @@ export const PriceInfo = async (symbol: string) => {
       },
     })
     .then((response) => {
-      console.log("RES", response.data.data);
-      console.log("PRICE :", response.data.data[symbol][0].quote.USD.price);
       priceInfo.price = response.data.data[symbol][0].quote.USD.price;
       priceInfo.percent_change =
         response.data.data[symbol][0].quote.USD.percent_change_7d;
