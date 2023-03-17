@@ -5,11 +5,11 @@ import erc20_abi from "../abis/ERC20.json";
 
 
 
-export const useBuy = (amount: any, assetAddress: any, currentAccount: any, ethereum: Window["ethereum"]) => {
+export const useBuy = (amount: any, assetInfo: any, currentAccount: any, ethereum: Window["ethereum"]) => {
     const signer = new ethers.providers.Web3Provider(ethereum).getSigner();
     const [buyTxStatus, setTxStatus] = useState<string>("default");
     const buy = useCallback(
-        async (amount: any, assetAddress: any) => {
+        async (amount: any, assetAddress: any, assetDecimal: any) => {
             const productAddress: string = process.env.REACT_APP_PRODUCT_ADDRESS || "";
             const product = new ethers.Contract(
                 productAddress,
@@ -18,10 +18,10 @@ export const useBuy = (amount: any, assetAddress: any, currentAccount: any, ethe
               );
               try {
                 let tokenContract = new ethers.Contract(assetAddress, erc20_abi.abi, signer);
-                const approveTx = await tokenContract.approve(product.address, ethers.utils.parseUnits(amount.toString()));
+                const approveTx = await tokenContract.approve(product.address, ethers.utils.parseUnits(amount.toString(), assetDecimal));
                 await approveTx.wait();
                 setTxStatus("pending");
-                const mintTx = await product.deposit(assetAddress, ethers.utils.parseUnits(amount.toString()), currentAccount);
+                const mintTx = await product.deposit(assetAddress, ethers.utils.parseUnits(amount.toString(), assetDecimal), currentAccount);
                 console.log(mintTx);
                 setTxStatus("pending");
                 const receipt = await mintTx.wait();
@@ -34,7 +34,7 @@ export const useBuy = (amount: any, assetAddress: any, currentAccount: any, ethe
                 setTxStatus("error");
             }
         },
-    [amount, assetAddress, currentAccount, signer]);
+    [amount, assetInfo, currentAccount, signer]);
 
     useEffect(() => {
         if(buyTxStatus === "error") {

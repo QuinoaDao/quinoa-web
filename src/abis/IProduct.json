@@ -54,6 +54,18 @@
                     "internalType": "uint256",
                     "name": "shares",
                     "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "sharePrice",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "time",
+                    "type": "uint256"
                 }
             ],
             "name": "Deposit",
@@ -157,6 +169,18 @@
                     "indexed": false,
                     "internalType": "uint256",
                     "name": "share",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "sharePrice",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "time",
                     "type": "uint256"
                 }
             ],

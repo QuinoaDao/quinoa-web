@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./nav.css";
-import { ReactComponent as Quinoalogo } from "../components/asset/quinoa_logo.svg";
+import { ReactComponent as Quinoalogo } from "../components/asset/quinoa_logo_02.svg";
 
 const Nav = ({
   currentAccount,

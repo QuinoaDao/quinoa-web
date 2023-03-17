@@ -5,7 +5,7 @@ import { UnderlyingTokenInfo } from "../models/ProductInfo";
 export const useUnderlyingTokenPrice = (underlyingTokens: any) => {
   const [tokenPrices, setTokenPrices] = useState<PriceInfoType[]>([]);
   const getPrices = async () => {
-    if (underlyingTokens.length === 4) {
+    // if (underlyingTokens.length === 4) {
       let newTokenPriceList: PriceInfoType[] = [];
       for (let i = 0; i < underlyingTokens.length; i++) {
         let info = await PriceInfo(underlyingTokens[i].symbol);
@@ -16,7 +16,7 @@ export const useUnderlyingTokenPrice = (underlyingTokens: any) => {
       }
       setTokenPrices(newTokenPriceList);
       //setLoadSkeleton(false);
-    }
+    // }
   };
 
   useEffect(() => {
